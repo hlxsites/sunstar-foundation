@@ -5,7 +5,7 @@ on:
     types: [ opened, synchronize ]
 
 env:
-  TEST_PATHS: "/"
+  TEST_PATHS: ""
   TEST_PATHS_INDEXES: "/sidekick/library.json "
   DOMAIN_MAIN: "main--sunstar-foundation--hlxsites.hlx.page"
   DOMAIN_BRANCH: "${{github.head_ref}}--sunstar-foundation--hlxsites.hlx.page"
