@@ -11,7 +11,7 @@ if (!process.env.DOMAIN_MAIN || !process.env.TEST_PATHS || !process.env.TEST_PAT
 
 // Disable TEST_PATHS until we have some pages to test
 // const paths = process.env.TEST_PATHS.split(' ').map((path) => path.trim());
-const paths = '';
+const paths = [];
 
 console.log(process.env.TEST_PATHS_INDEXES);
 for (const index of process.env.TEST_PATHS_INDEXES.split(' ')) {
