@@ -1,3 +1,36 @@
+export function applySplitPercentages(block) {
+  const ratios = [];
+  for (let i = 0; i < block.classList.length; i += 1) {
+    const cls = block.classList[i];
+    if (cls.startsWith('split-')) {
+      const numbers = cls.substring(6);
+      numbers.split('-').forEach((n) => ratios.push(`${n}%`));
+      break;
+    }
+  }
+
+  if (ratios.length === 0) {
+    return;
+  }
+
+  let pctIdx = 0;
+
+  for (let i = 0; i < block.children.length; i += 1) {
+    if (block.children[i].localName === 'div') {
+      for (let j = 0; j < block.children[i].children.length; j += 1) {
+        if (block.children[i].children[j].localName === 'div') {
+          block.children[i].children[j].style.flexBasis = ratios[pctIdx];
+          pctIdx += 1;
+
+          if (pctIdx >= ratios.length) {
+            pctIdx = 0;
+          }
+        }
+      }
+    }
+  }
+}
+
 export default function decorate(block) {
   const background = block.classList.contains('backgroundimage');
   if (background) {
@@ -143,4 +176,6 @@ export default function decorate(block) {
       }
     });
   }
+
+  applySplitPercentages(block);
 }
