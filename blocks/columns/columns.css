@@ -28,6 +28,14 @@
   margin-bottom: 4rem;
 }
 
+.columns .img-col {
+  align-self: center;
+}
+
+.columns li::marker {
+  content: "・";
+}
+
 .columns > div > div {
   order: 1;
 }
