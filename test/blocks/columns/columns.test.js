@@ -19,7 +19,7 @@ describe('Columns Block', () => {
   });
 
   it('Handles split percentages', () => {
-    const block = document.querySelector('.columns.split-80-20');
+    const block = document.querySelector('.columns.split-testratio1');
 
     scripts.applySplitPercentages(block);
 
@@ -45,7 +45,7 @@ describe('Columns Block', () => {
   });
 
   it('Applies alignment to non-text cells', () => {
-    const block = document.querySelector('.columns.split-80-20');
+    const block = document.querySelector('.columns.split-testratio1');
 
     scripts.applyCellAlignment(block);
 
@@ -67,7 +67,7 @@ describe('Columns Block', () => {
   });
 
   it('Applies alignment to text cells', () => {
-    const block = document.querySelector('.columns.split-30-70');
+    const block = document.querySelector('.columns.split-testratio2');
 
     scripts.applyCellAlignment(block);
 

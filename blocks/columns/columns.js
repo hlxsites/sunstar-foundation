@@ -3,8 +3,9 @@ export function applySplitPercentages(block) {
   for (let i = 0; i < block.classList.length; i += 1) {
     const cls = block.classList[i];
     if (cls.startsWith('split-')) {
-      const numbers = cls.substring(6);
-      numbers.split('-').forEach((n) => ratios.push(`${n}%`));
+      const varName = `--${cls}`;
+      const numbers = getComputedStyle(block).getPropertyValue(varName);
+      numbers.split(':').forEach((n) => ratios.push(n));
       break;
     }
   }

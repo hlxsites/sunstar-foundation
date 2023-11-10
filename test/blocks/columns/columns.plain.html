@@ -1,5 +1,14 @@
+<head>
+    <style>
+        :root {
+          --split-testratio1: 80%:20%;
+          --split-testratio2: 30%:70%;
+         }
+    </style>
+</head>
+<body>
   <div>
-    <div class="columns split-80-20 native-image-sizes">
+    <div class="columns split-testratio1 native-image-sizes">
       <div>
         <div id="column-a" data-valign="middle">
         </div>
@@ -14,7 +23,7 @@
       </div>
     </div>
 
-    <div class="columns split-30-70 native-image-sizes">
+    <div class="columns split-testratio2 native-image-sizes">
       <div>
         <div class="text-col-wrapper">
           <div id="column-t1" class="text-col" data-valign="middle">
@@ -48,3 +57,4 @@
       </div>
     </div>
   </div>
+</body>
