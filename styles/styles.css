@@ -129,6 +129,7 @@
 
   /* Column Split Ratios */
   --split-endorsement: 76%:24%;
+  --split-about-us: 25%:75%;
 }
 
 html {
