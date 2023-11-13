@@ -89,6 +89,10 @@ header nav.nav-top > ul > li > a {
   display: flex;
 }
 
+span.icon.icon-link-black {
+  margin-left: 0.5rem;
+}
+
 header .picker-item > a:hover {
   background: var(--primary);
 }
@@ -172,6 +176,11 @@ header nav.nav-top > ul > li > a:first-of-type {
   display: inline-flex;
   padding: 0 0.5rem;
   text-decoration: none;
+}
+
+header nav.nav-top > ul > li > a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
 }
 
 header nav.nav-middle {
@@ -849,13 +858,13 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
     color: var(--muted-text);
     margin-right: 4rem;
   }
-  
+
   /* stylelint-disable-next-line no-descending-specificity */
   header .mega-container .left-content-container .main-item-summary a {
     color: var(--white);
     text-decoration: none;
   }
-  
+
   /* stylelint-disable-next-line no-descending-specificity */
   header .mega-container .left-content-container .main-item-summary a h2 {
     margin-bottom: 1rem;
@@ -875,7 +884,7 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
     width: 15px;
     margin-left: 14px;
   }
-  
+
   header .mega-container .left-content-container .main-item-summary p {
     font-size: var(--font-size-small);
     line-height: 1.5em;
@@ -890,7 +899,7 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
     background-size: cover;
     overflow: hidden;
   }
-  
+
   .header .mega-container .right-content img {
     height: 100%;
   }
