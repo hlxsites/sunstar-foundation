@@ -35,34 +35,6 @@ describe('Scripts', () => {
     expect(el.constructor.name).to.equal('HTMLDivElement');
   });
 
-  it('Creates the Search widget without value', () => {
-    const placeholders = {
-      emptysearchtext: 'Cannot be empty',
-      searchtext: 'MySearch',
-    };
-
-    const form = scripts.getSearchWidget(placeholders);
-    expect(new URL(form.action).pathname).to.equal('/search');
-
-    const div = form.children[0];
-    const it = div.getElementsByClassName('search-text');
-    expect(it[0].type).to.equal('text');
-    expect(it[0].value).to.equal('');
-    expect(it[0].placeholder).to.equal('MySearch');
-    expect(it[0].oninvalid.toString().replace(/(\r\n|\n|\r)/gm, ''))
-      .to.equal('function oninvalid(event) {this.setCustomValidity(\'Cannot be empty\')}');
-  });
-
-  it('Creates the Search widget with value', () => {
-    const form = scripts.getSearchWidget({}, 'hello', true, 'de');
-    expect(new URL(form.action).pathname).to.equal('/de/search');
-
-    const div = form.children[0];
-    const it = div.getElementsByClassName('search-text');
-    expect(it[0].type).to.equal('search');
-    expect(it[0].value).to.equal('hello');
-  });
-
   it('Fix Excel Filter Zeroes', () => {
     const data = [
       {
@@ -93,12 +65,14 @@ describe('Scripts', () => {
   });
 
   it('Extracts the correct language from the path', () => {
-    let lang = scripts.getLanguageFromPath('/en/');
+    let lang = scripts.getLanguageFromPath('/en/', true);
     expect(lang).to.equal('en');
     lang = scripts.getLanguageFromPath('/de/foo');
-    expect(lang).to.equal('en');
+    expect(lang).to.equal('en'); // Language already set, so reuse the value
     lang = scripts.getLanguageFromPath('/de/foo', true);
-    expect(lang).to.equal('de');
+    expect(lang).to.equal('ja'); // Defaults to Japanese for unknown language
+    lang = scripts.getLanguageFromPath('/foobar', true);
+    expect(lang).to.equal('ja'); // Defaults to Japanese
   });
 
   it('Paging widget 1', () => {

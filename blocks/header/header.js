@@ -3,7 +3,6 @@ import buildNavTree from './nav-tree-utils.js';
 import
 {
   getLanguage,
-  getSearchWidget,
   fetchIndex,
   decorateAnchors,
   htmlToElement,
@@ -224,7 +223,7 @@ function decorateBottomNav(nav, placeholders, navTreeJson) {
   const navTree = buildNavTree(navTreeJson);
   nav.append(getNavbarToggler());
   nav.append(navTree);
-  nav.append(getSearchWidget(placeholders));
+
   const otherItemsEl = document.createElement('li');
   decorateOtherItems(otherItemsEl);
   nav.querySelector(':scope .menu-level-1').append(otherItemsEl);

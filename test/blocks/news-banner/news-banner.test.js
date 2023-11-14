@@ -26,7 +26,7 @@ describe('News Block', () => {
     window.placeholders = {
       'translation-loaded': {},
       translation: {
-        en: placeholders,
+        ja: placeholders,
       },
     };
 
@@ -110,7 +110,7 @@ describe('News Block', () => {
 
       const spans = block.querySelectorAll('span');
       expect(spans[0].innerText).to.equal('MyNews');
-      expect(spans[1].innerText).to.equal('May 30, 2023');
+      expect(spans[1].innerText).to.equal('2023年05月30日');
 
       const link = block.querySelector('a');
       expect(link.href.endsWith('/news/b/')).to.be.true;
