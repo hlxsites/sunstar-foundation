@@ -45,7 +45,7 @@
 }
 
 .columns.small-margin > div {
-  margin-bottom: 0;
+  margin-bottom: 1.25rem;
 }
 
 .columns:not(.native-image-sizes) img {
@@ -240,7 +240,7 @@
   object-fit: cover;
 }
 
-.columns :not(.history) :not(.no-padding) > div div.non-singleton-img {
+.columns:not(.history .no-padding) > div div.non-singleton-img {
   margin: 0 1rem;
 }
 
@@ -295,7 +295,7 @@ div.img-col > video {
   width: 100%;
 }
 
-.columns > div > div:not(.columns-img-col) div:not(.img-col) {
+.columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
   padding: 0 1rem;
 }
 
@@ -405,7 +405,7 @@ div.img-col > video {
   }
 
   .columns.small-margin > div {
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
   }
 
   .columns.history picture {
