@@ -83,6 +83,7 @@ function decorateBottomNav(nav, placeholders, navTreeJson) {
   const navTree = buildNavTree(navTreeJson);
   nav.append(getNavbarToggler());
   nav.append(navTree);
+
   const otherItemsEl = document.createElement('li');
   decorateOtherItems(otherItemsEl);
   nav.querySelector(':scope .menu-level-1').append(otherItemsEl);

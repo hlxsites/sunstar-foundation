@@ -47,7 +47,7 @@ describe('Tags Block', () => {
     window.placeholders = {
       'translation-loaded': {},
       translation: {
-        en: placeholders,
+        ja: placeholders,
       },
     };
 

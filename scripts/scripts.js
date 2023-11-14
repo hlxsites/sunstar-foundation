@@ -29,7 +29,7 @@ const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP c
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
 const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
-const LANGUAGES = new Set(['en', 'de', 'cn', 'th', 'id', 'it', 'jp']);
+const LANGUAGES = new Set(['en', 'ja']);
 
 const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
 export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_SEGMENT}"]`;
@@ -56,7 +56,7 @@ export function getLanguageFromPath(pathname, resetCache = false) {
   }
 
   if (language === undefined) {
-    language = 'en'; // default to English
+    language = 'ja'; // default to Japanese
   }
 
   return language;
@@ -556,26 +556,6 @@ export function getNamedValueFromTable(block, name) {
     XPathResult.ANY_TYPE,
     null,
   ).iterateNext();
-}
-
-function getSearchWidgetHTML(placeholders, initialVal, searchbox, lang) {
-  const langPrefix = lang === 'en' ? '' : `/${lang}`;
-  const searchType = searchbox ? 'search' : 'text';
-
-  return `
-    <form method="get" class="search" action="${langPrefix}/search">
-      <div>
-        <input type="${searchType}" name="s" value="${initialVal ?? ''}" class="search-text"
-          placeholder="${placeholders.searchtext}" required="true" oninput="this.setCustomValidity('')"
-          oninvalid="this.setCustomValidity('${placeholders.emptysearchtext}')">
-        <button class="icon search-icon" aria-label="Search"></button>
-      </div>
-    </form>`;
-}
-
-export function getSearchWidget(placeholders, initialVal, searchbox, lang = getLanguage()) {
-  const widget = getSearchWidgetHTML(placeholders, initialVal, searchbox, lang);
-  return htmlToElement(widget);
 }
 
 /*
