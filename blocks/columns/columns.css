@@ -240,7 +240,7 @@
   object-fit: cover;
 }
 
-.columns:not(.history .no-padding) > div div.non-singleton-img {
+.columns:not(.history,.no-padding) > div div.non-singleton-img {
   margin: 0 1rem;
 }
 
