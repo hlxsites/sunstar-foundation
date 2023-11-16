@@ -208,9 +208,7 @@ function addCarouselItems(document) {
   }
 }
 
-function extractEmbed(document) {
-  const embedItems = document.querySelectorAll('.wp-block-embed');
-
+function extractEmbedItems(embedItems, noHrInsert) {
   if (embedItems && embedItems.length) {
     embedItems.forEach((embedItem, index) => {
       const iframes = embedItem.getElementsByTagName('iframe');
@@ -223,7 +221,11 @@ function extractEmbed(document) {
         cells.push([anchor]);
 
         const table = WebImporter.DOMUtils.createTable(cells, document);
-        embedItem.before(document.createElement('hr'));
+        if (noHrInsert) {
+          // do nothing
+        } else {
+          embedItem.before(document.createElement('hr'));
+        }
         embedItem.replaceWith(table);
 
         if (embedItem.querySelector('figcaption')) {
@@ -236,11 +238,20 @@ function extractEmbed(document) {
           }
         } else if (index === embedItems.length - 1) {
           // To Handle insertion of hr after last element also
-          table.after(document.createElement('hr'));
+          if (noHrInsert) {
+            // Do nothing
+          } else {
+            table.after(document.createElement('hr'));
+          }
         }
       }
     });
   }
+}
+
+function extractEmbed(document) {
+  const embedItems = document.querySelectorAll('.wp-block-embed');
+  extractEmbedItems(embedItems);
 }
 
 function addBreadCrumb(doc) {
@@ -521,14 +532,15 @@ function setNewsSectionStyle(doc) {
     // it's a news page
 
     const titles = doc.querySelectorAll('h1.ss-article-title');
-    if (titles.length > 0) {
-      const title = titles[0];
+    titles.forEach((title) => {
       const newTitle = doc.createElement('h2');
       newTitle.innerHTML = title.innerHTML;
       title.parentElement.replaceChild(newTitle, title);
-    }
+    });
 
     const article = doc.querySelector('article');
+    extractEmbedItems(article.querySelectorAll(':scope :has(iframe)'), true);
+
     article.after(createSectionMetadata({ Style: 'Narrower, NewsArticle' }, doc));
   }
 }
