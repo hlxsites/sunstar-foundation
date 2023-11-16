@@ -945,6 +945,11 @@ main .section.newsarticle div h2 + p {
   font-size: var(--body-font-size-s);
 }
 
+main .section.newsarticle picture {
+  text-align: center;
+  display: block;
+}
+
 /* section - padded */
 main .section.padded .section-container {
   padding: 2rem 1rem;
