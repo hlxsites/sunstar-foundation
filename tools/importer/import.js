@@ -536,7 +536,7 @@ function handleWinners(element) {
     if (winner.children.length < 2) {
       return;
     }
-    const ct = [['Columns (split-firstthird)']];
+    const ct = [['Columns (split-firstquarter, no-buttons)']];
     ct.push([winner.children[0], winner.children[1]]);
     const table = WebImporter.DOMUtils.createTable(ct, document);
     winner.parentElement.replaceChild(table, winner);
