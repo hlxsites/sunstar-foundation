@@ -92,7 +92,7 @@ function addHeroVerticalTabs(doc) {
     const cells = [['Hero-Vertical-Tabs']];
     const heroMenu = doc.createElement('ul');
     hero.querySelectorAll('.auto-hero-menu li a').forEach((a) => {
-      a.href = 'https://main--sunstar--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
+      a.href = 'https://main--sunstar-foundation--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
       const li = doc.createElement('li');
       if (a.classList.contains('active')) {
         const strong = doc.createElement('strong');
@@ -330,7 +330,7 @@ function createCardsBlockFromSection(document) {
     const block = [['Cards']];
     // create a cards block from the section
 
-    const sectionIsCard = section.parentElement.className.includes('wp-block-sunstar-blocks-home-solution');
+    const sectionIsCard = section.parentElement.className.includes('wp-block-sunstar-blocks-home-engineering-solution');
     if (sectionIsCard) {
       const contentCards = Array.from(section.children)
         .filter(
@@ -421,7 +421,7 @@ function createImgVariantsBlockFromSection(document) {
  */
 function changeAnchorTags(document) {
   const aTags = document.querySelectorAll('.news-details a');
-  const homepage = 'https://www.sunstar.com';
+  const homepage = 'https://www.sunstar-foundation.org';
   const basePath = '/';
 
   aTags.forEach((aTag) => {
@@ -491,7 +491,7 @@ function getFomattedDate(newsDate) {
  */
 function fixRelativeLinks(document) {
   document.querySelectorAll('a').forEach((a) => {
-    const targetDomain = 'https://main--sunstar--hlxsites.hlx.page';
+    const targetDomain = 'https://main--sunstar-foundation--hlxsites.hlx.page';
     // if the link is relative, make it absolute
     if (a.href.startsWith('/')) {
       let link = a.href;
@@ -515,6 +515,24 @@ function fixRelativeLinks(document) {
   });
 }
 
+function setNewsSectionStyle(doc) {
+  const url = new URL(doc.URL);
+  if (url.pathname.startsWith('/newsroom/') || url.pathname.startsWith('/en/newsroom/')) {
+    // it's a news page
+
+    const titles = doc.querySelectorAll('h1.ss-article-title');
+    if (titles.length > 0) {
+      const title = titles[0];
+      const newTitle = doc.createElement('h2');
+      newTitle.innerHTML = title.innerHTML;
+      title.parentElement.replaceChild(newTitle, title);
+    }
+
+    const article = doc.querySelector('article');
+    article.after(createSectionMetadata({ Style: 'Narrower, NewsArticle' }, doc));
+  }
+}
+
 function customImportLogic(doc) {
   removeCookiesBanner(doc);
 
@@ -533,6 +551,8 @@ function customImportLogic(doc) {
   convertBackgroundImgsToForegroundImgs(doc);
   changeNewsSocial(doc);
   addNewsBanner(doc);
+
+  setNewsSectionStyle(doc);
 }
 
 export default {
