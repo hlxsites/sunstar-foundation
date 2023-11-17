@@ -142,6 +142,8 @@
   --split-lastquarter: 75%:25%;
   --split-firstthird: 34%:66%;
   --split-lastthird: 66%:34%;
+  --split-6040: 60%:40%;
+  --split-4060: 40%:60%;
 }
 
 html {
@@ -333,7 +335,9 @@ a {
   margin: 0!important;
 }
 
-
+.no-padding {
+  padding: 0!important;
+}
 
 .dark h6 {
   color: var(--hero-strong-color);
@@ -829,6 +833,25 @@ main .section.bg-primary p {
   margin-bottom: 3rem;
 }
 
+/* section - newsarticle */
+main .section.newsarticle div h2 + p {
+  color: var(--transparent-grey-color);
+  font-size: var(--body-font-size-s);
+}
+
+main .section.newsarticle picture {
+  text-align: center;
+  display: block;
+}
+
+main .section.newsarticle .image-collage img {
+  width: unset;
+}
+
+main .section.newsarticle .image-collage picture + p {
+  text-align: center;
+}
+
 /* section - padded */
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.padded > .section-container,
@@ -854,6 +877,7 @@ main .block.centered > div {
   position: relative;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image > picture {
   display: block;
   width: 100%;

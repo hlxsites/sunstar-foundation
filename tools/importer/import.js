@@ -92,7 +92,7 @@ function addHeroVerticalTabs(doc) {
     const cells = [['Hero-Vertical-Tabs']];
     const heroMenu = doc.createElement('ul');
     hero.querySelectorAll('.auto-hero-menu li a').forEach((a) => {
-      a.href = 'https://main--sunstar--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
+      a.href = 'https://main--sunstar-foundation--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
       const li = doc.createElement('li');
       if (a.classList.contains('active')) {
         const strong = doc.createElement('strong');
@@ -208,9 +208,7 @@ function addCarouselItems(document) {
   }
 }
 
-function extractEmbed(document) {
-  const embedItems = document.querySelectorAll('.wp-block-embed');
-
+function extractEmbedItems(embedItems, noHrInsert) {
   if (embedItems && embedItems.length) {
     embedItems.forEach((embedItem, index) => {
       const iframes = embedItem.getElementsByTagName('iframe');
@@ -223,7 +221,11 @@ function extractEmbed(document) {
         cells.push([anchor]);
 
         const table = WebImporter.DOMUtils.createTable(cells, document);
-        embedItem.before(document.createElement('hr'));
+        if (noHrInsert) {
+          // do nothing
+        } else {
+          embedItem.before(document.createElement('hr'));
+        }
         embedItem.replaceWith(table);
 
         if (embedItem.querySelector('figcaption')) {
@@ -236,11 +238,20 @@ function extractEmbed(document) {
           }
         } else if (index === embedItems.length - 1) {
           // To Handle insertion of hr after last element also
-          table.after(document.createElement('hr'));
+          if (noHrInsert) {
+            // Do nothing
+          } else {
+            table.after(document.createElement('hr'));
+          }
         }
       }
     });
   }
+}
+
+function extractEmbed(document) {
+  const embedItems = document.querySelectorAll('.wp-block-embed');
+  extractEmbedItems(embedItems);
 }
 
 function addBreadCrumb(doc) {
@@ -330,7 +341,7 @@ function createCardsBlockFromSection(document) {
     const block = [['Cards']];
     // create a cards block from the section
 
-    const sectionIsCard = section.parentElement.className.includes('wp-block-sunstar-blocks-home-solution');
+    const sectionIsCard = section.parentElement.className.includes('wp-block-sunstar-blocks-home-engineering-solution');
     if (sectionIsCard) {
       const contentCards = Array.from(section.children)
         .filter(
@@ -421,7 +432,7 @@ function createImgVariantsBlockFromSection(document) {
  */
 function changeAnchorTags(document) {
   const aTags = document.querySelectorAll('.news-details a');
-  const homepage = 'https://www.sunstar.com';
+  const homepage = 'https://www.sunstar-foundation.org';
   const basePath = '/';
 
   aTags.forEach((aTag) => {
@@ -491,7 +502,7 @@ function getFomattedDate(newsDate) {
  */
 function fixRelativeLinks(document) {
   document.querySelectorAll('a').forEach((a) => {
-    const targetDomain = 'https://main--sunstar--hlxsites.hlx.page';
+    const targetDomain = 'https://main--sunstar-foundation--hlxsites.hlx.page';
     // if the link is relative, make it absolute
     if (a.href.startsWith('/')) {
       let link = a.href;
@@ -515,6 +526,57 @@ function fixRelativeLinks(document) {
   });
 }
 
+function handleTwoContentBox(element) {
+  const tcb = element.querySelectorAll('.two-content-box');
+
+  tcb.forEach((box) => {
+    if (box.children.length < 2) {
+      return;
+    }
+    const ct = [['Columns (split-6040, no-buttons, no-padding, no-margins)']];
+    ct.push([box.children[0], box.children[1]]);
+    const table = WebImporter.DOMUtils.createTable(ct, document);
+    box.parentElement.replaceChild(table, box);
+  });
+}
+
+function handleWinners(element) {
+  const winners = element.querySelectorAll('.div-people');
+
+  winners.forEach((winner) => {
+    if (winner.children.length < 2) {
+      return;
+    }
+    const ct = [['Columns (split-firstquarter, no-buttons)']];
+    ct.push([winner.children[0], winner.children[1]]);
+    const table = WebImporter.DOMUtils.createTable(ct, document);
+    winner.parentElement.replaceChild(table, winner);
+  });
+}
+
+function setNewsSectionStyle(doc) {
+  const url = new URL(doc.URL);
+  if (url.pathname.startsWith('/newsroom/') || url.pathname.startsWith('/en/newsroom/')) {
+    // it's a news page
+
+    const titles = doc.querySelectorAll('h1.ss-article-title');
+    titles.forEach((title) => {
+      const newTitle = doc.createElement('h2');
+      newTitle.innerHTML = title.innerHTML;
+      title.parentElement.replaceChild(newTitle, title);
+    });
+
+    const article = doc.querySelector('article');
+
+    handleTwoContentBox(article);
+    handleWinners(article);
+
+    extractEmbedItems(article.querySelectorAll(':scope :has(iframe)'), true);
+
+    article.after(createSectionMetadata({ Style: 'Narrower, NewsArticle' }, doc));
+  }
+}
+
 function customImportLogic(doc) {
   removeCookiesBanner(doc);
 
@@ -533,6 +595,8 @@ function customImportLogic(doc) {
   convertBackgroundImgsToForegroundImgs(doc);
   changeNewsSocial(doc);
   addNewsBanner(doc);
+
+  setNewsSectionStyle(doc);
 }
 
 export default {
