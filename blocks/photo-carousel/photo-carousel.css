@@ -1,0 +1,50 @@
+.photo-carousel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-carousel.photo-slider {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.photo-carousel .photo-slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 900px;
+
+  /* We want to hide the scroll bar */
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
+/* Hide the scroll bar */
+.photo-carousel .photo-slides::-webkit-scrollbar {
+  /* for Chrome, Safari and Opera */
+  display: none;
+}
+
+.photo-carousel .photo-slides img {
+  width: 900px;
+  height: 600px;
+}
+
+.photo-carousel .photo-button {
+  height: 2.75rem;
+}
+
+.photo-carousel .photo-button-left {
+  margin-right: 6rem;
+}
+
+.photo-carousel .photo-button-right {
+  margin-left: 6rem;
+}
+
+.photo-carousel-wrapper .counter {
+  margin-top: 0.5rem;
+}
