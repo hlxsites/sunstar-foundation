@@ -21,7 +21,6 @@
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  width: 900px;
 
   /* We want to hide the scroll bar */
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -34,23 +33,37 @@
   display: none;
 }
 
-.photo-carousel .photo-slides img {
-  width: 900px;
-  height: 600px;
-}
-
 .photo-carousel .photo-button {
   height: 2.75rem;
 }
 
 .photo-carousel .photo-button-left {
-  margin-right: 6rem;
+  margin-right: 1rem;
 }
 
 .photo-carousel .photo-button-right {
-  margin-left: 6rem;
+  margin-left: 1rem;
 }
 
 .photo-carousel-wrapper .counter {
   margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .photo-carousel .photo-slides {
+    width: 900px;
+  }
+
+  .photo-carousel .photo-slides img {
+    width: 900px;
+    height: 600px;
+  }
+
+  .photo-carousel .photo-button-left {
+    margin-right: 6rem;
+  }
+
+  .photo-carousel .photo-button-right {
+    margin-left: 6rem;
+  }
 }

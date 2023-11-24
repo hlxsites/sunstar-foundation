@@ -37,6 +37,7 @@ export default async function decorate(block) {
   const imgSelection = block.querySelectorAll('img');
   const numImages = imgSelection.length;
   imgSelection.forEach((img) => {
+    // img.style.height = '250px';
     slides.append(img);
   });
 
