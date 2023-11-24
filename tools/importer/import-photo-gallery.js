@@ -589,46 +589,40 @@ function createPhotoGallery(doc) {
   }
 
   const cells = [['Photo-carousel']];
-  images.forEach((img) => cells.push([img]));
+  images.forEach((img) => {
+    if (!img.classList.contains('swiper-slide-duplicate')) {
+      cells.push([img]);
+    }
+  });
 
   const table = WebImporter.DOMUtils.createTable(cells, doc);
   swiperGallery.parentElement.replaceChild(table, swiperGallery);
 
   // links to previous ones
-  const prevAwards = doc.querySelector('.section-gallery-awards-container .post-lists');
-  if (!prevAwards) {
-    return;
+  let prevPages = doc.querySelector('.section-gallery-awards-container .post-lists');
+  if (!prevPages) {
+    prevPages = doc.querySelector('.section-gallery-container .post-lists');
+
+    if (!prevPages) {
+      return;
+    }
   }
 
-  const cardRows = [];
-  let cards = [['Cards']];
-  const items = prevAwards.querySelectorAll(':scope .post-item');
+  const cards = [['Cards']];
+  const items = prevPages.querySelectorAll(':scope .post-item');
 
-  let counter = 0;
   items.forEach((item) => {
     const img = item.querySelector(':scope img');
     const href = item.querySelector(':scope a');
     const title = item.querySelector(':scope h3');
     href.innerText = title.innerText;
     cards.push([img, href]);
-
-    counter += 1;
-    if (counter >= 4) {
-      cardRows.push(cards);
-
-      cards = [['Cards']];
-      counter = 0;
-    }
   });
-  if (cards.length > 0) {
-    cardRows.push(cards);
-  }
 
-  for (let i = cardRows.length - 1; i >= 0; i -= 1) {
-    const cardsTable = WebImporter.DOMUtils.createTable(cardRows[i], doc);
-    prevAwards.insertAdjacentElement('afterend', cardsTable);
-  }
-  prevAwards.remove();
+  const cardsTable = WebImporter.DOMUtils.createTable(cards, doc);
+  prevPages.insertAdjacentElement('afterend', cardsTable);
+
+  prevPages.remove();
 }
 
 function customImportLogic(doc) {

@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 3rem;
+}
+
+.photo-carousel-wrapper + div {
+  margin-bottom: 3rem;
 }
 
 .photo-carousel.photo-slider {
@@ -9,6 +14,7 @@
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
+  margin-top: 4rem;
 }
 
 .photo-carousel .photo-slides {

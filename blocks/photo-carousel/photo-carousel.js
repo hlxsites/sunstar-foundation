@@ -3,7 +3,7 @@ function setCurImage(count, total, slides, counter) {
   const rect = slides.getBoundingClientRect();
   slides.scroll(count * rect.width, slides.scrollHeight);
 
-  counter.innerText = `${count + 1}/${total}`;
+  counter.innerText = `${count + 1} / ${total}`;
   curvisiblePhoto = count;
 }
 
