@@ -1,5 +1,5 @@
 let curvisiblePhoto;
-function setCurImage(count, total, slides, counter) {
+export function setCurImage(count, total, slides, counter) {
   const rect = slides.getBoundingClientRect();
   slides.scroll(count * rect.width, slides.scrollHeight);
 
@@ -7,7 +7,7 @@ function setCurImage(count, total, slides, counter) {
   curvisiblePhoto = count;
 }
 
-function scrollNext(fwd, numImages, slides, counter) {
+export function scrollNext(fwd, numImages, slides, counter) {
   let nextImage = fwd ? curvisiblePhoto + 1 : curvisiblePhoto - 1;
   if (nextImage >= numImages) {
     nextImage = 0;
@@ -37,7 +37,6 @@ export default async function decorate(block) {
   const imgSelection = block.querySelectorAll('img');
   const numImages = imgSelection.length;
   imgSelection.forEach((img) => {
-    // img.style.height = '250px';
     slides.append(img);
   });
 
