@@ -14,7 +14,6 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  margin-top: 4rem;
 }
 
 .photo-carousel .photo-slides {
@@ -35,7 +34,7 @@
 }
 
 .photo-carousel .photo-button {
-  height: 2.75rem;
+  height: 2rem;
 }
 
 .photo-carousel .photo-button-left {
@@ -51,6 +50,10 @@
 }
 
 @media screen and (min-width: 62rem) {
+  .photo-carousel.photo-slider {
+    margin-top: 4rem;
+  }
+
   .photo-carousel .photo-slides {
     flex: unset;
     width: 900px;
@@ -59,6 +62,10 @@
   .photo-carousel .photo-slides img {
     width: 900px;
     height: 600px;
+  }
+
+  .photo-carousel .photo-button {
+    height: 2.75rem;
   }
 
   .photo-carousel .photo-button-left {
