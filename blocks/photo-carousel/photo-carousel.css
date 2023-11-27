@@ -11,7 +11,7 @@
 
 .photo-carousel.photo-slider {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
   margin-top: 4rem;
@@ -19,6 +19,7 @@
 
 .photo-carousel .photo-slides {
   display: flex;
+  flex: 0 1 640px;
   overflow-x: auto;
   scroll-behavior: smooth;
 
@@ -51,6 +52,7 @@
 
 @media screen and (min-width: 62rem) {
   .photo-carousel .photo-slides {
+    flex: unset;
     width: 900px;
   }
 
