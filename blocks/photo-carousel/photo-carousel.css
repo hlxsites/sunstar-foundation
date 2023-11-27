@@ -1,0 +1,78 @@
+.photo-carousel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.photo-carousel-wrapper + div {
+  margin-bottom: 3rem;
+}
+
+.photo-carousel.photo-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.photo-carousel .photo-slides {
+  display: flex;
+  flex: 0 1 640px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  /* We want to hide the scroll bar */
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
+/* Hide the scroll bar */
+.photo-carousel .photo-slides::-webkit-scrollbar {
+  /* for Chrome, Safari and Opera */
+  display: none;
+}
+
+.photo-carousel .photo-button {
+  height: 2rem;
+}
+
+.photo-carousel .photo-button-left {
+  margin-right: 1rem;
+}
+
+.photo-carousel .photo-button-right {
+  margin-left: 1rem;
+}
+
+.photo-carousel-wrapper .counter {
+  margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .photo-carousel.photo-slider {
+    margin-top: 4rem;
+  }
+
+  .photo-carousel .photo-slides {
+    flex: unset;
+    width: 900px;
+  }
+
+  .photo-carousel .photo-slides img {
+    width: 900px;
+    height: 600px;
+  }
+
+  .photo-carousel .photo-button {
+    height: 2.75rem;
+  }
+
+  .photo-carousel .photo-button-left {
+    margin-right: 6rem;
+  }
+
+  .photo-carousel .photo-button-right {
+    margin-left: 6rem;
+  }
+}
