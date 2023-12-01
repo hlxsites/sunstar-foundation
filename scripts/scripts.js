@@ -68,7 +68,7 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
 
 export function getLanguangeSpecificPath(path) {
   const lang = getLanguage();
-  if (lang === 'en') return path;
+  if (lang === 'ja') return path;
   return `/${lang}${path}`;
 }
 
