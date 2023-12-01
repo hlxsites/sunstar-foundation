@@ -749,6 +749,15 @@ main .section.narrower > .tab-item.active > .section-container {
   max-width: 45rem;
 }
 
+/* section - large-padded */
+main .section.large-padded {
+  padding: 4rem 1rem;
+}
+
+main .section.large-padded h2 {
+  margin: unset;
+}
+
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
@@ -1027,6 +1036,11 @@ main .block.centered > div {
 
   main .section.static .section-container h2 {
     font-size: var(--heading-font-size-mxl);
+  }
+
+  /* section - large-padded */
+  main .section.large-padded {
+    padding: 5rem 0;
   }
 
   /* section - social */
