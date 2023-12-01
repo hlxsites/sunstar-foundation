@@ -755,7 +755,7 @@ main .section.large-padded {
 }
 
 main .section.large-padded h2 {
-  margin: unset;
+  margin: 0 0 2rem;
 }
 
 /* section - static */

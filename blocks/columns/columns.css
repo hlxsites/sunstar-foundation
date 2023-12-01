@@ -6,6 +6,10 @@
   margin: 2rem 0 0;
 }
 
+.columns.no-margin {
+  margin: 0;
+}
+
 .columns p,
 .columns dl,
 .columns ol,
