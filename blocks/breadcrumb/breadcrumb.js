@@ -5,6 +5,7 @@ import {
   getLanguangeSpecificPath,
   fetchTagsOrCategories,
   setMetaTag,
+  getViewPort,
 } from '../../scripts/scripts.js';
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
 
@@ -50,7 +51,11 @@ function setTagPageTitle(tagPageTitle) {
   setMetaTag('meta', 'name', 'twitter:title', tagPageTitle);
 }
 
-async function createAutoBreadcrumb(block, placeholders) {
+async function createAutoBreadcrumb(block) {
+  if (getViewPort() === 'mobile') {
+    return;
+  }
+  const placeholders = await fetchPlaceholders(getLanguage());
   const pageIndex = (await fetchIndex('query-index')).data;
   fixExcelFilterZeroes(pageIndex);
   const { pathname } = window.location;
