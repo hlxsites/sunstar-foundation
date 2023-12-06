@@ -63,11 +63,10 @@ body.featured .section.no-margin-bottom.newsroom.feed-container h1 {
     }
 
     .block.highlight.featured > div > div:first-of-type {
-        flex-basis: 70%;
+        flex-basis: 60%;
     }
 
     .block.highlight.featured > div > div:last-of-type {
         flex-basis: 100%;
     }
-
 }
