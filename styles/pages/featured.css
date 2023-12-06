@@ -1,0 +1,25 @@
+
+.block.highlight.featured > div {
+    display: flex;
+    gap: 2rem;
+    color: var(--button-text-color);
+}
+
+.block.highlight.featured > div > div:first-of-type {
+    flex-basis: 70%;
+}
+
+.block.highlight.featured .title {
+    color: var(--button-text-color);
+    font-size: var(--body-font-size-xl);
+}
+
+.block.highlight.featured h5 {
+    padding-top: 0;
+    color: var(--hero-strong-color);
+    font-size: var(--heading-font-size-xxs);
+}
+
+.block.highlight.featured .date {
+    margin-top: 2rem;
+}

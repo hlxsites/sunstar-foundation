@@ -78,11 +78,16 @@ const resultParsers = {
       if (cardImage) {
         row.push(cardImage);
       }
-
+      const meta = getMetadata('page-style');
+      if (meta === 'featured') {
+        const divFeatured = document.createElement('div');
+        divFeatured.innerHTML = '<h5>FEATURED</h5>';
+        cardBody.insertBefore(divFeatured,cardBody.firstChild);
+      }
       if (cardBody) {
-        const path = document.createElement('a');
-        path.href = result.path;
-        cardBody.prepend(path);
+        // const path = document.createElement('a');
+        // path.href = result.path;
+        // cardBody.prepend(path);
         row.push(cardBody);
       }
       blockContents.push(row);
