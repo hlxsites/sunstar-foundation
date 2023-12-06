@@ -76,7 +76,10 @@ const resultParsers = {
         }
       });
       if (cardImage) {
-        row.push(cardImage);
+        const pathImg = document.createElement('a');
+        pathImg.href = result.path;
+        pathImg.append(cardImage);
+        row.push(pathImg);
       }
       const meta = getMetadata('page-style');
       if (meta === 'featured') {
@@ -85,10 +88,11 @@ const resultParsers = {
         cardBody.insertBefore(divFeatured,cardBody.firstChild);
       }
       if (cardBody) {
-        // const path = document.createElement('a');
-        // path.href = result.path;
-        // cardBody.prepend(path);
-        row.push(cardBody);
+        console.log(result.path);
+        const path = document.createElement('a');
+        path.href = result.path;
+        path.append(cardBody);
+        row.push(path);
       }
       blockContents.push(row);
     });
