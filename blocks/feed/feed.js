@@ -85,10 +85,9 @@ const resultParsers = {
       if (meta === 'featured') {
         const divFeatured = document.createElement('div');
         divFeatured.innerHTML = '<h5>FEATURED</h5>';
-        cardBody.insertBefore(divFeatured,cardBody.firstChild);
+        cardBody.insertBefore(divFeatured, cardBody.firstChild);
       }
       if (cardBody) {
-        console.log(result.path);
         const path = document.createElement('a');
         path.href = result.path;
         path.append(cardBody);
