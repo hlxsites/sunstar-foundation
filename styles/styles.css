@@ -617,6 +617,11 @@ main .section.bold-headings h6 {
   text-align: center;
 }
 
+/* section - large-padded */
+main .section.large-padded  > .section-container {
+  padding: 4rem 1rem;
+}
+
 /* section - full-width */
 main .section.full-width > .section-container,
 main .section.full-width > .tab-item.active > .section-container {
@@ -747,11 +752,6 @@ main .section.narrower > .tab-item.active > .section-container {
   margin: auto;
   margin-block-end: 3rem;
   max-width: 45rem;
-}
-
-/* section - large-padded */
-main .section.large-padded {
-  padding: 4rem 1rem;
 }
 
 main .section.large-padded h2 {
@@ -996,6 +996,11 @@ main .block.centered > div {
     margin-bottom: 1rem;
   }
 
+  /* section - large-padded */
+   main .section.large-padded  > .section-container  {
+    padding: 5rem 0;
+  } 
+
   /* section - narrow */
   /* stylelint-disable-next-line no-descending-specificity */
   main .section.narrow > .section-container,
@@ -1036,11 +1041,6 @@ main .block.centered > div {
 
   main .section.static .section-container h2 {
     font-size: var(--heading-font-size-mxl);
-  }
-
-  /* section - large-padded */
-  main .section.large-padded {
-    padding: 5rem 0;
   }
 
   /* section - social */
