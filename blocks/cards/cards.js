@@ -1,6 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
-import { cropString } from '../../scripts/scripts.js';
-import {handleModalClick} from '../../scripts/scripts.js';
+import { cropString, handleModalClick } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   /* change to ul, li */
