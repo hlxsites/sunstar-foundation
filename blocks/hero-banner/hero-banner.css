@@ -46,7 +46,6 @@
     padding-left: 0;
     margin-right: auto;
     margin-left: auto;
-    max-width: 100%;
 }
 
 .hero-banner .hero-banner-heading-container {
@@ -208,14 +207,12 @@
     }
 
     .hero-banner .hero-banner-text-container {
-        max-width: calc(55vw);
-        width: 63.75rem;
-        padding: unset;
-    }
-
-    .hero-banner .hero-banner-text-wrapper {
-        margin-bottom: unset;
-        padding: 3rem;
+        display: block;
+        width: 100%;
+        background: var(--primary);
+        color: var(--white);
+        padding: 3rem 3rem 3rem 0;
+        position: relative;
     }
 
     .hero-banner .hero-banner-button-container a.button.primary {
@@ -242,16 +239,31 @@
         align-content: unset;
     }
 
+    .hero-banner .hero-banner-text-container::before {
+        content: "";
+        background: var(--primary);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 100%;
+    }    
+
     .hero-banner .hero-banner-button-container span {
         width: 100%;
         font-size: var(--heading-font-size-xxs);
         margin-left: unset;
     }
 
+    .hero-banner .hero-banner-heading-section{
+        max-width: 56.5rem;
+    }
+
     .hero-banner.overlap .hero-banner-heading-section {
         max-width: unset;
-        padding-left: unset;
         position: unset;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .hero-banner.overlap .hero-banner-heading-container {
@@ -309,21 +321,13 @@
 
 @media (min-width: 77rem) {
     .hero-banner .hero-banner-heading-section{
+        max-width: 75rem;
         padding-left: 0;
         padding-right: 0;
     }
 
-    .hero-banner .hero-banner-text-container {
-        width: 63.75rem;
-        margin-bottom: -2rem;
-    }
-
     .hero-banner.careers .hero-banner-text-container {
         width: 74rem;
-    }
-
-    .hero-banner .hero-banner-text-container::before {
-        content: none;
     }
 
     .hero-banner .button-container {
