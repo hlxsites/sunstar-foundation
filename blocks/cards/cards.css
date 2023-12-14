@@ -57,6 +57,10 @@ main .block.cards {
   padding: 0;
 }
 
+.cards.video-modal > ul > li > a.button {
+  flex-direction: column;
+}
+
 .cards > ul > li > a {
   text-decoration: none;
 }
@@ -121,6 +125,10 @@ main .block.cards {
   height: 12.5rem;
   margin: 0;
   padding: 0;
+}
+
+.cards.video-modal .cards-card-image {
+  height: auto;
 }
 
 .cards .cards-card-body div {
