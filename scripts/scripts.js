@@ -29,7 +29,7 @@ const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP c
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
 const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
-const LANGUAGES = new Set(['en', 'ja']);
+const LANGUAGES = new Set(['en', 'jp']);
 
 const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
 export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_SEGMENT}"]`;
@@ -56,7 +56,7 @@ export function getLanguageFromPath(pathname, resetCache = false) {
   }
 
   if (language === undefined) {
-    language = 'ja'; // default to Japanese
+    language = 'jp'; // default to Japanese
   }
 
   return language;
@@ -68,7 +68,7 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
 
 export function getLanguangeSpecificPath(path) {
   const lang = getLanguage();
-  if (lang === 'ja') return path;
+  if (lang === 'jp') return path;
   return `/${lang}${path}`;
 }
 
@@ -103,6 +103,52 @@ function buildModalFragmentBlock(main) {
     main.prepend(section);
   }
 }
+
+export const handleModalClick = async (a, modalFragmentBlock) => {
+  a.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const target = e.currentTarget.parentElement.querySelector('a');
+    if (!target) return;
+    const path = target.dataset.path;
+    const modalId = target.dataset.modal;
+    const elem = document.getElementById(modalId);
+    const hasSearchParam = (target.dataset.hasSearchParam === 'true');
+
+    if (!elem || e.target.dataset.hasSearchParam) {
+      if (hasSearchParam) modalFragmentBlock.innerHTML = '';
+      const wrapper = document.createElement('div');
+      wrapper.className = 'modal-wrapper';
+      wrapper.id = modalId;
+      wrapper.dataset.url = target.dataset.url;
+
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.innerHTML = '<div class="modal-close"></div>';
+      const modalContent = document.createElement('div');
+      modalContent.classList.add('modal-content');
+      modal.append(modalContent);
+
+      if (path) {
+        const fragment = await loadFragment(path);
+        const formTitleEl = fragment.querySelector('h2');
+        if (formTitleEl) formTitleEl.outerHTML = `<div class="modal-form-title typ-title1">${formTitleEl.innerHTML}</div>`;
+        const formSubTitleEl = fragment.querySelector('h3');
+        if (formSubTitleEl) formSubTitleEl.outerHTML = `<p class="modal-form-subtitle">${formSubTitleEl.innerHTML}</p>`;
+        modalContent.append(fragment);
+      }
+
+      wrapper.append(modal);
+      modalFragmentBlock.append(wrapper);
+      wrapper.classList.add('visible');
+      const close = modal.querySelector('.modal-close');
+      close.addEventListener('click', () => {
+        wrapper.remove();
+      });
+    } else {
+      elem.classList.add('visible');
+    }
+  });
+};
 
 function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
   const captionText = caption.textContent;

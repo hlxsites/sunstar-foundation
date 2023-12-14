@@ -61,6 +61,10 @@ main .block.cards {
   text-decoration: none;
 }
 
+.cards.video-modal a.button.video-link {
+  padding: 0;
+}
+
 .cards > ul > li > a:hover {
   text-decoration: none;
   background-color: initial;
@@ -71,6 +75,10 @@ main .block.cards {
   text-align: left;
   color: var(--light-black);
   padding: 20px;
+}
+
+.cards.video-modal .cards-card-body {
+  text-align: center;
 }
 
 .cards.info-points .cards-card-body {
@@ -261,6 +269,25 @@ main .nolink .cards > ul > li .cards-card-image {
 main .nolink .cards.info-points > ul > li .cards-card-image {
   width: auto;
   border: none;
+}
+
+main .cards.video-modal .cards-card-image {
+  position: relative;
+}
+
+main .cards.video-modal .cards-card-image::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 5.25rem;
+  width: 5.25rem;
+  background-image: url(../../icons/play.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-width: auto;
 }
 
 main .cards-wrapper .machine-parts .cards-card-body h3{

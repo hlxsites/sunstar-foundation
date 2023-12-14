@@ -54,7 +54,7 @@ export default async function decorate(block) {
 
   // fetch footer content
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta || (getLanguage() === 'ja' ? '/footer' : `/${getLanguage()}/footer`);
+  const footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`);
   const resp = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
   if (resp.ok) {

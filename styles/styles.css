@@ -785,7 +785,7 @@ main .section.no-margin-bottom {
 }
 
 /* section - no margin-top */
-main .section.no-margin-top {
+main .section.no-margin-top, main .section.no-margin-top .section-container, .block.no-margin-top {
   margin-top: 0;
 }
 
