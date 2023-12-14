@@ -32,15 +32,6 @@ const createMetadata = (main, document, params) => {
     meta.Image = el;
   }
 
-  const breadcrumb = document.querySelector('.section-breadcrumb');
-  if (breadcrumb) {
-    const breadcrumbItems = breadcrumb.querySelectorAll('.ss-breadcrumb .breadcrumb-item');
-    if (breadcrumbItems && breadcrumbItems.length) {
-      const breadcrumbText = breadcrumbItems[breadcrumbItems.length - 1].textContent.trim();
-      meta.BreadcrumbTitle = breadcrumbText;
-    }
-  }
-
   if (params.preProcessMetadata && Object.keys(params.preProcessMetadata).length) {
     Object.assign(meta, params.preProcessMetadata);
   }
@@ -688,9 +679,18 @@ export default {
           }
         });
       }
-
-      params.preProcessMetadata = metadataDetails;
     }
+
+    const sectionBreadcrumb = document.querySelector('.section-breadcrumb');
+    if (sectionBreadcrumb) {
+      const breadcrumbItems = sectionBreadcrumb.querySelectorAll('.ss-breadcrumb .breadcrumb-item');
+      if (breadcrumbItems.length) {
+        const breadcrumbText = breadcrumbItems[breadcrumbItems.length - 1].textContent.trim();
+        metadataDetails.BreadcrumbTitle = breadcrumbText.trim();
+      }
+    }
+
+    params.preProcessMetadata = metadataDetails;
   },
 
   transformDOM: ({

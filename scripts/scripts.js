@@ -68,7 +68,7 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
 
 export function getLanguangeSpecificPath(path) {
   const lang = getLanguage();
-  if (lang === 'en') return path;
+  if (lang === 'ja') return path;
   return `/${lang}${path}`;
 }
 
@@ -180,11 +180,28 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
 }
 
 /**
+ * Adding breadcrumb block if its not present in doc
+ * @param {*} main
+ */
+export function buildBreadcrumbBlock(main) {
+  const noBreadcrumb = getMetadata('nobreadcrumb');
+  const alreadyBreadcrumb = document.querySelector('.breadcrumb');
+
+  if ((!noBreadcrumb || noBreadcrumb === 'false') && !alreadyBreadcrumb && !isInternalPage()) {
+    const section = document.createElement('div');
+    const blockEl = buildBlock('breadcrumb', { elems: [] });
+    section.append(blockEl);
+    main.prepend(section);
+  }
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    buildBreadcrumbBlock(main);
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
     buildImageWithCaptionBlocks(main, buildBlock);
@@ -563,10 +580,10 @@ export function getNamedValueFromTable(block, name) {
 */
 export function getEnvType(hostname = window.location.hostname) {
   const fqdnToEnvType = {
-    'sunstar.com': 'live',
-    'www.sunstar.com': 'live',
-    'main--sunstar--hlxsites.hlx.page': 'preview',
-    'main--sunstar--hlxsites.hlx.live': 'live',
+    'sunstar-foundation.org': 'live',
+    'www.sunstar-foundation.org': 'live',
+    'main--sunstar-foundation--hlxsites.hlx.page': 'preview',
+    'main--sunstar-foundation--hlxsites.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }
@@ -785,6 +802,17 @@ export function cropString(inputString, maxLength) {
   }
 
   return croppedString;
+}
+
+export function getViewPort() {
+  const { width } = getWindowSize();
+  if (width >= 1232) {
+    return 'desktop';
+  }
+  if (width >= 992) {
+    return 'tablet';
+  }
+  return 'mobile';
 }
 
 if (!window.noload) { loadPage(); }
