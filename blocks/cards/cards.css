@@ -262,6 +262,25 @@ main .cards.machine-parts ul > li {
   box-shadow: none;
 }
 
+main .cards.video-modal .cards-card-image {
+  position: relative;
+}
+
+main .cards.video-modal .cards-card-image::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 5.25rem;
+  width: 5.25rem;
+  background-image: url("../../icons/play.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-width: auto;
+}
+
 main .nolink .cards > ul > li .cards-card-image {
   height: 135px;
   width: 240px;
@@ -277,25 +296,6 @@ main .nolink .cards > ul > li .cards-card-image {
 main .nolink .cards.info-points > ul > li .cards-card-image {
   width: auto;
   border: none;
-}
-
-main .cards.video-modal .cards-card-image {
-  position: relative;
-}
-
-main .cards.video-modal .cards-card-image::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 5.25rem;
-  width: 5.25rem;
-  background-image: url(../../icons/play.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  min-width: auto;
 }
 
 main .cards-wrapper .machine-parts .cards-card-body h3{

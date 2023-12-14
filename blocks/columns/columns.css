@@ -36,12 +36,6 @@
   width: auto;
 }
 
-.columns.left-section-half-width > div > div > div {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .columns.small-margin > div {
   margin-bottom: 1.25rem;
 }
@@ -172,6 +166,12 @@
 .columns.plain-links > div > div p {
   font-size: var(--body-font-size-s);
   margin-left: 0;
+}
+
+.columns.left-section-half-width > div > div > div {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .columns.text-layout > div > div h2 {

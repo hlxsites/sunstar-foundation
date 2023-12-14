@@ -617,6 +617,11 @@ main .section.bold-headings h6 {
   text-align: center;
 }
 
+/* section - no margin-top */
+main .section.no-margin-top, main .section.no-margin-top .section-container, .block.no-margin-top {
+  margin-top: 0;
+}
+
 /* section - full-width */
 main .section.full-width > .section-container,
 main .section.full-width > .tab-item.active > .section-container {
@@ -782,11 +787,6 @@ main .section.margin-bottom {
 /* section - no margin-bottom */
 main .section.no-margin-bottom {
   margin-bottom: 0;
-}
-
-/* section - no margin-top */
-main .section.no-margin-top, main .section.no-margin-top .section-container, .block.no-margin-top {
-  margin-top: 0;
 }
 
 /* section - highlight */
