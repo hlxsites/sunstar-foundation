@@ -1,6 +1,6 @@
 import {
   buildBlock, createOptimizedPicture, decorateBlock,
-  getFormattedDate, getMetadata, loadBlock, readBlockConfig,
+  getFormattedDate, getMetadata, loadBlock, readBlockConfig, fetchPlaceholders,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex, getLanguage } from '../../scripts/scripts.js';
 
@@ -48,7 +48,7 @@ const resultParsers = {
     return blockContents;
   },
 
-  highlight: (results, blockCfg) => {
+  highlight: (results, blockCfg, meta = '', featuredInnerText = '') => {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
@@ -81,10 +81,9 @@ const resultParsers = {
         pathImg.append(cardImage);
         row.push(pathImg);
       }
-      const meta = getMetadata('page-style');
       if (meta === 'featured') {
         const divFeatured = document.createElement('div');
-        divFeatured.innerHTML = '<h5>FEATURED</h5>';
+        divFeatured.innerHTML = `<h5>${featuredInnerText}</h5>`;
         cardBody.insertBefore(divFeatured, cardBody.firstChild);
       }
       if (cardBody) {
@@ -108,6 +107,7 @@ function getMetadataNullable(key) {
  * Feed block decorator to build feeds based on block configuration
  */
 export default async function decorate(block) {
+  let blockContents = 0;
   const blockCfg = readBlockConfig(block);
   const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const blockType = (blockName.split('(')[0]).trim();
@@ -147,7 +147,17 @@ export default async function decorate(block) {
     .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)
     .toList();
   block.innerHTML = '';
-  const blockContents = resultParsers[blockType](results, blockCfg);
+  const meta = getMetadata('page-style');
+  if (meta === 'featured' && blockType === 'highlight') {
+    let locale = (getLanguage(
+      window.location.pathname,
+      false,
+    ));
+    if (locale !== 'en') locale = 'jp';
+    const placeholders = await fetchPlaceholders(locale);
+    const featuredInnerText = placeholders.featured;
+    blockContents = resultParsers[blockType](results, blockCfg, meta, featuredInnerText);
+  } else { blockContents = resultParsers[blockType](results, blockCfg); }
   const builtBlock = buildBlock(blockType, blockContents);
 
   [...block.classList].forEach((item) => {
