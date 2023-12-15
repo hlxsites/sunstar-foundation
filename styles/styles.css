@@ -861,6 +861,11 @@ main .section.padded > .tab-item.active > .section-container {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
+main .section.padded-block > .section-container{
+  padding: 1rem 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
 main .section.padded-inline > .section-container,
 main .section.padded-inline > .tab-item.active > .section-container {
   padding-inline: 1rem;
@@ -971,6 +976,11 @@ main .block.centered > div {
     border-bottom: 1px solid var(--overlay-background-color);
     padding-bottom: 2rem;
     margin-bottom: 2rem;
+  }
+
+  main .section.bottom-dark-border .section-container {
+    border-bottom: 2px solid var(--primary);
+    font-weight: 700;
   }
 
   /* section - spaced */
