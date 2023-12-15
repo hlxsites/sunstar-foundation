@@ -46,8 +46,8 @@ export default function decorate(block) {
       [...li.children].forEach(addCardChildrenClasses);
     }
 
-    if (a && a.dataset.path.startsWith(MODAL_FRAGMENTS_PATH_SEGMENT) && document.querySelector('.modal-fragment') !== null) {
-      // Videos embedded through Fragments Modals will be opened in a modal
+    const isModalFragmentAvailable = document.querySelector('.modal-fragment') !== null;
+    if (a?.dataset?.path?.startsWith(MODAL_FRAGMENTS_PATH_SEGMENT) && isModalFragmentAvailable) {
       handleModalClick(a, document.querySelector('.modal-fragment'));
     }
 
