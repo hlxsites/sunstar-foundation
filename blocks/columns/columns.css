@@ -241,6 +241,10 @@ div.img-col > video {
   gap: 1rem;
 }
 
+.columns.center-buttons p.button-container {
+  justify-content: center;
+} 
+
 .columns.collapse.top-down.columns-2-cols {
   max-width: 100%;
 }
@@ -403,6 +407,11 @@ div.img-col > video {
     gap: 2rem;
     width: unset;
   }
+
+  .columns.center-buttons p.button-container {
+    align-items: center;
+    flex-direction: row;
+  } 
 
   .columns a.button.primary {
     min-width: 11rem;
