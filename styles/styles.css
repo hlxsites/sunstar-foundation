@@ -980,7 +980,7 @@ main .block.centered > div {
 
   main .section.bottom-dark-border .section-container {
     border-bottom: 2px solid var(--primary);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
   }
 
   /* section - spaced */
