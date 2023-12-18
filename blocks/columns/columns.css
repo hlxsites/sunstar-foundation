@@ -40,7 +40,8 @@
   margin-bottom: 1.25rem;
 }
 
-.columns:not(.native-image-sizes) img {
+.columns:not(.native-image-sizes) img,
+.columns:not(.native-image-sizes) div.image-collage.autoblocked {
   width: 100%;
 }
 
@@ -266,7 +267,9 @@ div.img-col > video {
   width: 100%;
 }
 
-.columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
+.columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col),
+.columns:not(.no-padding) > div.img-col-wrapper > div.image-collage.autoblocked,
+.columns:not(.no-padding) > div > div.img-col-wrapper {
   padding: 0 1rem;
 }
 
@@ -274,12 +277,9 @@ div.img-col > video {
   margin-top: 3rem;
 }
 
-  .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation)
-    > div
-    > div:first-child {
-    margin-top: 0;
-  }
-
+.columns.plain-links.collapse.collapse-without-top-margin:not(.continuation) > div > div:first-child {
+  margin-top: 0;
+}
 
 .columns.plain-links.collapse > div h6::after {
   content: "";
