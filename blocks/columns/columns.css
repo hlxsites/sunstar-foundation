@@ -241,7 +241,7 @@ div.img-col > video {
   gap: 1rem;
 }
 
-.columns.center-buttons p.button-container {
+.columns.centre-buttons p.button-container {
   justify-content: center;
 } 
 
@@ -408,7 +408,7 @@ div.img-col > video {
     width: unset;
   }
 
-  .columns.center-buttons p.button-container {
+  .columns.centre-buttons p.button-container {
     align-items: center;
     flex-direction: row;
   } 
@@ -519,9 +519,5 @@ div.img-col > video {
     flex-flow: row wrap;
     gap: 1rem;
     width: 100%;
-  }
-  
-  .columns p.button-container a.button.primary {
-    min-width: fit-content;
   }
 }
