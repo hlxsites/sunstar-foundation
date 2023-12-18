@@ -94,8 +94,8 @@ const resultParsers = {
       if (cardBody) {
         const path = document.createElement('a');
         path.href = result.path;
-        cardBody.prepend(path);
-        row.push(cardBody);
+        path.append(cardBody);
+        row.push(path);
       }
       blockContents.push(row);
     });
