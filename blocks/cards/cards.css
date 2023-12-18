@@ -129,6 +129,7 @@ main .block.cards {
 
 .cards.video-modal .cards-card-image {
   height: auto;
+  width: 100%;
 }
 
 .cards .cards-card-body div {
