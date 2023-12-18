@@ -120,7 +120,7 @@ function formatAutoblockedImageCaptionsForColumns(block, enclosingDiv) {
   const blockClassList = block.classList;
   const columnDiv = document.createElement('div');
 
-  if (enclosingDiv.parentElement?.classList?.contains('columns') || enclosingDiv.parentElement?.parentElement?.classLis?.contains('columns')) {
+  if (enclosingDiv.parentElement?.classList?.contains('columns') || enclosingDiv.parentElement?.parentElement?.classList?.contains('columns')) {
     columnDiv.classList = blockClassList;
     columnDiv.classList.add('img-col');
     columnDiv.appendChild(picture);
