@@ -66,14 +66,6 @@
   padding: 0;
 }
 
-.columns p.button-container {
-  display: inline;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 1rem;
-  width: 11rem;
-}
-
 .columns a.button.tertiary {
   background-color: unset;
   color: var(--tertiary);
@@ -243,10 +235,10 @@ div.img-col > video {
   width: 100%;
 }
 
-@media (min-width: 62rem) {
-  .columns.top-down.collapse > div {
-    gap: 1.5rem;
-  }
+.columns p.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .columns.collapse.top-down.columns-2-cols {
@@ -400,19 +392,20 @@ div.img-col > video {
     margin-bottom: 7.5rem;
   }
 
+  .collapse > div {
+    flex-direction: column;
+  }
+
   .columns p.button-container {
-    flex-direction: row;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 2rem;
     width: unset;
   }
 
   .columns a.button.primary {
     min-width: 11rem;
-  }
-
-  .collapse > div {
-    flex-direction: column;
   }
 
   .columns > div > div {
@@ -430,6 +423,10 @@ div.img-col > video {
 
   .columns.small-margin > div {
     margin-bottom: 1.5rem;
+  }
+
+  .columns.top-down.collapse > div {
+    gap: 1.5rem;
   }
 
   .columns > div .img-col {
@@ -505,5 +502,17 @@ div.img-col > video {
   div.img-col > video {
     height: 469px;
     width: 469px;
+  }
+
+  .columns p.button-container {
+    display: flex;
+    align-items: flex-start;
+    flex-flow: row wrap;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .columns p.button-container a.button.primary {
+    min-width: fit-content;
   }
 }
