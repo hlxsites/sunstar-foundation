@@ -1,0 +1,72 @@
+.block.highlight.featured > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: var(--button-text-color);
+}
+
+.block.highlight.featured > div > div {
+    flex-basis: 70%;
+    margin: 1rem;
+}
+
+.block.highlight.featured .title {
+    color: var(--button-text-color);
+    font-size: var(--body-font-size-xl);
+}
+
+.block.highlight.featured h5 {
+    padding-top: 0;
+    color: var(--hero-strong-color);
+    font-size: var(--heading-font-size-xxs);
+}
+
+body.featured .section.no-margin-bottom.newsroom.feed-container h1 {
+    padding-top: 0;
+    margin-left: 1rem;
+}
+
+.block.highlight.featured .date {
+    margin-top: 2rem;
+}
+
+.block.highlight.featured img {
+    width: 100%;
+}
+
+@media (min-width: 62rem) {
+    .block.highlight.featured > div {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        color: var(--button-text-color);
+    }
+
+    .block.highlight.featured > div > div:first-of-type {
+        flex-basis: 80%;
+    }
+
+    .block.highlight.featured > div > div:last-of-type {
+        flex-basis: 100%;
+    }
+
+}
+
+
+@media (min-width: 77rem) {
+    .block.highlight.featured > div {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        color: var(--button-text-color);
+    }
+
+    .block.highlight.featured > div > div:first-of-type {
+        flex-basis: 60%;
+    }
+
+    .block.highlight.featured > div > div:last-of-type {
+        flex-basis: 100%;
+    }
+
+}

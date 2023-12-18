@@ -76,7 +76,19 @@ const resultParsers = {
         }
       });
       if (cardImage) {
-        row.push(cardImage);
+        if (result.path) {
+          const pathImg = document.createElement('a');
+          pathImg.href = result.path;
+          pathImg.append(cardImage);
+          row.push(pathImg);
+        } else row.push(cardImage);
+      }
+      
+      const meta = getMetadata('page-style');
+      if (meta === 'featured') {
+        const divFeatured = document.createElement('div');
+        divFeatured.innerHTML = '<h5>FEATURED</h5>';
+        cardBody.insertBefore(divFeatured, cardBody.firstChild);
       }
 
       if (cardBody) {

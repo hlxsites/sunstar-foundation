@@ -10,7 +10,7 @@
   color: var(--color-text);
 }
 
-.block.highlight > * {
+.block.highlight:not(.featured) > * {
   flex: 1;
 }
 
