@@ -29,7 +29,7 @@ const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP c
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
 const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
-const LANGUAGES = new Set(['en', 'ja']);
+const LANGUAGES = new Set(['en', 'jp']);
 
 const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
 export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_SEGMENT}"]`;
@@ -56,7 +56,7 @@ export function getLanguageFromPath(pathname, resetCache = false) {
   }
 
   if (language === undefined) {
-    language = 'ja'; // default to Japanese
+    language = 'jp'; // default to Japanese
   }
 
   return language;
@@ -68,7 +68,7 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
 
 export function getLanguangeSpecificPath(path) {
   const lang = getLanguage();
-  if (lang === 'ja') return path;
+  if (lang === 'jp') return path;
   return `/${lang}${path}`;
 }
 

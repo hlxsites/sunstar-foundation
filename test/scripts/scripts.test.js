@@ -70,9 +70,9 @@ describe('Scripts', () => {
     lang = scripts.getLanguageFromPath('/de/foo');
     expect(lang).to.equal('en'); // Language already set, so reuse the value
     lang = scripts.getLanguageFromPath('/de/foo', true);
-    expect(lang).to.equal('ja'); // Defaults to Japanese for unknown language
+    expect(lang).to.equal('jp'); // Defaults to Japanese for unknown language
     lang = scripts.getLanguageFromPath('/foobar', true);
-    expect(lang).to.equal('ja'); // Defaults to Japanese
+    expect(lang).to.equal('jp'); // Defaults to Japanese
   });
 
   it('Paging widget 1', () => {

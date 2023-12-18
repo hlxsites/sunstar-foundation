@@ -117,8 +117,7 @@ export default async function decorate(block) {
   const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const blockType = (blockName.split('(')[0]).trim();
   const variation = (blockName.match(/\((.+)\)/) === null ? '' : blockName.match(/\((.+)\)/)[1]).trim();
-  if (`${getLanguage()}` === 'ja') queryObj = await queryIndex('jp-search');
-  else queryObj = await queryIndex(`${getLanguage()}-search`);
+  queryObj = await queryIndex(`${getLanguage()}-search`);
 
   // Get the query string, which includes the leading "?" character
   const queryString = window.location.search;
