@@ -114,6 +114,21 @@ function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
   return newBlock;
 }
 
+function formatAutoblockedImageCaptions(block, enclosingDiv) {
+  const picture = block.querySelector('picture');
+  const caption = block.querySelector('p');
+  const blockClassList = block.classList;
+  const columnDiv = document.createElement('div');
+
+  columnDiv.classList = blockClassList;
+  columnDiv.classList.add('img-col');
+  columnDiv.appendChild(picture);
+  columnDiv.appendChild(caption);
+
+  enclosingDiv.classList.add('img-col-wrapper');
+  enclosingDiv.replaceChild(columnDiv, block);
+}
+
 function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
   const enclosingDiv = parentP.parentElement;
 
@@ -143,6 +158,7 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         }
         // insert the new block at the position the old image was at
         enclosingDiv.replaceChild(newBlock, parentP);
+        formatAutoblockedImageCaptions(newBlock, enclosingDiv);
         return;
       }
 
@@ -160,6 +176,7 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
         newBlock.classList.add('autoblocked');
         enclosingDiv.replaceChild(newBlock, parentP);
+        formatAutoblockedImageCaptions(newBlock, enclosingDiv);
         return;
       }
     }
