@@ -48,7 +48,7 @@ const resultParsers = {
     return blockContents;
   },
 
-  highlight: (results, blockCfg, block, featuredInnerText = '') => {
+  highlight: (results, blockCfg, block = '', featuredInnerText = '') => {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
@@ -153,13 +153,15 @@ export default async function decorate(block) {
     .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)
     .toList();
   block.innerHTML = '';
-  const locale = (getLanguage(
-    window.location.pathname,
-    false,
-  ));
-  const placeholders = await fetchPlaceholders(locale);
-  const featuredInnerText = placeholders.featured;
-  blockContents = resultParsers[blockType](results, blockCfg, block, featuredInnerText);
+  if (block.classList.contains('featured')) {
+    const locale = (getLanguage(
+      window.location.pathname,
+      false,
+    ));
+    const placeholders = await fetchPlaceholders(locale);
+    const featuredInnerText = placeholders.featured;
+    blockContents = resultParsers[blockType](results, blockCfg, block, featuredInnerText);
+  } else blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
 
   [...block.classList].forEach((item) => {
