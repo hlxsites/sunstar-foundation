@@ -26,7 +26,7 @@ describe('News Block', () => {
     window.placeholders = {
       'translation-loaded': {},
       translation: {
-        ja: placeholders,
+        jp: placeholders,
       },
     };
 
