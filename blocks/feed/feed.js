@@ -48,7 +48,7 @@ const resultParsers = {
     return blockContents;
   },
 
-  highlight: (results, blockCfg, featuredInnerText = '') => {
+  highlight: (results, blockCfg, block, featuredInnerText = '') => {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
@@ -83,7 +83,7 @@ const resultParsers = {
           row.push(pathImg);
         } else row.push(cardImage);
       }
-      if (result.featured === 'true') {
+      if (result.featured === 'true' && block.classList.contains('featured')) {
         const divFeatured = document.createElement('div');
         divFeatured.innerHTML = `<h5>${featuredInnerText}</h5>`;
         cardBody.insertBefore(divFeatured, cardBody.firstChild);
@@ -112,7 +112,7 @@ function getMetadataNullable(key) {
 export default async function decorate(block) {
   let blockContents = 0;
   let queryObj = 0;
-  let locale = (getLanguage(
+  const locale = (getLanguage(
     window.location.pathname,
     false,
   ));
@@ -159,8 +159,7 @@ export default async function decorate(block) {
     .toList();
   block.innerHTML = '';
 
-  if (locale !== 'en') locale = 'jp';
-  blockContents = resultParsers[blockType](results, blockCfg, featuredInnerText);
+  blockContents = resultParsers[blockType](results, blockCfg, block, featuredInnerText);
   const builtBlock = buildBlock(blockType, blockContents);
 
   [...block.classList].forEach((item) => {
