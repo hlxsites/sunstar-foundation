@@ -61,23 +61,8 @@
   font-size: var(--heading-font-size-ms);
 }
 
-.columns.history h6 {
-  color: var(--transparent-grey-color-2);
-  font-size: var(--heading-font-size-mxs);
-  font-weight: var(--font-weight-medium);
-  margin: 0 0 1rem;
-}
-
-.columns.history strong {
-  font-size: var(--heading-font-size-ms);
-}
-
 .columns.plain-links a.button {
   padding: 0;
-}
-
-.columns.history > div {
-  align-items: center;
 }
 
 .columns p.button-container {
@@ -129,14 +114,6 @@
   margin-top: 0;
 }
 
-.columns.history h2 {
-  border-bottom: 1px solid var(--primary);
-  margin-inline: 0;
-  margin-bottom: 1rem;
-  font-size: var(--heading-font-size-xl);
-  font-weight: var(--font-weight-small);
-}
-
 .columns.crop-image > div {
   align-items: stretch;
 }
@@ -177,7 +154,6 @@
   font-size: var(--body-font-size-l);
 }
 
-.columns.history.invert-image-order-in-narrow-view > div,
 .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
   flex-direction: column-reverse;
 }
@@ -252,7 +228,7 @@
   object-fit: cover;
 }
 
-.columns:not(.history,.no-padding) > div div.non-singleton-img {
+.columns:not(.no-padding) > div div.non-singleton-img {
   margin: 0 1rem;
 }
 
@@ -260,29 +236,6 @@
   color: var(--steel-blue);
   font-size: var(--body-font-size-s);
   margin: 1rem 0;
-}
-
-.columns.history
-  div.image-collage.autoblocked
-  div.text-col:last-of-type,
-.columns.history
-  div.image-collage.autoblocked
-  div.img-col:last-of-type {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.columns.history
-  div.image-collage.autoblocked
-  div.text-col:last-of-type
-  picture,
-.columns.history
-  div.image-collage.autoblocked
-  div.img-col:last-of-type
-  picture {
-  margin: 0 auto 2rem;
 }
 
 div.img-col > video {
@@ -479,29 +432,8 @@ div.img-col > video {
     margin-bottom: 1.5rem;
   }
 
-  .columns.history picture {
-    margin: 0 auto 2rem;
-  }
-
-  .columns.history picture:last-child {
-    margin: 0 auto;
-  }
-
-  /* picture in column with text */
-  .columns.history p ~ div > div.image-collage.autoblocked picture {
-    display: table;
-    width: 100%;
-  }
-
   .columns > div .img-col {
     order: unset;
-  }
-
-  .columns.history > div {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
   }
 
   .columns.invert-image-order-in-narrow-view > div .img-col,
@@ -518,7 +450,7 @@ div.img-col > video {
     display: none;
   }
 
-  .columns:not(.history, .text-and-image-in-column) .text-col-wrapper img:not(.video-modal) {
+  .columns:not(.text-and-image-in-column) .text-col-wrapper img:not(.video-modal) {
     height: 3.125rem;
     width: unset;
   }
@@ -542,7 +474,6 @@ div.img-col > video {
     background-position: center;
   }
 
-  main .columns.history.invert-image-order-in-narrow-view > div,
   main .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
     flex-direction: row;
   }
