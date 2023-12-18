@@ -395,7 +395,7 @@ div.img-col > video {
   .columns h2,
   .columns:not(.no-buttons) h3,
   .columns:not(.no-buttons) h4 {
-    font-size: var(--heading-font-size-mxl);
+    font-size: var(--heading-font-size-ml);
     font-weight: var(--font-weight-small);
     margin: 0 auto 1.5rem;
   }
@@ -438,7 +438,7 @@ div.img-col > video {
     flex-direction: unset;
     align-items: flex-start;
     gap: 3rem;
-    margin-bottom: 7.5rem;
+    margin-bottom: 5rem;
   }
 
   .columns.small-margin > div {
@@ -565,7 +565,7 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
 }
