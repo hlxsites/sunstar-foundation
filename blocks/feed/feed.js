@@ -112,12 +112,12 @@ function getMetadataNullable(key) {
 export default async function decorate(block) {
   let blockContents = 0;
   let queryObj = 0;
-  const locale = (getLanguage(
-    window.location.pathname,
-    false,
-  ));
-  const placeholders = await fetchPlaceholders(locale);
-  const featuredInnerText = placeholders.featured;
+  // const locale = (getLanguage(
+  //   window.location.pathname,
+  //   false,
+  // ));
+  // const placeholders = await fetchPlaceholders(locale);
+  // const featuredInnerText = placeholders.featured;
   const blockCfg = readBlockConfig(block);
   const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const blockType = (blockName.split('(')[0]).trim();
@@ -158,7 +158,12 @@ export default async function decorate(block) {
     .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)
     .toList();
   block.innerHTML = '';
-
+  const locale = (getLanguage(
+    window.location.pathname,
+    false,
+  ));
+  const placeholders = await fetchPlaceholders(locale);
+  const featuredInnerText = placeholders.featured;
   blockContents = resultParsers[blockType](results, blockCfg, block, featuredInnerText);
   const builtBlock = buildBlock(blockType, blockContents);
 
