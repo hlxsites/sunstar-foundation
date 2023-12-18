@@ -116,10 +116,8 @@ export default async function decorate(block) {
     window.location.pathname,
     false,
   ));
-  console.log(locale);
   const placeholders = await fetchPlaceholders(locale);
   const featuredInnerText = placeholders.featured;
-  console.log(featuredInnerText);
   const blockCfg = readBlockConfig(block);
   const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const blockType = (blockName.split('(')[0]).trim();
