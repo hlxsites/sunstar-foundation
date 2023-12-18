@@ -385,6 +385,52 @@ div.img-col > video {
   padding: 2rem 0;
 }
 
+/* Text-image overlap View */
+.columns.text-and-image-in-column.overlap em a {
+  display: inline-flex;
+  width: 100%;
+  font-size: var(--body-font-size-xl);
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+  background-color: var(--white);
+  padding: 1rem 0;
+  font-weight: var(--font-weight-bold);
+  font-style: normal;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.columns.text-and-image-in-column.overlap .button-container {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.columns.text-and-image-in-column.overlap .button-container a {
+  background-color: unset;
+  color: var(--secondary);
+  font-size: var(--body-font-size-m);
+  padding: unset;
+  display: block;
+  margin: 0 -1.25rem;
+}
+
+.columns.text-and-image-in-column.overlap em a:hover {
+  color: var(--white);
+  background-color: var(--link-blue-color);
+  border-color: var(--link-blue-color);
+}
+
+.columns.text-and-image-in-column.overlap .button-container a:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 62rem) {
   .columns h2,
   .columns:not(.no-buttons) h3,
@@ -500,53 +546,6 @@ div.img-col > video {
     background-position: center;
   }
 
-  /* Column styles - Machine parts */
-  main .block.columns.machine-parts > div {
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  main .block.columns.machine-parts .img-col {
-    flex: auto;
-    flex-basis: auto;
-  }
-
-  main .block.columns.machine-parts .text-col h1,
-  main .block.columns.machine-parts .text-col h2,
-  main .block.columns.machine-parts .text-col h3,
-  main .block.columns.machine-parts .text-col h4,
-  main .block.columns.machine-parts .text-col h5,
-  main .block.columns.machine-parts .text-col h6 {
-    text-align: left;
-    text-transform: none;
-  }
-
-  main .block.columns.machine-parts .text-col p {
-    margin-bottom: 1.5rem;
-  }
-
-  main .block.columns.machine-parts .text-col h6 {
-    font-size: var(--heading-font-size-xs);
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-    color: var(--light-black);
-  }
-
-  main .block.columns.machine-parts .text-col a {
-    margin-bottom: 14px;
-    line-height: 1;
-    display: inline-block;
-    width: 100%;
-    font-weight: 500;
-    font-size: var(--body-font-size-m);
-    text-decoration: none;
-  }
-
-  main .block.columns.machine-parts .text-col a > strong {
-    color: var(--light-black);
-    margin-right: 1rem;
-  }
-
   main .columns.history.invert-image-order-in-narrow-view > div,
   main .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
     flex-direction: row;
@@ -560,62 +559,7 @@ div.img-col > video {
   .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
     padding: 1rem 0;
   }
-}
 
-@media (min-width: 77rem) {
-  div.img-col > video {
-    height: 469px;
-    width: 469px;
-  }
-}
-
-/* Text-image overlap View */
-.columns.text-and-image-in-column.overlap em a {
-  display: inline-flex;
-  width: 100%;
-  font-size: var(--body-font-size-xl);
-  color: var(--secondary);
-  border: 1px solid var(--secondary);
-  background-color: var(--white);
-  padding: 1rem 0;
-  font-weight: var(--font-weight-bold);
-  font-style: normal;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  text-decoration: none;
-  border-radius: 2px;
-}
-
-.columns.text-and-image-in-column.overlap .button-container {
-  position: absolute;
-  top: 30%;
-  left: 0;
-  right: 0;
-  margin: 0;
-  width: 100%;
-}
-
-.columns.text-and-image-in-column.overlap .button-container a {
-  background-color: unset;
-  color: var(--secondary);
-  font-size: var(--body-font-size-m);
-  padding: unset;
-  display: block;
-  margin: 0 -1.25rem;
-}
-
-.columns.text-and-image-in-column.overlap em a:hover {
-  color: var(--white);
-  background-color: var(--link-blue-color);
-  border-color: var(--link-blue-color);
-}
-
-.columns.text-and-image-in-column.overlap .button-container a:hover {
-  text-decoration: underline;
-}
-
-@media (min-width: 62rem) {
   .columns.text-and-image-in-column.overlap .button-container a {
     font-size: var(--body-font-size-xl);
     margin: 0 1rem;
@@ -628,5 +572,11 @@ div.img-col > video {
   .columns :not(.table) h3 {
     font-size: var(--heading-font-size-m);
   }
+}
 
+@media (min-width: 77rem) {
+  div.img-col > video {
+    height: 469px;
+    width: 469px;
+  }
 }
