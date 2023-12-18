@@ -207,7 +207,6 @@
     }
 
     .hero-banner .hero-banner-text-container {
-        display: block;
         width: 100%;
         background: var(--primary);
         color: var(--white);
@@ -255,7 +254,7 @@
         margin-left: unset;
     }
 
-    .hero-banner .hero-banner-heading-section{
+    .hero-banner .hero-banner-heading-section {
         max-width: 56.5rem;
     }
 
