@@ -10,8 +10,18 @@
   color: var(--color-text);
 }
 
-.block.highlight:not(.featured) > * {
+
+
+.block.highlight > * {
   flex: 1;
+}
+
+.block.highlight.featured > div:first-child {
+  flex: 1;
+}
+
+.block.highlight.featured > div:last-child {
+  flex: 0;
 }
 
 .block.highlight .date {

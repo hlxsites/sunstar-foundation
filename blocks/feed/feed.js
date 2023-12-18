@@ -48,7 +48,7 @@ const resultParsers = {
     return blockContents;
   },
 
-  highlight: (results, blockCfg, meta = '', featuredInnerText = '') => {
+  highlight: (results, blockCfg, featuredInnerText = '') => {
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
@@ -83,7 +83,7 @@ const resultParsers = {
           row.push(pathImg);
         } else row.push(cardImage);
       }
-      if (meta === 'featured') {
+      if (result.featured === 'true') {
         const divFeatured = document.createElement('div');
         divFeatured.innerHTML = `<h5>${featuredInnerText}</h5>`;
         cardBody.insertBefore(divFeatured, cardBody.firstChild);
@@ -161,7 +161,7 @@ export default async function decorate(block) {
     if (locale !== 'en') locale = 'jp';
     const placeholders = await fetchPlaceholders(locale);
     const featuredInnerText = placeholders.featured;
-    blockContents = resultParsers[blockType](results, blockCfg, meta, featuredInnerText);
+    blockContents = resultParsers[blockType](results, blockCfg, featuredInnerText);
   } else { blockContents = resultParsers[blockType](results, blockCfg); }
   const builtBlock = buildBlock(blockType, blockContents);
 
