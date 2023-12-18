@@ -112,12 +112,7 @@ function getMetadataNullable(key) {
 export default async function decorate(block) {
   let blockContents = 0;
   let queryObj = 0;
-  // const locale = (getLanguage(
-  //   window.location.pathname,
-  //   false,
-  // ));
-  // const placeholders = await fetchPlaceholders(locale);
-  // const featuredInnerText = placeholders.featured;
+
   const blockCfg = readBlockConfig(block);
   const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const blockType = (blockName.split('(')[0]).trim();
