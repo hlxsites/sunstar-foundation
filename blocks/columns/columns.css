@@ -256,15 +256,11 @@
   margin: 0 1rem;
 }
 
-/* both autoblocking options for bottom caption */
-.columns.history div.image-collage.autoblocked picture ~ em,
-.columns.history div.image-collage.autoblocked picture ~ p {
+.columns div.image-collage.autoblocked picture ~ *.image-caption {
   color: var(--steel-blue);
   font-size: var(--body-font-size-s);
   margin: 1rem 0;
-  text-align: center;
 }
-
 
 .columns.history
   div.image-collage.autoblocked

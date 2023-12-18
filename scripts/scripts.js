@@ -108,6 +108,7 @@ function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
   const captionText = caption.textContent;
   const captionP = document.createElement('p');
   captionP.innerHTML = captionText;
+  captionP.classList.add('image-caption');
   caption.remove();
   const newBlock = buildBlockFunction('image-collage', { elems: [picture, captionP] });
   newBlock.classList.add('boxy-col-1');
