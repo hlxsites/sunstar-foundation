@@ -111,11 +111,13 @@ function getMetadataNullable(key) {
  */
 export default async function decorate(block) {
   let blockContents = 0;
+  let queryObj = 0;
   const blockCfg = readBlockConfig(block);
   const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const blockType = (blockName.split('(')[0]).trim();
   const variation = (blockName.match(/\((.+)\)/) === null ? '' : blockName.match(/\((.+)\)/)[1]).trim();
-  const queryObj = await queryIndex(`${getLanguage()}-search`);
+  if (`${getLanguage()}` === 'ja') queryObj = await queryIndex('jp-search');
+  else queryObj = await queryIndex(`${getLanguage()}-search`);
 
   // Get the query string, which includes the leading "?" character
   const queryString = window.location.search;
