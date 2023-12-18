@@ -83,8 +83,6 @@ const resultParsers = {
           row.push(pathImg);
         } else row.push(cardImage);
       }
-      
-      const meta = getMetadata('page-style');
       if (meta === 'featured') {
         const divFeatured = document.createElement('div');
         divFeatured.innerHTML = `<h5>${featuredInnerText}</h5>`;
