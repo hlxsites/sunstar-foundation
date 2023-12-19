@@ -34,7 +34,19 @@ main .image-collage[class*='boxy-col-'].image-with-title > div {
 main .image-collage[class*='boxy-col-']>div>div:first-of-type {
   padding-top: 0;
   padding-bottom: 0;
+  height: 12.625rem;
+  overflow: hidden;
 }
+
+main .image-collage[class*='boxy-col-'] h4 {
+  color: var(--primary);
+  font-size: var(--heading-font-size-ms);
+}
+
+main .image-collage[class*='boxy-col-'] .button-container a {
+  margin-bottom: 20px;
+}
+
 
 main .image-collage img {
   width: calc(100vw - 2rem);
@@ -62,7 +74,6 @@ main .image-collage.boxy-col-1.zoom-in::after {
 
 main .image-collage * {
   font-size: var(--font-size-small);
-  color: #6D757C;
 }
 
 main .image-collage .image-caption {
@@ -170,6 +181,7 @@ image-collage.medium {
 
   main .image-collage[class*='boxy-col-']>div>div:first-of-type {
     padding: unset;
+    height: 9.125rem;
   }
 }
 
@@ -189,5 +201,11 @@ image-collage.medium {
 
   main .center-content.block {
     margin: 1rem;
+  }
+}
+
+@media (min-width: 77rem) {
+  main .image-collage[class*='boxy-col-']>div>div:first-of-type {
+    height: 12.625rem;
   }
 }
