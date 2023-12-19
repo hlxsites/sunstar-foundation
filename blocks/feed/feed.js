@@ -81,7 +81,9 @@ const resultParsers = {
           pathImg.href = result.path;
           pathImg.append(cardImage);
           row.push(pathImg);
-        } else row.push(cardImage);
+        } else {
+          row.push(cardImage);
+        }
       }
       if (result.featured === 'true' && block.classList.contains('featured')) {
         const divFeatured = document.createElement('div');
