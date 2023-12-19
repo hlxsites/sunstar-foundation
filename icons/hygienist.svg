@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 51 38.8" style="enable-background:new 0 0 51 38.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#005876;stroke:#005876;stroke-miterlimit:10;}
+	.st1{fill:#FFFFFF;stroke:#005876;stroke-miterlimit:10;}
+	.st2{fill:#F0F5F7;}
+	.st3{clip-path:url(#SVGID_1_);}
+	.st4{fill:#005876;}
+</style>
+<g>
+	<path class="st0" d="M36.6,30c0,0-0.9,3,0.4,4.4c1.3,1.3,4.1,0.7,4.1,0.7s0.6-2.8-0.9-4.2S36.6,30,36.6,30z"/>
+	<circle class="st1" cx="25" cy="22.3" r="15.3"/>
+	<path class="st0" d="M20.4,11c0,0,2,5.1,8.3,6.9c5,1.4,10.4-0.6,10.4-0.6s-0.9-4.2-4.4-6.3S19.6,9.6,19.6,9.6L20.4,11z"/>
+	<path class="st0" d="M20.8,11.3c0,0-1.4,2-4.5,3.8c-2.2,1.3-4.9,0.9-4.9,0.9s1-2.7,2.7-4.1c1.8-1.4,7-1.6,7-1.6L20.8,11.3z"/>
+	<path class="st2" d="M14.5,11.2h21V4.1c0-1.4-1.2-2.5-2.7-2.5H17.2c-1.5,0-2.7,1.1-2.7,2.5C14.5,4.1,14.5,11.2,14.5,11.2z"/>
+	<path class="st1" d="M36.2,11.6H14l0.4-7.5c0-1.6,1.4-2.9,3.1-2.9h15.4c1.7,0,3.1,1.3,3.1,2.9L36.2,11.6z"/>
+	<g>
+		<g>
+			<defs>
+				<circle id="SVGID_3_" cx="25" cy="22.3" r="15.3"/>
+			</defs>
+			<clipPath id="SVGID_1_">
+				<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+			</clipPath>
+			<g class="st3">
+				<g>
+					<path class="st1" d="M34,33.3c-7.1-1.3-10.8-1.3-18,0c-0.8-4.4-1.2-6.6-2-11c8.7-1.6,13.2-1.6,21.9,0
+						C35.2,26.7,34.8,28.9,34,33.3z"/>
+				</g>
+				<rect x="11.7" y="19" transform="matrix(0.354 -0.9352 0.9352 0.354 -12.4813 25.5241)" class="st4" width="1" height="5.6"/>
+				
+					<rect x="34.9" y="21.3" transform="matrix(0.9351 -0.3543 0.3543 0.9351 -5.2794 14.7628)" class="st4" width="5.6" height="1"/>
+				
+					<rect x="31.4" y="28.3" transform="matrix(0.6268 -0.7792 0.7792 0.6268 -8.5123 39.7818)" class="st4" width="11.7" height="1"/>
+				<rect x="12.5" y="24" transform="matrix(0.7775 -0.6288 0.6288 0.7775 -15.5207 14.689)" class="st4" width="1" height="10.6"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
