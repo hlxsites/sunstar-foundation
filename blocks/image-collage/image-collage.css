@@ -43,11 +43,6 @@ main .image-collage[class*='boxy-col-'] h4 {
   font-size: var(--heading-font-size-ms);
 }
 
-main .image-collage[class*='boxy-col-'] .button-container a {
-  margin-bottom: 20px;
-}
-
-
 main .image-collage img {
   width: calc(100vw - 2rem);
 }

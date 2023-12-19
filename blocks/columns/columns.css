@@ -362,6 +362,10 @@ div.img-col > video {
   color: var(--secondary);
 }
 
+.columns  > div > div p.button-container a {
+  margin-bottom: 3rem;
+}
+
 .columns.plain-links a.button.primary {
   display: inline-block;
   font-weight: var(--font-weight-medium);
