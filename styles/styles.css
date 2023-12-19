@@ -798,6 +798,10 @@ main .section.no-margin-top {
   margin-top: 0;
 }
 
+.float-right {
+  float: right;
+}
+
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);

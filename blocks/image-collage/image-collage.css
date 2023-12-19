@@ -31,6 +31,15 @@ main .image-collage[class*='boxy-col-'].image-with-title > div {
   flex-basis: calc(50% - 16px);
 }
 
+main .image-collage[class*='boxy-col-'].image-with-title-caption h3 {
+  font-size: var(--heading-font-size-m);
+  color: var(--primary);
+}
+
+main .image-collage[class*='boxy-col-'].image-with-title-caption>div>div:first-of-type p {
+  margin-bottom: 0;
+}
+
 main .image-collage[class*='boxy-col-']>div>div:first-of-type {
   padding-top: 0;
   padding-bottom: 0;
@@ -105,6 +114,22 @@ image-collage.medium {
 .medium .icon {
   width: auto;
   height: auto;
+}
+
+@media (min-width: 36rem) {
+  main .image-collage.boxy-col-3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  main .image-collage.boxy-col-3.no-center {
+    justify-content: normal;
+  }
+
+  main .image-collage.boxy-col-3>div {
+    flex: 0 0 calc(100% / 2 - 2rem);
+  }
 }
 
 @media (min-width: 62rem) {
