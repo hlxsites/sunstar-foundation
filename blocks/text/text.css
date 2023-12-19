@@ -80,7 +80,7 @@ main .block.text.lead {
 @media (min-width: 62rem) {
   main .block.text {
     padding: 0;
-  }  
+  }
 }
 
 @media (min-width: 77rem) {
