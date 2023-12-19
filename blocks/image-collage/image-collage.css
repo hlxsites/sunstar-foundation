@@ -70,7 +70,6 @@ main .image-collage .image-caption {
   margin-bottom: 1rem;
   color: var(--steel-blue);
   font-size: var(--body-font-size-xs);
-  text-align: center;
 }
 
 main .image-collage .image-title {
