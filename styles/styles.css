@@ -978,6 +978,10 @@ main .block.centered > div {
     display: block;
   }
 
+  main .default-content-wrapper {
+    padding: 0;
+  }
+
   /* START Section Styles START */
 
   main .section .section-container {
