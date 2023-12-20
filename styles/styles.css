@@ -146,8 +146,11 @@
   --split-4060: 40%:60%;
 }
 
+*, *::before, *::after { box-sizing: inherit; }
+
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {
@@ -579,6 +582,10 @@ main .block.centered {
   position: relative;
 }
 
+main .default-content-wrapper {
+  padding: 0 1rem;
+}
+
 /* START Section Styles START */
 
 main .section .section-container {
@@ -615,6 +622,11 @@ main .section.bold-headings h6 {
 .section.centered div {
   align-items: center;
   text-align: center;
+}
+
+/* section - large-padded */
+main .section.large-padded  > .section-container {
+  padding: 4rem 1rem;
 }
 
 /* section - full-width */
@@ -749,6 +761,10 @@ main .section.narrower > .tab-item.active > .section-container {
   max-width: 45rem;
 }
 
+main .section.large-padded h2 {
+  margin: 0 0 2rem;
+}
+
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
@@ -772,6 +788,12 @@ main .section.static .section-container h2 {
   font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-medium);
   margin: 4rem 0 1.5rem;
+}
+
+/* section - bottom-dark-border */
+main .section.bottom-dark-border .section-container div {
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 1rem;
 }
 
 /* section - margin-bottom */
@@ -861,12 +883,18 @@ main .section.padded > .tab-item.active > .section-container {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
+main .section.padded-block > .section-container{
+  padding: 1rem 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
 main .section.padded-inline > .section-container,
 main .section.padded-inline > .tab-item.active > .section-container {
   padding-inline: 1rem;
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .block.centered > div {
   margin: auto;
 }
@@ -957,6 +985,10 @@ main .block.centered > div {
     display: block;
   }
 
+  main .default-content-wrapper {
+    padding: 0;
+  }
+
   /* START Section Styles START */
 
   main .section .section-container {
@@ -985,6 +1017,11 @@ main .block.centered > div {
 
   main .section.small-narrow h5 {
     margin-bottom: 1rem;
+  }
+
+  /* section - large-padded */
+   main .section.large-padded  > .section-container  {
+    padding: 5rem 0;
   }
 
   /* section - narrow */
