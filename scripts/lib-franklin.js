@@ -165,7 +165,9 @@ export async function decorateIcons(element) {
               // rescope ids and references to avoid clashes across icons;
               .replaceAll(/ id="([^"]+)"/g, (_, id) => ` id="${iconName}-${id}"`)
               .replaceAll(/="url\(#([^)]+)\)"/g, (_, id) => `="url(#${iconName}-${id})"`)
-              .replaceAll(/ xlink:href="#([^"]+)"/g, (_, id) => ` xlink:href="#${iconName}-${id}"`),
+              .replaceAll(/ xlink:href="#([^"]+)"/g, (_, id) => ` xlink:href="#${iconName}-${id}"`)
+              .replaceAll(/ class="([^"]+)"/g, (_, id) => ` class="${iconName}-${id}"`)
+              .replaceAll(/st[0-9]{/g, (capture, _) => `${iconName}-${capture}`),
           };
         } else {
           ICONS_CACHE[iconName] = {
