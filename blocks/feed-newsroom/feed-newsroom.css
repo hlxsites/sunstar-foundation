@@ -109,11 +109,7 @@ main .feed-newsroom-wrapper .load-more-container {
     main .feed-newsroom-wrapper form select {
         padding: 6px 15px;
     }
-
-    main .section.feed-newsroom-container.highlight-container {
-        display: block;
-    }
-
+    
     main .section.feed-newsroom-container.narrower >  .section-container {
         max-width: 75rem;
     }
