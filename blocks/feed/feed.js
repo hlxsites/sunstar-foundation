@@ -48,9 +48,14 @@ const resultParsers = {
     return blockContents;
   },
 
-  highlight: (results, blockCfg, block = '') => {
+  highlight: async (results, blockCfg, block = '') => {
     const blockContents = [];
-    results.forEach(async (result) => {
+    const locale = (getLanguage(
+      window.location.pathname,
+      false,
+    ));
+    const placeholders = await fetchPlaceholders(locale);
+    results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
       const row = [];
       let cardImage;
@@ -86,11 +91,6 @@ const resultParsers = {
         }
       }
       if (result.featured === 'true' && block.classList.contains('featured')) {
-        const locale = (getLanguage(
-          window.location.pathname,
-          false,
-        ));
-        const placeholders = await fetchPlaceholders(locale);
         const featuredInnerText = placeholders.featured;
         const divFeatured = document.createElement('div');
         divFeatured.innerHTML = `<h5>${featuredInnerText}</h5>`;
