@@ -162,10 +162,12 @@ export async function decorateIcons(element) {
           ICONS_CACHE[iconName] = {
             styled: true,
             html: svg
-              // rescope ids and references to avoid clashes across icons;
+              // rescope ids, classes and references to avoid clashes across icons;
               .replaceAll(/ id="([^"]+)"/g, (_, id) => ` id="${iconName}-${id}"`)
               .replaceAll(/="url\(#([^)]+)\)"/g, (_, id) => `="url(#${iconName}-${id})"`)
-              .replaceAll(/ xlink:href="#([^"]+)"/g, (_, id) => ` xlink:href="#${iconName}-${id}"`),
+              .replaceAll(/ xlink:href="#([^"]+)"/g, (_, id) => ` xlink:href="#${iconName}-${id}"`)
+              .replaceAll(/ class="([^"]+)"/g, (_, id) => ` class="${iconName}-${id}"`)
+              .replaceAll(/st[0-9]{/g, (capture, _) => `${iconName}-${capture}`), // eslint-disable-line no-unused-vars
           };
         } else {
           ICONS_CACHE[iconName] = {
