@@ -584,7 +584,7 @@ main .block.centered {
 
 main .section.narrow .default-content-wrapper,
 main .section.narrower .default-content-wrapper,
-main .section.small-narrow .default-content-wrapper {
+main .section.small-narrow .default-content-wrapper   {
   padding: 0;
 }
 
@@ -792,6 +792,12 @@ main .section.static .section-container h2 {
   margin: 4rem 0 1.5rem;
 }
 
+/* section - bottom-dark-border */
+main .section.bottom-dark-border .section-container div {
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 1rem;
+}
+
 /* section - margin-bottom */
 main .section.margin-bottom {
   margin-bottom: 5rem;
@@ -805,6 +811,10 @@ main .section.no-margin-bottom {
 /* section - no margin-top */
 main .section.no-margin-top {
   margin-top: 0;
+}
+
+.float-right {
+  float: right;
 }
 
 /* section - highlight */
@@ -890,6 +900,7 @@ main .section.padded-inline > .tab-item.active > .section-container {
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .block.centered > div {
   margin: auto;
 }
@@ -1000,10 +1011,6 @@ main .block.centered > div {
     margin-bottom: 2rem;
   }
 
-  main .section.bottom-dark-border .section-container {
-    border-bottom: 2px solid var(--primary);
-  }
-
   /* section - spaced */
   main .section.spaced h2 {
     font-size: var(--heading-font-size-xl);
@@ -1021,7 +1028,7 @@ main .block.centered > div {
   /* section - large-padded */
    main .section.large-padded  > .section-container  {
     padding: 5rem 0;
-  } 
+  }
 
   /* section - narrow */
   /* stylelint-disable-next-line no-descending-specificity */
