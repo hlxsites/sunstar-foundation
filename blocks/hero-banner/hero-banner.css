@@ -8,7 +8,6 @@
 }
 
 .hero-banner .hero-banner-media-section {
-    height: 14.75rem;
     position: relative;
     width: 100%;
     background-position: center;
@@ -17,6 +16,7 @@
     top: 0;
     z-index: 0;
     overflow: hidden;
+    height: 10rem;
 }
 
 .hero-banner.careers .hero-banner-media-section {
@@ -28,8 +28,7 @@
 .hero-banner.image-right img {
     width: 100%;
     object-fit: cover;
-    height: 22.5rem;
-    object-position: 80% 0;
+    height: 10rem;
 }
 
 .hero-banner.image-center img {
@@ -47,7 +46,6 @@
     padding-left: 0;
     margin-right: auto;
     margin-left: auto;
-    max-width: 100%;
 }
 
 .hero-banner .hero-banner-heading-container {
@@ -61,11 +59,6 @@
     min-height: auto;
     padding : 2rem 1rem;
     width: auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
-    margin-bottom: 0;
     position: relative;
 }
 
@@ -89,15 +82,20 @@
 .hero-banner-text-wrapper h2,
 .hero-banner-text-wrapper h1 {
     font-weight: var(--font-weight-small);
-    font-size: var(--heading-font-size-m);
+    font-size: var(--heading-font-size-s);
     line-height: 2rem;
     color: var(--white);
     font-family: var(--body-font-family);
-    margin: 2rem auto 1rem;
+    margin: 0;
 }
 
 .hero-banner-text-wrapper p {
-    margin: 1rem auto;
+    color: var(--tab-content-color);
+    font-size: var(--body-font-size-xs);
+    font-weight: var(--font-weight-bold);
+    line-height: 1em;
+    margin-bottom: 0.75em;
+    text-transform: uppercase;
 }
 
 .hero-banner .hero-banner-button-container span {
@@ -134,7 +132,6 @@
 .hero-banner .hero-banner-text-wrapper {
     flex-basis: 100%;
     width: 100%;
-    margin-bottom: 1.5rem;
 }
 
 .hero-banner .button-container {
@@ -204,30 +201,17 @@
         object-position: unset;
     }
 
-    .hero-banner .hero-banner-heading-section {
-        padding-left: 1rem ;
-        padding-right: 1rem;
-        max-width: 54.5rem;
-    }
-
     .hero-banner .hero-banner-heading-container {
         position: absolute;
-        top: 20.5rem;
+        top: 28rem;
     }
 
     .hero-banner .hero-banner-text-container {
-        min-height: 16.125rem;
-        width: 50rem;
-        margin-bottom: -5.125rem;
-        flex-wrap: unset;
-        padding: unset;
-    }
-
-    .hero-banner .hero-banner-text-wrapper {
-        flex-basis: calc(100% - 11.625rem);
-        margin-bottom: unset;
-        width: unset;
-        padding-left: 2rem;
+        width: 100%;
+        background: var(--primary);
+        color: var(--white);
+        padding: 3rem 3rem 3rem 0;
+        position: relative;
     }
 
     .hero-banner .hero-banner-button-container a.button.primary {
@@ -254,16 +238,31 @@
         align-content: unset;
     }
 
+    .hero-banner .hero-banner-text-container::before {
+        content: "";
+        background: var(--primary);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 100%;
+    }    
+
     .hero-banner .hero-banner-button-container span {
         width: 100%;
         font-size: var(--heading-font-size-xxs);
         margin-left: unset;
     }
 
+    .hero-banner .hero-banner-heading-section {
+        max-width: 56.5rem;
+    }
+
     .hero-banner.overlap .hero-banner-heading-section {
         max-width: unset;
-        padding-left: unset;
         position: unset;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .hero-banner.overlap .hero-banner-heading-container {
@@ -321,22 +320,13 @@
 
 @media (min-width: 77rem) {
     .hero-banner .hero-banner-heading-section{
+        max-width: 75rem;
         padding-left: 0;
         padding-right: 0;
-        max-width: 75rem;
-    }
-
-    .hero-banner .hero-banner-text-container {
-        width: 63.75rem;
-        margin-bottom: -2rem;
     }
 
     .hero-banner.careers .hero-banner-text-container {
         width: 74rem;
-    }
-
-    .hero-banner .hero-banner-text-container::before {
-        content: none;
     }
 
     .hero-banner .button-container {

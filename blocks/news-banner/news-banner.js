@@ -1,4 +1,4 @@
-import { fetchIndex, getLanguage } from '../../scripts/scripts.js';
+import { getLanguage, queryIndex, fixExcelFilterZeroes } from '../../scripts/scripts.js';
 import { fetchPlaceholders, getFormattedDate } from '../../scripts/lib-franklin.js';
 
 function setNewsBanner(block, text, path, title, lm) {
@@ -15,20 +15,22 @@ function setNewsBanner(block, text, path, title, lm) {
 }
 
 export async function setLatestNewsArticle(block, placeholders) {
-  const json = await fetchIndex('query-index', `${getLanguage()}-search`);
+  const queryObj = await queryIndex(`${getLanguage()}-search`);
 
-  const result = json.data
-    .filter((entry) => entry.path.includes('/news/'))
-    .sort((x, y) => y.newsdate - x.newsdate);
+  const result = queryObj.where((el) => (el.path.includes('/newsroom/') || el.path.includes('/news/')) && el.publisheddate !== '0')
+    .orderByDescending((el) => el.publisheddate)
+    .toList();
+  fixExcelFilterZeroes(result);
 
   if (!result.length) {
     return;
   }
 
   const article = result[0];
-  const newsTitle = article.pagename || article.title || article.breadcrumbtitle;
+  const newsTitle = article.pagename || article.breadcrumbtitle || article.title;
+  const newsBannerHeadingText = placeholders[article.category] || placeholders.newstext;
 
-  setNewsBanner(block, placeholders.newstext, article.path, newsTitle, article.newsdate);
+  setNewsBanner(block, newsBannerHeadingText, article.path, newsTitle, article.publisheddate);
 }
 
 export default async function decorate(block) {

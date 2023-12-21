@@ -53,10 +53,10 @@ const createFragmentBlockFromSection = (document, url) => {
 
   const { pathname } = new URL(url);
   if (healthifyThinkingCard) {
-    block.push([`https://main--sunstar--hlxsites.hlx.page/${pathname.includes('jp') ? 'jp/' : ''}fragments/related-articles`]);
+    block.push([`https://main--sunstar-foundation--hlxsites.hlx.page/${pathname.includes('jp') ? 'jp/' : ''}fragments/related-articles`]);
     section = healthifyThinkingCard;
   } else if (newsPressCard) {
-    block.push([`https://main--sunstar--hlxsites.hlx.page/${pathname.includes('jp') ? 'jp/' : ''}fragments/featured-articles`]);
+    block.push([`https://main--sunstar-foundation--hlxsites.hlx.page/${pathname.includes('jp') ? 'jp/' : ''}fragments/featured-articles`]);
     section = newsPressCard;
   }
 
@@ -172,7 +172,7 @@ const remmoveNewsContactBar = (document) => {
   if (newsContactBar?.querySelector('.side-card')) {
     const block = [];
     block.push(['Fragment']);
-    block.push(['https://main--sunstar--hlxsites.hlx.page/fragments/press-contact-download-center']);
+    block.push(['https://main--sunstar-foundation--hlxsites.hlx.page/fragments/press-contact-download-center']);
     const table = WebImporter.DOMUtils.createTable(block, document);
     newsContactBar.before(document.createElement('hr'));
     newsContactBar.replaceWith(table);
@@ -308,14 +308,7 @@ export default {
         graphNode.forEach((node) => {
           const nodeType = node['@type'];
 
-          if (nodeType === 'BreadcrumbList' && node.itemListElement && node.itemListElement.length) {
-            const lastItem = node.itemListElement[node.itemListElement.length - 1];
-            const lastItemDetails = lastItem.item;
-
-            if (lastItemDetails) {
-              metadataDetails.PageName = lastItemDetails.name;
-            }
-          } else if (nodeType === 'WebPage' && (pathname.includes('/newsroom/') || pathname.includes('/healthy-thinking/')) && node.datePublished) {
+          if (nodeType === 'WebPage' && (pathname.includes('/newsroom/') || pathname.includes('/news/')) && node.datePublished) {
             metadataDetails.PublishedDate = new Date(node.datePublished).getTime();
           }
         });

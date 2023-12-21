@@ -29,7 +29,7 @@ const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP c
 // search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
 const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
-const LANGUAGES = new Set(['en', 'ja']);
+const LANGUAGES = new Set(['en', 'jp']);
 
 const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
 export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_SEGMENT}"]`;
@@ -56,7 +56,7 @@ export function getLanguageFromPath(pathname, resetCache = false) {
   }
 
   if (language === undefined) {
-    language = 'ja'; // default to Japanese
+    language = 'jp'; // default to Japanese
   }
 
   return language;
@@ -68,7 +68,7 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
 
 export function getLanguangeSpecificPath(path) {
   const lang = getLanguage();
-  if (lang === 'en') return path;
+  if (lang === 'jp') return path;
   return `/${lang}${path}`;
 }
 
@@ -108,10 +108,28 @@ function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
   const captionText = caption.textContent;
   const captionP = document.createElement('p');
   captionP.innerHTML = captionText;
+  captionP.classList.add('image-caption');
   caption.remove();
   const newBlock = buildBlockFunction('image-collage', { elems: [picture, captionP] });
   newBlock.classList.add('boxy-col-1');
   return newBlock;
+}
+
+function formatAutoblockedImageCaptionsForColumns(block, enclosingDiv) {
+  const picture = block.querySelector('picture');
+  const caption = block.querySelector('p');
+  const blockClassList = block.classList;
+  const columnDiv = document.createElement('div');
+
+  if (enclosingDiv.parentElement?.classList?.contains('columns') || enclosingDiv.parentElement?.parentElement?.classList?.contains('columns')) {
+    columnDiv.classList = blockClassList;
+    columnDiv.classList.add('img-col');
+    columnDiv.appendChild(picture);
+    columnDiv.appendChild(caption);
+
+    enclosingDiv.classList.add('img-col-wrapper');
+    enclosingDiv.replaceChild(columnDiv, block);
+  }
 }
 
 function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
@@ -143,6 +161,8 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         }
         // insert the new block at the position the old image was at
         enclosingDiv.replaceChild(newBlock, parentP);
+
+        formatAutoblockedImageCaptionsForColumns(newBlock, enclosingDiv);
         return;
       }
 
@@ -160,6 +180,7 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
         newBlock.classList.add('autoblocked');
         enclosingDiv.replaceChild(newBlock, parentP);
+        formatAutoblockedImageCaptionsForColumns(newBlock, enclosingDiv);
         return;
       }
     }
@@ -180,11 +201,28 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
 }
 
 /**
+ * Adding breadcrumb block if its not present in doc
+ * @param {*} main
+ */
+export function buildBreadcrumbBlock(main) {
+  const noBreadcrumb = getMetadata('nobreadcrumb');
+  const alreadyBreadcrumb = document.querySelector('.breadcrumb');
+
+  if ((!noBreadcrumb || noBreadcrumb === 'false') && !alreadyBreadcrumb && !isInternalPage()) {
+    const section = document.createElement('div');
+    const blockEl = buildBlock('breadcrumb', { elems: [] });
+    section.append(blockEl);
+    main.prepend(section);
+  }
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    buildBreadcrumbBlock(main);
     buildHeroBlock(main);
     buildModalFragmentBlock(main);
     buildImageWithCaptionBlocks(main, buildBlock);
@@ -563,10 +601,10 @@ export function getNamedValueFromTable(block, name) {
 */
 export function getEnvType(hostname = window.location.hostname) {
   const fqdnToEnvType = {
-    'sunstar.com': 'live',
-    'www.sunstar.com': 'live',
-    'main--sunstar--hlxsites.hlx.page': 'preview',
-    'main--sunstar--hlxsites.hlx.live': 'live',
+    'sunstar-foundation.org': 'live',
+    'www.sunstar-foundation.org': 'live',
+    'main--sunstar-foundation--hlxsites.hlx.page': 'preview',
+    'main--sunstar-foundation--hlxsites.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }
@@ -785,6 +823,17 @@ export function cropString(inputString, maxLength) {
   }
 
   return croppedString;
+}
+
+export function getViewPort() {
+  const { width } = getWindowSize();
+  if (width >= 1232) {
+    return 'desktop';
+  }
+  if (width >= 992) {
+    return 'tablet';
+  }
+  return 'mobile';
 }
 
 if (!window.noload) { loadPage(); }
