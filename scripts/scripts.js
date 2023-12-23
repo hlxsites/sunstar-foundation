@@ -31,7 +31,7 @@ const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
 const LANGUAGES = new Set(['en', 'jp']);
 
-const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
+export const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
 export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_SEGMENT}"]`;
 
 let language;
@@ -108,10 +108,28 @@ function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
   const captionText = caption.textContent;
   const captionP = document.createElement('p');
   captionP.innerHTML = captionText;
+  captionP.classList.add('image-caption');
   caption.remove();
   const newBlock = buildBlockFunction('image-collage', { elems: [picture, captionP] });
   newBlock.classList.add('boxy-col-1');
   return newBlock;
+}
+
+function formatAutoblockedImageCaptionsForColumns(block, enclosingDiv) {
+  const picture = block.querySelector('picture');
+  const caption = block.querySelector('p');
+  const blockClassList = block.classList;
+  const columnDiv = document.createElement('div');
+
+  if (enclosingDiv.parentElement?.classList?.contains('columns') || enclosingDiv.parentElement?.parentElement?.classList?.contains('columns')) {
+    columnDiv.classList = blockClassList;
+    columnDiv.classList.add('img-col');
+    columnDiv.appendChild(picture);
+    columnDiv.appendChild(caption);
+
+    enclosingDiv.classList.add('img-col-wrapper');
+    enclosingDiv.replaceChild(columnDiv, block);
+  }
 }
 
 function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
@@ -143,6 +161,8 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         }
         // insert the new block at the position the old image was at
         enclosingDiv.replaceChild(newBlock, parentP);
+
+        formatAutoblockedImageCaptionsForColumns(newBlock, enclosingDiv);
         return;
       }
 
@@ -160,6 +180,7 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
         newBlock.classList.add('autoblocked');
         enclosingDiv.replaceChild(newBlock, parentP);
+        formatAutoblockedImageCaptionsForColumns(newBlock, enclosingDiv);
         return;
       }
     }
@@ -299,7 +320,7 @@ export function getWindowSize() {
  * we break out of the loop to not add spacing to other sections as well.
  */
 export function addTopSpacingStyleToFirstMatchingSection(main) {
-  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container'];
+  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container', 'no-margin-top'];
   const sections = [...main.querySelectorAll(':scope > div')];
   let added = false;
 
@@ -614,6 +635,52 @@ export async function loadScript(url, attrs = {}) {
   document.head.append(script);
   return loadingPromise;
 }
+
+export const handleModalClick = async (a, modalFragmentBlock) => {
+  a.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const target = e.currentTarget.parentElement.querySelector('a');
+    if (!target) return;
+    const { path } = target.dataset;
+    const modalId = target.dataset.modal;
+    const elem = document.getElementById(modalId);
+    const hasSearchParam = (target.dataset.hasSearchParam === 'true');
+
+    if (!elem || e.target.dataset.hasSearchParam) {
+      if (hasSearchParam) modalFragmentBlock.innerHTML = '';
+      const wrapper = document.createElement('div');
+      wrapper.className = 'modal-wrapper';
+      wrapper.id = modalId;
+      wrapper.dataset.url = target.dataset.url;
+
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.innerHTML = '<div class="modal-close"></div>';
+      const modalContent = document.createElement('div');
+      modalContent.classList.add('modal-content');
+      modal.append(modalContent);
+
+      if (path) {
+        const fragment = await loadFragment(path);
+        const formTitleEl = fragment.querySelector('h2');
+        if (formTitleEl) formTitleEl.outerHTML = `<div class="modal-form-title typ-title1">${formTitleEl.innerHTML}</div>`;
+        const formSubTitleEl = fragment.querySelector('h3');
+        if (formSubTitleEl) formSubTitleEl.outerHTML = `<p class="modal-form-subtitle">${formSubTitleEl.innerHTML}</p>`;
+        modalContent.append(fragment);
+      }
+
+      wrapper.append(modal);
+      modalFragmentBlock.append(wrapper);
+      wrapper.classList.add('visible');
+      const close = modal.querySelector('.modal-close');
+      close.addEventListener('click', () => {
+        wrapper.remove();
+      });
+    } else {
+      elem.classList.add('visible');
+    }
+  });
+};
 
 /**
  * Shuffles the contents of any array.

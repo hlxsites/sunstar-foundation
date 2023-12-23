@@ -40,7 +40,8 @@
   margin-bottom: 1.25rem;
 }
 
-.columns:not(.native-image-sizes) img {
+.columns:not(.native-image-sizes) img,
+.columns:not(.native-image-sizes) div.image-collage.autoblocked {
   width: 100%;
 }
 
@@ -61,31 +62,8 @@
   font-size: var(--heading-font-size-ms);
 }
 
-.columns.history h6 {
-  color: var(--transparent-grey-color-2);
-  font-size: var(--heading-font-size-mxs);
-  font-weight: var(--font-weight-medium);
-  margin: 0 0 1rem;
-}
-
-.columns.history strong {
-  font-size: var(--heading-font-size-ms);
-}
-
 .columns.plain-links a.button {
   padding: 0;
-}
-
-.columns.history > div {
-  align-items: center;
-}
-
-.columns p.button-container {
-  display: inline;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 1rem;
-  width: 11rem;
 }
 
 .columns a.button.tertiary {
@@ -129,14 +107,6 @@
   margin-top: 0;
 }
 
-.columns.history h2 {
-  border-bottom: 1px solid var(--primary);
-  margin-inline: 0;
-  margin-bottom: 1rem;
-  font-size: var(--heading-font-size-xl);
-  font-weight: var(--font-weight-small);
-}
-
 .columns.crop-image > div {
   align-items: stretch;
 }
@@ -177,7 +147,6 @@
   font-size: var(--body-font-size-l);
 }
 
-.columns.history.invert-image-order-in-narrow-view > div,
 .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
   flex-direction: column-reverse;
 }
@@ -252,52 +221,29 @@
   object-fit: cover;
 }
 
-.columns:not(.history,.no-padding) > div div.non-singleton-img {
+.columns:not(.no-padding) > div div.non-singleton-img {
   margin: 0 1rem;
 }
 
-/* both autoblocking options for bottom caption */
-.columns.history div.image-collage.autoblocked picture ~ em,
-.columns.history div.image-collage.autoblocked picture ~ p {
+.columns div.image-collage.autoblocked picture ~ *.image-caption {
   color: var(--steel-blue);
   font-size: var(--body-font-size-s);
   margin: 1rem 0;
-  text-align: center;
-}
-
-
-.columns.history
-  div.image-collage.autoblocked
-  div.text-col:last-of-type,
-.columns.history
-  div.image-collage.autoblocked
-  div.img-col:last-of-type {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.columns.history
-  div.image-collage.autoblocked
-  div.text-col:last-of-type
-  picture,
-.columns.history
-  div.image-collage.autoblocked
-  div.img-col:last-of-type
-  picture {
-  margin: 0 auto 2rem;
 }
 
 div.img-col > video {
   width: 100%;
 }
 
-@media (min-width: 62rem) {
-  .columns.top-down.collapse > div {
-    gap: 1.5rem;
-  }
+.columns p.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
+
+.columns.centre-buttons p.button-container {
+  justify-content: center;
+} 
 
 .columns.collapse.top-down.columns-2-cols {
   max-width: 100%;
@@ -317,7 +263,9 @@ div.img-col > video {
   width: 100%;
 }
 
-.columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
+.columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col),
+.columns:not(.no-padding) > div.img-col-wrapper > div.image-collage.autoblocked,
+.columns:not(.no-padding) > div > div.img-col-wrapper {
   padding: 0 1rem;
 }
 
@@ -325,12 +273,9 @@ div.img-col > video {
   margin-top: 3rem;
 }
 
-  .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation)
-    > div
-    > div:first-child {
-    margin-top: 0;
-  }
-
+.columns.plain-links.collapse.collapse-without-top-margin:not(.continuation) > div > div:first-child {
+  margin-top: 0;
+}
 
 .columns.plain-links.collapse > div h6::after, .columns.plain-text.collapse > div h6::after {
   content: "";
@@ -415,192 +360,6 @@ div.img-col > video {
   padding: 2rem 0;
 }
 
-@media (min-width: 62rem) {
-  .columns h2,
-  .columns:not(.no-buttons) h3,
-  .columns:not(.no-buttons) h4 {
-    font-size: var(--heading-font-size-ml);
-    font-weight: var(--font-weight-small);
-    margin: 0 auto 1.5rem;
-  }
-
-  .columns h6 {
-    margin-top: unset;
-  }
-
-  .columns > div {
-    flex-direction: unset;
-    align-items: center;
-    gap: 3rem;
-    margin-bottom: 7.5rem;
-  }
-
-
-
-  .columns p.button-container {
-    flex-direction: row;
-    align-items: center;
-    gap: 2rem;
-    width: unset;
-  }
-
-  .columns a.button.primary {
-    min-width: 11rem;
-  }
-
-  .collapse > div {
-    flex-direction: column;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-    flex-basis: 50%;
-  }
-
-  .columns.flex-start > div {
-    flex-direction: unset;
-    align-items: flex-start;
-    gap: 3rem;
-    margin-bottom: 5rem;
-  }
-
-  .columns.small-margin > div {
-    margin-bottom: 1.5rem;
-  }
-
-  .columns.history picture {
-    margin: 0 auto 2rem;
-  }
-
-  .columns.history picture:last-child {
-    margin: 0 auto;
-  }
-
-  /* picture in column with text */
-  .columns.history p ~ div > div.image-collage.autoblocked picture {
-    display: table;
-    width: 100%;
-  }
-
-  .columns > div .img-col {
-    order: unset;
-  }
-
-  .columns.history > div {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
-  }
-
-  .columns.invert-image-order-in-narrow-view > div .img-col,
-  .columns.invert-even-col-in-narrow-view > div:nth-child(even) .img-col {
-    order: unset;
-  }
-
-  .columns.plain-links > div a {
-    font-size: var(--body-font-size-m);
-    line-height: 1.2;
-  }
-
-  .columns.plain-links.collapse ul, .columns.plain-text.collapse p {
-    display: none;
-  }
-
-  .columns:not(.history, .text-and-image-in-column) .text-col-wrapper img:not(.video-modal) {
-    height: 3.125rem;
-    width: unset;
-  }
-
-  .columns-container.backgroundimage {
-    position: relative;
-  }
-
-  .columns-container.backgroundimage .section-container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .columns-container.backgroundimage .backgroundimage {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 30rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-
-  /* Column styles - Machine parts */
-  main .block.columns.machine-parts > div {
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  main .block.columns.machine-parts .img-col {
-    flex: auto;
-    flex-basis: auto;
-  }
-
-  main .block.columns.machine-parts .text-col h1,
-  main .block.columns.machine-parts .text-col h2,
-  main .block.columns.machine-parts .text-col h3,
-  main .block.columns.machine-parts .text-col h4,
-  main .block.columns.machine-parts .text-col h5,
-  main .block.columns.machine-parts .text-col h6 {
-    text-align: left;
-    text-transform: none;
-  }
-
-  main .block.columns.machine-parts .text-col p {
-    margin-bottom: 1.5rem;
-  }
-
-  main .block.columns.machine-parts .text-col h6 {
-    font-size: var(--heading-font-size-xs);
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-    color: var(--light-black);
-  }
-
-  main .block.columns.machine-parts .text-col a {
-    margin-bottom: 14px;
-    line-height: 1;
-    display: inline-block;
-    width: 100%;
-    font-weight: 500;
-    font-size: var(--body-font-size-m);
-    text-decoration: none;
-  }
-
-  main .block.columns.machine-parts .text-col a > strong {
-    color: var(--light-black);
-    margin-right: 1rem;
-  }
-
-  main .columns.history.invert-image-order-in-narrow-view > div,
-  main .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
-    flex-direction: row;
-  }
-
-  div.img-col > video {
-    height: 337px;
-    width: 337px;
-  }
-
-  .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
-    padding: 1rem 0;
-  }
-}
-
-@media (min-width: 77rem) {
-  div.img-col > video {
-    height: 469px;
-    width: 469px;
-  }
-}
-
 /* Text-image overlap View */
 .columns.text-and-image-in-column.overlap em a {
   display: inline-flex;
@@ -648,6 +407,122 @@ div.img-col > video {
 }
 
 @media (min-width: 62rem) {
+  .columns h2,
+  .columns:not(.no-buttons) h3,
+  .columns:not(.no-buttons) h4 {
+    font-size: var(--heading-font-size-ml);
+    font-weight: var(--font-weight-small);
+    margin: 0 auto 1.5rem;
+  }
+
+  .columns h6 {
+    margin-top: unset;
+  }
+
+  .columns > div {
+    flex-direction: unset;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 7.5rem;
+  }
+
+  .collapse > div {
+    flex-direction: column;
+  }
+
+  .columns p.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    width: unset;
+  }
+
+  .columns.centre-buttons p.button-container {
+    align-items: center;
+    flex-direction: row;
+  } 
+
+  .columns a.button.primary {
+    min-width: 11rem;
+  }
+
+  .columns > div > div {
+    flex: 1;
+    order: unset;
+    flex-basis: 50%;
+  }
+
+  .columns.flex-start > div {
+    flex-direction: unset;
+    align-items: flex-start;
+    gap: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  .columns.small-margin > div {
+    margin-bottom: 1.5rem;
+  }
+
+  .columns.top-down.collapse > div {
+    gap: 1.5rem;
+  }
+
+  .columns > div .img-col {
+    order: unset;
+  }
+
+  .columns.invert-image-order-in-narrow-view > div .img-col,
+  .columns.invert-even-col-in-narrow-view > div:nth-child(even) .img-col {
+    order: unset;
+  }
+
+  .columns.plain-links > div a {
+    font-size: var(--body-font-size-m);
+    line-height: 1.2;
+  }
+
+  .columns.plain-links.collapse ul, .columns.plain-text.collapse p {
+    display: none;
+  }
+
+  .columns:not(.text-and-image-in-column) .text-col-wrapper img:not(.video-modal) {
+    height: 3.125rem;
+    width: unset;
+  }
+
+  .columns-container.backgroundimage {
+    position: relative;
+  }
+
+  .columns-container.backgroundimage .section-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .columns-container.backgroundimage .backgroundimage {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 30rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  main .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
+    flex-direction: row;
+  }
+
+  div.img-col > video {
+    height: 337px;
+    width: 337px;
+  }
+
+  .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
+    padding: 1rem 0;
+  }
+
   .columns.text-and-image-in-column.overlap .button-container a {
     font-size: var(--body-font-size-xl);
     margin: 0 1rem;
@@ -660,5 +535,19 @@ div.img-col > video {
   .columns :not(.table) h3 {
     font-size: var(--heading-font-size-m);
   }
+}
 
+@media (min-width: 77rem) {
+  div.img-col > video {
+    height: 469px;
+    width: 469px;
+  }
+
+  .columns p.button-container {
+    display: flex;
+    align-items: flex-start;
+    flex-flow: row wrap;
+    gap: 1rem;
+    width: 100%;
+  }
 }

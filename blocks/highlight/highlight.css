@@ -14,6 +14,26 @@
   flex: 1;
 }
 
+.block.highlight.featured > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--button-text-color);
+}
+
+.block.highlight.featured > div > div {
+  flex-basis: 70%;
+  margin: 1rem;
+}
+
+.block.highlight.featured > div:first-child {
+  flex: 1;
+}
+
+.block.highlight.featured > div:last-child {
+  flex: 0;
+}
+
 .block.highlight .date {
   font-size: var(--body-font-size-xs);
   font-weight: var(--font-weight-medium);
@@ -26,6 +46,11 @@
   font-weight: var(--font-weight-bold);
   padding-bottom: 0.5rem;
   text-decoration: none;
+}
+
+.block.highlight.featured .title {
+  color: var(--button-text-color);
+  font-size: var(--body-font-size-xl);
 }
 
 .block.highlight a:hover .title {
@@ -56,6 +81,10 @@
   position: relative;
 }
 
+.block.highlight.featured img {
+  width: 100%;
+}
+
 .block.highlight > .others picture > img {
   width: 100%; /* Cover the full width of the container */
   height: 100%; /* Cover the full height of the container */
@@ -63,6 +92,21 @@
   position: absolute; /* Position the image absolutely inside the container */
   top: 0;
   left: 0;
+}
+
+.block.highlight.featured h5 {
+  padding-top: 0;
+  color: var(--hero-strong-color);
+  font-size: var(--heading-font-size-xxs);
+}
+
+.section.no-margin-top.feed-container.highlight-container .text.block h1 {
+  padding-top: 0;
+  margin-left: 1rem;
+}
+
+.block.highlight.featured .date {
+  margin-top: 2rem;
 }
 
 @media (min-width: 62rem) {
@@ -81,4 +125,38 @@
   .block.highlight > .others > .other {
     flex-direction: row;
   }
+
+  .block.highlight.featured > div {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    color: var(--button-text-color);
+  }
+
+  .block.highlight.featured > div > div:first-of-type {
+    flex-basis: 80%;
+  }
+
+  .block.highlight.featured > div > div:last-of-type {
+    flex-basis: 100%;
+  }
+
+}
+
+@media (min-width: 77rem) {
+  .block.highlight.featured > div {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      color: var(--button-text-color);
+  }
+
+  .block.highlight.featured > div > div:first-of-type {
+      flex-basis: 60%;
+  }
+
+  .block.highlight.featured > div > div:last-of-type {
+      flex-basis: 100%;
+  }
+
 }

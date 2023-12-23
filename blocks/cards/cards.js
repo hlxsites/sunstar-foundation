@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
-import { cropString } from '../../scripts/scripts.js';
+import { cropString, handleModalClick, MODAL_FRAGMENTS_PATH_SEGMENT } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   /* change to ul, li */
@@ -44,6 +44,11 @@ export default function decorate(block) {
       [...a.children].forEach(addCardChildrenClasses);
     } else {
       [...li.children].forEach(addCardChildrenClasses);
+    }
+
+    const isModalFragmentAvailable = document.querySelector('.modal-fragment') !== null;
+    if (a?.dataset?.path?.startsWith(MODAL_FRAGMENTS_PATH_SEGMENT) && isModalFragmentAvailable) {
+      handleModalClick(a, document.querySelector('.modal-fragment'));
     }
 
     const title = li.querySelector('.title');
