@@ -200,6 +200,26 @@ main .nolink .cards.info-points > ul > li .cards-card-image {
   border: none;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+main .cards.video-modal .cards-card-image {
+  position: relative;
+}
+
+main .cards.video-modal .cards-card-image::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 5.25rem;
+  width: 5.25rem;
+  background-image: url("../../icons/play.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-width: auto;
+}
+
 @media screen and (min-width: 48rem) {
   .cards > ul > li {
     margin: 0 7px;
@@ -208,7 +228,7 @@ main .nolink .cards.info-points > ul > li .cards-card-image {
   }
 
   .cards > ul > li:nth-child(n + 5) {
-    margin-top: 1rem; 
+    margin-top: 1rem;
   }
 
   .cards.grid > ul > li {
@@ -322,7 +342,7 @@ main .nolink .cards.info-points > ul > li .cards-card-image {
   }
 
   .cards > ul > li:nth-of-type(n + 5) {
-    margin-top: 1rem; 
+    margin-top: 1rem;
   }
 
   .cards > ul > li > a.button {
