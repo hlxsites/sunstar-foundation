@@ -1,16 +1,23 @@
 import { decorateRenderHints } from '../../scripts/lib-franklin.js';
 
-function decorateAnchors(row) {
+function decorateAnchors(block, row) {
   const anchors = row.querySelectorAll('a');
+
   if (anchors.length) {
-    [...anchors].forEach((a) => {
+    [...anchors].forEach((a, index) => {
       a.title = a.title || a.textContent;
       const up = a.parentElement;
+
       if (up.tagName === 'P') {
         up.classList.add('button-container');
       }
-      a.classList.add('tertiary');
-      a.classList.remove('primary');
+
+      if (block.classList.contains('first-link-primary') && index === 0) {
+        a.classList.add('primary'); // Add 'primary' class only to the first 'a' if block has 'primary-link'
+      } else {
+        a.classList.add('tertiary');
+        a.classList.remove('primary');
+      }
     });
   }
 }
@@ -63,7 +70,7 @@ export default function decorate(block) {
     row.classList.add('overlapping-content-item');
     injectItemWidthVar(row);
     decorateImgContainer(row);
-    decorateAnchors(row);
+    decorateAnchors(block, row);
     injectBackgroundDivForText(row);
   });
 }

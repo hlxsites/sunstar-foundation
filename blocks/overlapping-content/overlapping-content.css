@@ -2,6 +2,30 @@
   margin: 5rem 0;
 }
 
+.overlapping-content.white-link a {
+  color: var(--white);
+}
+
+.overlapping-content.white-link .icon-link-white {
+  height: 1.125rem;
+  width: 1.125rem;
+  background-image: url("../../icons/link-white.svg");
+  margin-left: 0.125rem;
+  vertical-align: middle;
+  margin-bottom: 0.313rem;
+}
+
+.overlapping-content.white-link .icon-link-white svg, .overlapping-content.white-link .icon-download svg {
+  display: none;
+}
+
+.overlapping-content.white-link .icon-download {
+  content: url("../../icons/download.svg");
+  position: relative;
+  left: 0.3rem;
+  top: 0.05rem;
+}
+
 .overlapping-content .overlapping-content-item {
   margin: auto 1rem;
 }
