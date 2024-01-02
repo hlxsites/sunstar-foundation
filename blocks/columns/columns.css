@@ -520,4 +520,8 @@ div.img-col > video {
     gap: 1rem;
     width: 100%;
   }
+
+  .columns.centered p.button-container{
+    justify-content: center;
+  }
 }
