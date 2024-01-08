@@ -141,9 +141,13 @@ export default function decorate(block) {
           anchor.classList.add('video-modal');
           anchor.appendChild(picture);
 
-          // remove empty paragraphs
+          // remove empty paragraphs but keeping any kind of immediate label for that Video intact
           col.querySelectorAll('p').forEach((p) => {
-            if (!p.querySelector('a')) {
+            if (p.previousElementSibling) {
+              if (!p.previousElementSibling.querySelector('a') && (!p.querySelector('a'))) {
+                p.remove();
+              }
+            } else if (!p.querySelector('a')) {
               p.remove();
             }
           });
