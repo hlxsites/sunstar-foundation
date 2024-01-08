@@ -16,13 +16,6 @@
       window.location.replace(newLoc);
     }
 
-    // If the URL requested is /en/... redirect to /...
-    if (window.location.href.includes('/en')) {
-      window.stop(); // Stop processing this page, make sure no 404 rendering is done
-      const newLoc = window.location.href.replace('/en', '');
-      window.location.replace(newLoc);
-    }
-
 		/**
 		* * Redirecting all newsroom pages and healthy thinking pages
 		*/
