@@ -78,7 +78,6 @@ main .block.cards {
   margin: 0 auto;
   text-align: left;
   color: var(--light-black);
-  padding: 20px;
 }
 
 .cards.grantscard .cards-card-body{
@@ -212,8 +211,7 @@ main .cards.grantscard .cards-card-image {
 }
 
 main .cards.grantscard .cards-card-body {
-  width: auto;
-  padding: 1.5rem 1rem;
+  width: 100%;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -476,6 +474,11 @@ main .cards.video-modal .cards-card-image::after {
 
   .cards .cards-card-body {
     font-size: 1rem;
+    padding: 20px;
+  }
+
+  .cards.grantscard .cards-card-body {
+    padding: 1.5rem 1rem;
   }
 
   main .cards.info-points .cards-card-body * {
