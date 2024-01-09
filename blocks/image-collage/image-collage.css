@@ -41,6 +41,16 @@ main .image-collage[class*='boxy-col-']>div>div:first-of-type {
   padding-bottom: 0;
 }
 
+main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
+  height: 12.625rem;
+  overflow: hidden;
+}
+
+main .image-collage[class*='boxy-col-']:not(.autoblocked) h4 {
+  color: var(--primary);
+  font-size: var(--heading-font-size-ms);
+}
+
 main .image-collage img {
   width: calc(100vw - 2rem);
 }
@@ -183,6 +193,10 @@ image-collage.medium {
   main .image-collage.boxy-col-3.no-center {
     justify-content: normal;
   }
+
+  main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
+    height: 9.125rem;
+  }
 }
 
 @media (min-width: 62rem) {
@@ -223,5 +237,11 @@ image-collage.medium {
 
   main .center-content.block {
     margin: 1rem;
+  }
+}
+
+@media (min-width: 77rem) {
+  main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
+    height: 12.625rem;
   }
 }
