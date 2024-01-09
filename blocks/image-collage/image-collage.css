@@ -36,10 +36,6 @@ main .image-collage[class*='boxy-col-'].image-with-title-caption h3 {
   color: var(--primary);
 }
 
-main .image-collage[class*='boxy-col-'].image-with-title-caption>div>div:first-of-type p {
-  margin-bottom: 0;
-}
-
 main .image-collage[class*='boxy-col-']>div>div:first-of-type {
   padding-top: 0;
   padding-bottom: 0;
@@ -71,7 +67,11 @@ main .image-collage.boxy-col-1.zoom-in::after {
 
 main .image-collage * {
   font-size: var(--font-size-small);
-  color: #6D757C;
+  color: var(--light-black);
+}
+
+main .image-collage.image-with-title-caption>div>div:first-of-type>p {
+  margin-bottom: 0;
 }
 
 main .image-collage .image-caption {
@@ -116,22 +116,6 @@ image-collage.medium {
 }
 
 @media (min-width: 36rem) {
-  main .image-collage.boxy-col-3 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  main .image-collage.boxy-col-3.no-center {
-    justify-content: normal;
-  }
-
-  main .image-collage.boxy-col-3>div {
-    flex: 0 0 calc(100% / 2 - 2rem);
-  }
-}
-
-@media (min-width: 62rem) {
   main .image-collage {
     columns: 2;
     padding: unset;
@@ -150,7 +134,7 @@ image-collage.medium {
   main .image-collage.boxy-col-1::after,
   main .image-collage.boxy-col-2::after {
     content: "";
-    flex: 0 0 calc(100% / 2 - 2rem);
+    flex: 0 0 calc(100% / 2);
   }
 
   main .image-collage.centered.boxy-col-1::after {
@@ -160,16 +144,16 @@ image-collage.medium {
 
   main .image-collage.boxy-col-3::after {
     content: "";
-    flex: 0 0 calc(100% / 3 - 2rem);
+    flex: 0 0 calc(100% / 3);
   }
 
   main .image-collage.boxy-col-1>div,
   main .image-collage.boxy-col-2>div {
-    flex: 0 0 calc(100% / 2 - 2rem);
+    flex: 0 0 calc(100% / 2);
   }
 
   main .image-collage.boxy-col-3>div {
-    flex: 0 0 calc(100% / 3 - 2rem);
+    flex: 0 0 calc(100% / 3);
   }
 
   main .image-collage[class*='boxy-col-']>div {
@@ -194,6 +178,32 @@ image-collage.medium {
 
   main .image-collage[class*='boxy-col-']>div>div:first-of-type {
     padding: unset;
+  }
+
+  main .image-collage.boxy-col-3.no-center {
+    justify-content: normal;
+  }
+}
+
+@media (min-width: 62rem) {
+  main .image-collage.boxy-col-1::after,
+  main .image-collage.boxy-col-2::after {
+    content: "";
+    flex: 0 0 calc(100% / 2 - 2rem);
+  }
+
+  main .image-collage.boxy-col-3::after {
+    content: "";
+    flex: 0 0 calc(100% / 3 - 2rem);
+  }
+
+  main .image-collage.boxy-col-1>div,
+  main .image-collage.boxy-col-2>div {
+    flex: 0 0 calc(100% / 2 - 2rem);
+  }
+
+  main .image-collage.boxy-col-3>div {
+    flex: 0 0 calc(100% / 3 - 2rem);
   }
 }
 
