@@ -81,6 +81,11 @@ main .block.cards {
   padding: 20px;
 }
 
+.cards.grantscard .cards-card-body{
+  margin: revert;
+}
+
+
 .cards.video-modal .cards-card-body {
   text-align: center;
 }
@@ -262,6 +267,7 @@ main .cards.grantscard .cards-card-body a > strong {
 main .cards.grantscard ul > li {
   padding: 0;
   box-shadow: none;
+  display: flex;
 }
 
 main .nolink .cards > ul > li .cards-card-image {
@@ -292,8 +298,9 @@ main .cards-wrapper .grantscard .cards-card-body h3{
   padding-bottom: 1rem;
 }
 
-.cards.nolink.no-buttons.grantscard.block > ul{
+.cards.nolink.no-buttons.grantscard.block > ul {
   flex-flow: column;
+}
 
 /* stylelint-disable-next-line no-descending-specificity */
 main .cards.video-modal .cards-card-image {
