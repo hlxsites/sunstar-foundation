@@ -1,3 +1,13 @@
+main .table.block.inner-table span.icon {
+    width: 70px;
+    height: auto;
+}
+
+main .table.block.inner-table img {
+    height: 80px;
+    width: auto;
+}
+
 main .table.block h3.table-title {
     font-size: 1rem;
     margin-bottom: 0.5rem;
@@ -28,13 +38,6 @@ main .section .table.block p.table-annotation {
     margin-bottom: 1.5rem;
 }
 
-main .section .table.inner-table img {
-    vertical-align: middle;
-    border-style: none;
-    width: 9.375rem;
-    max-width: unset;
-}
-
 main .table.inner-table table {
     background-color: var(--white);
     border-collapse: collapse;
@@ -58,7 +61,7 @@ main .table.inner-table table td {
     line-height: 1.7em;
     text-align: center;
     padding: 0.5em 1em;
-    border: 1px solid var(--transparent-grey-light-color);
+    border-bottom: 1px solid var(--transparent-grey-light-color);
     vertical-align: middle;
 }
 
@@ -110,28 +113,6 @@ main .multiple-table .flat-table {
     min-width: 0;
     word-break: break-word;
     overflow-wrap: break-word;
-}
-
-@media (min-width: 62rem) {
-    main .multiple-table {
-        display: flex;
-        flex-flow: row nowrap;
-    }
-
-    main .table .table-item {
-        display: inline-grid;
-        grid-auto-flow: row;
-        grid-template-columns: repeat(var(--col), auto);
-        grid-template-rows: repeat(var(--row), auto);
-    }
-
-    main .table .table-item .table-head {
-        text-align: center;
-    }
-
-    main .section .table.block p.table-annotation {
-        margin-bottom: 2rem;
-    }
 }
 
 /* Text Table varient */
@@ -200,18 +181,20 @@ main .table.text-table table tr td a .icon {
     width: 1.5em;
 }
 
+main .table.inner-table table tr td {
+    text-align: left;
+}
+
 main .table.text-table table tr td:first-child {
     color: var(--transparent-grey-color);
     font-size: var(--body-font-size-m);
     line-height: 1.5rem;
 }
 
-main .table.inner-table table tbody tr:first-of-type {
-    background: var(--transparent-blue-light-color);
-}
-
-main .table.inner-table.lastline-leftalign table tr:last-of-type td {
-    text-align: left;
+main .table.inner-table table tr td:first-child {
+    flex-basis: 10rem;
+    flex-grow: 0;
+    text-align: center;
 }
 
 main .table.block .table-title h4 {
@@ -219,6 +202,26 @@ main .table.block .table-title h4 {
 }
 
 @media (min-width: 62rem) {
+    main .multiple-table {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    main .table .table-item {
+        display: inline-grid;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(var(--col), auto);
+        grid-template-rows: repeat(var(--row), auto);
+    }
+
+    main .table .table-item .table-head {
+        text-align: center;
+    }
+
+    main .section .table.block p.table-annotation {
+        margin-bottom: 2rem;
+    }
+
     main .table.text-table table tr {
         flex-direction: row;
     }
