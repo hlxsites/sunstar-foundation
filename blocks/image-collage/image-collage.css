@@ -31,14 +31,17 @@ main .image-collage[class*='boxy-col-'].image-with-title > div {
   flex-basis: calc(50% - 16px);
 }
 
-main .image-collage[class*='boxy-col-']>div>div:first-of-type {
+main .image-collage[class*='boxy-col-'] > div > div:first-of-type {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
   height: 12.625rem;
   overflow: hidden;
 }
 
-main .image-collage[class*='boxy-col-'] h4 {
+main .image-collage[class*='boxy-col-']:not(.autoblocked) h4 {
   color: var(--primary);
   font-size: var(--heading-font-size-ms);
 }
@@ -174,8 +177,11 @@ image-collage.medium {
     flex: unset;
   }
 
-  main .image-collage[class*='boxy-col-']>div>div:first-of-type {
+  main .image-collage[class*='boxy-col-'] > div > div:first-of-type {
     padding: unset;
+  }
+
+  main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
     height: 9.125rem;
   }
 }
@@ -200,7 +206,7 @@ image-collage.medium {
 }
 
 @media (min-width: 77rem) {
-  main .image-collage[class*='boxy-col-']>div>div:first-of-type {
+  main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
     height: 12.625rem;
   }
 }
