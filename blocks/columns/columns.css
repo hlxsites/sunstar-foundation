@@ -307,10 +307,6 @@ div.img-col > video {
   color: var(--secondary);
 }
 
-.columns  > div > div p.button-container a {
-  margin-bottom: 3rem;
-}
-
 /* stylelint-disable-next-line no-descending-specificity */
 .columns.plain-text > div > div {
   font-size: var(--body-font-size-s);

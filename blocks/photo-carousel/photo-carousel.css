@@ -60,8 +60,10 @@
   }
 
   .photo-carousel .photo-slides img {
-    width: 900px;
-    height: 600px;
+    min-width: 900px;
+    max-width: 900px;
+    min-height: 600px;
+    max-height: 600px;
   }
 
   .photo-carousel .photo-button {

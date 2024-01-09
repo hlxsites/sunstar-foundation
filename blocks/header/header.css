@@ -611,7 +611,7 @@ header .mega-container .left-content-container .mega-sub-menu .subtitle {
 }
 
 header .mega-container .left-content-container .mega-sub-menu .menu-level-2 .menu-level-2-item {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -924,7 +924,7 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
   }
 
   header .mega-container .left-content-container .mega-sub-menu .menu-level-2 a.link {
-    margin-bottom: 1.25rem;
+    margin-bottom: 10px;
     padding-left: 1rem;
     height: auto;
     border-top: none;

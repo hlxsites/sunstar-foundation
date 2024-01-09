@@ -1,6 +1,6 @@
 import {
   buildBlock, createOptimizedPicture, decorateBlock,
-  getFormattedDate, getMetadata, loadBlock, readBlockConfig,
+  getFormattedDate, getMetadata, loadBlock, readBlockConfig, fetchPlaceholders,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex, getLanguage } from '../../scripts/scripts.js';
 
@@ -48,7 +48,16 @@ const resultParsers = {
     return blockContents;
   },
 
-  highlight: (results, blockCfg) => {
+  highlight: async (results, blockCfg, block = '') => {
+    let featuredInnerText = 0;
+    if (block.classList.contains('featured')) {
+      const locale = (getLanguage(
+        window.location.pathname,
+        false,
+      ));
+      const placeholders = await fetchPlaceholders(locale);
+      featuredInnerText = placeholders.featured;
+    }
     const blockContents = [];
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',').map((field) => field.trim().toLowerCase());
@@ -76,14 +85,26 @@ const resultParsers = {
         }
       });
       if (cardImage) {
-        row.push(cardImage);
+        if (result.path) {
+          const pathImg = document.createElement('a');
+          pathImg.href = result.path;
+          pathImg.append(cardImage);
+          row.push(pathImg);
+        } else {
+          row.push(cardImage);
+        }
+      }
+      if (result.featured === 'true' && block.classList.contains('featured')) {
+        const divFeatured = document.createElement('div');
+        divFeatured.innerHTML = `<h5>${featuredInnerText}</h5>`;
+        cardBody.insertBefore(divFeatured, cardBody.firstChild);
       }
 
       if (cardBody) {
         const path = document.createElement('a');
         path.href = result.path;
-        cardBody.prepend(path);
-        row.push(cardBody);
+        path.append(cardBody);
+        row.push(path);
       }
       blockContents.push(row);
     });
@@ -100,11 +121,14 @@ function getMetadataNullable(key) {
  * Feed block decorator to build feeds based on block configuration
  */
 export default async function decorate(block) {
+  let blockContents = 0;
+  let queryObj = 0;
+
   const blockCfg = readBlockConfig(block);
   const blockName = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const blockType = (blockName.split('(')[0]).trim();
   const variation = (blockName.match(/\((.+)\)/) === null ? '' : blockName.match(/\((.+)\)/)[1]).trim();
-  const queryObj = await queryIndex(`${getLanguage()}-search`);
+  queryObj = await queryIndex(`${getLanguage()}-search`);
 
   // Get the query string, which includes the leading "?" character
   const queryString = window.location.search;
@@ -139,7 +163,9 @@ export default async function decorate(block) {
     .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)
     .toList();
   block.innerHTML = '';
-  const blockContents = resultParsers[blockType](results, blockCfg);
+  if (block.classList.contains('featured')) {
+    blockContents = await resultParsers[blockType](results, blockCfg, block);
+  } else blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
 
   [...block.classList].forEach((item) => {

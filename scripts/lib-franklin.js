@@ -162,10 +162,12 @@ export async function decorateIcons(element) {
           ICONS_CACHE[iconName] = {
             styled: true,
             html: svg
-              // rescope ids and references to avoid clashes across icons;
+              // rescope ids, classes and references to avoid clashes across icons;
               .replaceAll(/ id="([^"]+)"/g, (_, id) => ` id="${iconName}-${id}"`)
               .replaceAll(/="url\(#([^)]+)\)"/g, (_, id) => `="url(#${iconName}-${id})"`)
-              .replaceAll(/ xlink:href="#([^"]+)"/g, (_, id) => ` xlink:href="#${iconName}-${id}"`),
+              .replaceAll(/ xlink:href="#([^"]+)"/g, (_, id) => ` xlink:href="#${iconName}-${id}"`)
+              .replaceAll(/ class="([^"]+)"/g, (_, id) => ` class="${iconName}-${id}"`)
+              .replaceAll(/st[0-9]{/g, (capture, _) => `${iconName}-${capture}`), // eslint-disable-line no-unused-vars
           };
         } else {
           ICONS_CACHE[iconName] = {
@@ -584,23 +586,28 @@ export function decorateTemplateAndTheme() {
  * @param {Element} element container element
  */
 export function decorateButtons(element) {
+  function onlyHasButtons(el) {
+    return [...el.childNodes].every((node) => node.tagName === 'A' || node.textContent.trim() === '');
+  }
+
   element.querySelectorAll('a').forEach((a) => {
     if (!a.closest('.no-buttons')) {
       a.title = a.title || a.textContent;
       if (a.href !== a.textContent) {
         const up = a.parentElement;
         const twoup = a.parentElement.parentElement;
+
         if (!a.querySelector('img')) {
-          if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
+          if (onlyHasButtons(up) && (up.tagName === 'P' || up.tagName === 'DIV')) {
             a.className = 'button primary'; // default
             up.classList.add('button-container');
           }
-          if (up.childNodes.length === 1 && up.tagName === 'STRONG'
+          if (onlyHasButtons(up) && up.tagName === 'STRONG'
             && twoup.childNodes.length === 1 && twoup.tagName === 'P') {
             a.className = 'button primary';
             twoup.classList.add('button-container');
           }
-          if (up.childNodes.length === 1 && up.tagName === 'EM'
+          if (onlyHasButtons(up) && up.tagName === 'EM'
             && twoup.childNodes.length === 1 && twoup.tagName === 'P') {
             a.className = 'button secondary';
             twoup.classList.add('button-container');

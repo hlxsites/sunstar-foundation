@@ -14,3 +14,6 @@ helix-importer-ui
 .github/visual-tests/generated-test-paths.txt
 
 difference_results.md
+
+*.iml
+.idea/*

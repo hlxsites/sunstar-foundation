@@ -190,11 +190,7 @@ export default function decorate(block) {
                 up.classList.add('button-container');
               }
               a.classList.add('button');
-              if (a.previousElementSibling?.tagName === 'A') {
-                a.classList.add('tertiary');
-              } else {
-                a.classList.add('primary');
-              }
+              a.classList.add('primary');
             }
           });
         }
