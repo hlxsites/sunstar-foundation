@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 /* global WebImporter */
-import { createSectionMetadata } from './utils.js';
+import { createSectionMetadata, addBreadCrumb } from './utils.js';
 
 /* eslint-disable no-console, class-methods-use-this */
 
@@ -47,18 +47,6 @@ const createMetadata = (main, doc, params, mainImg) => {
 
   return meta;
 };
-
-function addBreadCrumb(doc) {
-  const breadcrumb = doc.querySelector('.section-breadcrumb');
-
-  if (breadcrumb) {
-    // Not removing breadcrumb section from here because we need to extract breadcrumb title.
-    const cells = [['Breadcrumb']];
-    const table = WebImporter.DOMUtils.createTable(cells, doc);
-    breadcrumb.after(doc.createElement('hr'));
-    breadcrumb.replaceWith(table);
-  }
-}
 
 /**
  * Extract background images from the source node and
