@@ -803,15 +803,16 @@ main .section.margin-bottom {
   margin-bottom: 5rem;
 }
 
-/* section - no margin-bottom */
-main .section.no-margin-bottom {
-  margin-bottom: 0;
-}
-
 /* section - no margin-top */
 /* stylelint-disable-next-line no-descending-specificity */
 main .section.no-margin-top, main .section.no-margin-top .section-container, .block.no-margin-top {
   margin-top: 0;
+}
+
+/* section - no margin-bottom */
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.no-margin-bottom, main .section.no-margin-bottom .section-container, .block.no-margin-bottom {
+  margin-bottom: 0;
 }
 
 .float-right {
