@@ -80,7 +80,7 @@ main .block.cards {
   color: var(--light-black);
 }
 
-.cards.grantscard .cards-card-body{
+.cards.stacked-cards .cards-card-body{
   margin: revert;
 }
 
@@ -204,29 +204,29 @@ main .cards.info-points .cards-card-image img {
   height: 5rem;
 }
 
-main .cards.grantscard .cards-card-image {
+main .cards.stacked-cards .cards-card-image {
   width: 16rem;
   height: 9rem;
   flex-shrink: 0;
 }
 
-main .cards.grantscard .cards-card-body {
+main .cards.stacked-cards .cards-card-body {
   width: 100%;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-main .cards.grantscard .cards-card-body h1,
-main .cards.grantscard .cards-card-body h2,
-main .cards.grantscard .cards-card-body h3,
-main .cards.grantscard .cards-card-body h4,
-main .cards.grantscard .cards-card-body h5,
-main .cards.grantscard .cards-card-body h6,
-main .cards.grantscard .cards-card-body p {
+main .cards.stacked-cards .cards-card-body h1,
+main .cards.stacked-cards .cards-card-body h2,
+main .cards.stacked-cards .cards-card-body h3,
+main .cards.stacked-cards .cards-card-body h4,
+main .cards.stacked-cards .cards-card-body h5,
+main .cards.stacked-cards .cards-card-body h6,
+main .cards.stacked-cards .cards-card-body p {
   text-align: left;
   text-transform: none;
 }
 
-main .cards.grantscard .cards-card-body h6 {
+main .cards.stacked-cards .cards-card-body h6 {
   font-size: var(--heading-font-size-xxxs);
   margin-bottom: none;
   letter-spacing: 0.05em;
@@ -234,21 +234,21 @@ main .cards.grantscard .cards-card-body h6 {
   color: var(--primary);
 }
 
-main .cards.grantscard .cards-card-body img {
+main .cards.stacked-cards .cards-card-body img {
   height: 2rem;
 }
 
-main .cards.grantscard .cards-card-body p {
+main .cards.stacked-cards .cards-card-body p {
   font-size: var(--body-font-size-m);
   margin-bottom: 1rem;
   color: var(--light-black);
 }
 
-main .cards.grantscard .cards-card-body p:last-child {
+main .cards.stacked-cards .cards-card-body p:last-child {
   margin-bottom: 0;
 }
 
-main .cards.grantscard .cards-card-body a {
+main .cards.stacked-cards .cards-card-body a {
   line-height: 1;
   width: 100%;
   font-weight: var(--font-weight-medium);
@@ -256,13 +256,13 @@ main .cards.grantscard .cards-card-body a {
   text-decoration: none;
 }
 
-main .cards.grantscard .cards-card-body a > strong {
+main .cards.stacked-cards .cards-card-body a > strong {
   color: var(--light-black);
   margin-right: 1rem;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-main .cards.grantscard ul > li {
+main .cards.stacked-cards ul > li {
   padding: 0;
   box-shadow: none;
   display: flex;
@@ -285,7 +285,7 @@ main .nolink .cards.info-points > ul > li .cards-card-image {
   border: none;
 }
 
-main .cards-wrapper .grantscard .cards-card-body h3{
+main .cards-wrapper .stacked-cards .cards-card-body h3{
   margin-block-start: 0;
   margin-block-end: 0;
   color: var(--light-black);
@@ -296,7 +296,7 @@ main .cards-wrapper .grantscard .cards-card-body h3{
   padding-bottom: 1rem;
 }
 
-.cards.nolink.no-buttons.grantscard.block > ul {
+.cards.nolink.no-buttons.stacked-cards.block > ul {
   flex-flow: column;
 }
 
@@ -388,7 +388,7 @@ main .cards.video-modal .cards-card-image::after {
     margin: auto;
   }
 
-  .cards.grantscard .cards-card-image {
+  .cards.stacked-cards .cards-card-image {
     margin: 0;
   }
 
@@ -407,7 +407,7 @@ main .cards.video-modal .cards-card-image::after {
 }
 
 @media screen and (max-width: 77rem) {
-  main .cards.grantscard .cards-card-image {
+  main .cards.stacked-cards .cards-card-image {
     width: 100%;
     height: 100%;
     padding-top: 2rem;
@@ -418,12 +418,12 @@ main .cards.video-modal .cards-card-image::after {
     width: auto;
   }
 
-  main .block.cards.grantscard > ul > li{
+  main .block.cards.stacked-cards > ul > li{
     flex-direction: column;
     text-align: center;
   }
 
-  .cards .nolink .no-buttons .grantscard .block {
+  .cards .nolink .no-buttons .stacked-cards .block {
     padding: 0;
   }
 
@@ -477,7 +477,7 @@ main .cards.video-modal .cards-card-image::after {
     padding: 20px;
   }
 
-  .cards.grantscard .cards-card-body {
+  .cards.stacked-cards .cards-card-body {
     padding: 1.5rem 1rem;
   }
 
@@ -510,7 +510,7 @@ main .cards.video-modal .cards-card-image::after {
     text-align: center;
   }
 
-  main .block.cards.grantscard > ul > li {
+  main .block.cards.stacked-cards > ul > li {
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--text-h2-underline-color);
@@ -522,8 +522,8 @@ main .cards.video-modal .cards-card-image::after {
     margin: 0;
   }
 
-  main .block.cards.grantscard > ul > li .cards-card-body p,
-  main .block.cards.grantscard > ul > li .cards-card-body a {
+  main .block.cards.stacked-cards > ul > li .cards-card-body p,
+  main .block.cards.stacked-cards > ul > li .cards-card-body a {
     width: 100%;
     font-size: 20px;
     line-height: 30px;
