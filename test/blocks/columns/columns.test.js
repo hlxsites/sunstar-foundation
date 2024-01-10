@@ -59,10 +59,12 @@ describe('Columns Block', () => {
 
     const cx = block.querySelector('#column-x');
     expect(cx.style.display).to.equal('flex');
+    expect(cx.style.alignItems).to.equal('center');
     expect(cx.style.justifyContent).to.equal('center');
 
     const cy = block.querySelector('#column-y');
     expect(cy.style.display).to.equal('flex');
+    expect(cy.style.alignItems).to.equal('flex-end');
     expect(cy.style.justifyContent).to.equal('right');
   });
 
