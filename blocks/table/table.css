@@ -1,14 +1,14 @@
-main .table.inner-table span.icon {
+main .table span.icon {
     width: 70px;
     height: auto;
 }
 
-main .table.inner-table img {
+main .table img {
     height: 80px;
     width: auto;
 }
 
-main .table.inner-table.native-image-sizes img {
+main .table.native-image-sizes img {
     width: 100%;
     height: 100%;
     max-width: 100%;
@@ -19,50 +19,29 @@ main .table.block h3.table-title {
     margin-bottom: 0.5rem;
 }
 
-main .table .table-item {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: auto repeat(calc(var(--row) - 1), minmax(50px, max-content));
-    grid-template-rows: repeat(var(--col), auto);
-    grid-gap: 1px;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--transparent-grey-light-color);
-    background-color: var(--transparent-grey-light-color);
-}
-
-main .table .table-item div {
-    font-size: var(--body-font-size-s);
-    line-height: 1.7em;
-    font-weight: var(--font-weight-medium);
-    padding: 0.5em 1em;
-    text-align: center;
-    vertical-align: middle;
-    background-color: var(--white);
-}
-
 main .section .table.block p.table-annotation {
     margin-bottom: 1.5rem;
 }
 
-main .table.inner-table table {
+main .table table {
     background-color: var(--white);
     border-collapse: collapse;
     overflow-x: auto;
     display: block;
-    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
-main .table.inner-table .table-item {
+main .table .table-item {
     display: unset;
     margin-bottom: unset;
     border: unset;
 }
 
-main .table.inner-table .table-item div {
+main .table .table-item div {
     padding: unset;
 }
 
-main .table.inner-table table td {
+main .table:not(.text-table) table td {
     font-size: 0.88rem;
     line-height: 1.7em;
     text-align: center;
@@ -71,7 +50,7 @@ main .table.inner-table table td {
     vertical-align: middle;
 }
 
-main .table.inner-table table td p {
+main .table table td p {
     font-size: 0.88rem;
     line-height: 1.7em;
     margin-bottom: 0;
@@ -187,13 +166,14 @@ main .table.text-table table tr td a .icon {
     width: 1.5em;
 }
 
-main .table.inner-table.no-vertical-borders table td {
+/* stylelint-disable-next-line no-descending-specificity */
+main .table.no-vertical-borders table td {
     border-left: unset;
     border-right: unset;
     border-top: unset;
 }
 
-main .table.inner-table.text-align-left table tr td {
+main .table.text-align-left table tr td {
     text-align: left;
 }
 
@@ -203,15 +183,15 @@ main .table.text-table table tr td:first-child {
     line-height: 1.5rem;
 }
 
-main .table.inner-table table tbody tr:first-of-type {
+main .table:not(.text-table) table tbody tr:first-of-type {
     background: var(--transparent-blue-light-color);
 }
 
-main .table.inner-table.no-head table tbody tr:first-of-type {
+main .table.no-head table tbody tr:first-of-type {
     background: unset;
 }
 
-main .table.inner-table.small-first-col table tr td:first-child {
+main .table.small-first-col table tr td:first-child {
     flex-basis: 10rem;
     flex-grow: 0;
     text-align: center;
