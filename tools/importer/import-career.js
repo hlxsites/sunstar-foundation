@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 /* global WebImporter */
-import { createSectionMetadata, addBreadCrumb } from './utils.js';
+import { createSectionMetadata, removeBreadCrumb } from './utils.js';
 
 /* eslint-disable no-console, class-methods-use-this */
 
@@ -169,7 +169,7 @@ function getFomattedDate(newsDate) {
 }
 
 function customImportLogic(doc) {
-  addBreadCrumb(doc);
+  removeBreadCrumb(doc);
   convertBackgroundImgsToForegroundImgs(doc);
   return handleCareerTestimonials(doc);
 }

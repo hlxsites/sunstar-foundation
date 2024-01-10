@@ -12,7 +12,7 @@
 /* global WebImporter */
 
 import {
-  addBreadCrumb,
+  removeBreadCrumb,
   createMetadata,
   fixRelativeLinks,
   createSectionMetadata,
@@ -269,7 +269,7 @@ const createTextBlock = (document) => {
 const customImportLogic = (document, url, params) => {
   removeRedundantTag(document);
   changeAnchorLinks(document);
-  addBreadCrumb(document);
+  removeBreadCrumb(document);
   addTagsBlock(document);
   extractEmbed(document);
   addSocialBlock(document);

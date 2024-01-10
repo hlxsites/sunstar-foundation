@@ -60,7 +60,7 @@ export const fixRelativeLinks = (document) => {
   });
 };
 
-export function addBreadCrumb(doc) {
+export function removeBreadCrumb(doc) {
   const breadcrumb = doc.querySelector('.section-breadcrumb');
 
   if (breadcrumb) {

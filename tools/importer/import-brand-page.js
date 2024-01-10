@@ -11,7 +11,7 @@
  */
 /* global WebImporter */
 
-import { addBreadCrumb, buildBlock, createSectionMetadata } from './utils.js';
+import { removeBreadCrumb, buildBlock, createSectionMetadata } from './utils.js';
 
 /* eslint-disable no-console, class-methods-use-this */
 const createMetadata = (main, document) => {
@@ -131,7 +131,7 @@ function importBrandDescriptions(document) {
 }
 
 function customImportLogic(document) {
-  addBreadCrumb(document);
+  removeBreadCrumb(document);
   importBrandsTop(document);
   importBrandDescriptions(document);
 }

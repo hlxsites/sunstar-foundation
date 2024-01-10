@@ -12,7 +12,7 @@
 /* global WebImporter */
 /* eslint-disable no-console, class-methods-use-this */
 
-import { addBreadCrumb } from './utils.js';
+import { removeBreadCrumb } from './utils.js';
 
 const createMetadata = (main, document, params) => {
   const meta = {};
@@ -570,7 +570,7 @@ function setNewsSectionStyle(doc) {
 function customImportLogic(doc) {
   removeCookiesBanner(doc);
 
-  addBreadCrumb(doc);
+  removeBreadCrumb(doc);
   fixRelativeLinks(doc);
   addListBlock(doc);
   addCarouselItems(doc);
