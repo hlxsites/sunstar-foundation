@@ -55,6 +55,7 @@ function applyHorizontalCellAlignment(block) {
       d.style.display = 'flex';
       d.style.flexDirection = 'column';
       d.style.alignItems = horizontalAlignToFlexValue(d.dataset.align);
+      d.style.justifyContent = d.dataset.align;
     }
   });
 }
