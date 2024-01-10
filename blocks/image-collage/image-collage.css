@@ -46,6 +46,10 @@ main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-t
   overflow: hidden;
 }
 
+main .image-collage[class*='boxy-col-']:not(.autoblocked) a {
+  color: var(--link-color);
+}
+
 main .image-collage[class*='boxy-col-']:not(.autoblocked) h4 {
   color: var(--primary);
   font-size: var(--heading-font-size-ms);
