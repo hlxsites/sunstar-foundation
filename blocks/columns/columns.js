@@ -32,6 +32,17 @@ export function applySplitPercentages(block) {
   }
 }
 
+function horizontalAlignToFlexValue(align) {
+  switch (align) {
+    case 'center':
+      return 'center';
+    case 'right':
+      return 'flex-end';
+    default:
+      return 'flex-start';
+  }
+}
+
 function applyHorizontalCellAlignment(block) {
   block.querySelectorAll(':scope div[data-align]').forEach((d) => {
     if (d.classList.contains('text-col')) {
@@ -43,8 +54,7 @@ function applyHorizontalCellAlignment(block) {
       // This is an image column
       d.style.display = 'flex';
       d.style.flexDirection = 'column';
-      d.style.alignItems = 'stretch';
-      d.style.justifyContent = d.dataset.align;
+      d.style.alignItems = horizontalAlignToFlexValue(d.dataset.align);
     }
   });
 }
@@ -55,7 +65,7 @@ function applyVerticalCellAlignment(block) {
     // this is an image column
     d.style.display = 'flex';
     d.style.flexDirection = 'column';
-    d.style.alignItems = 'stretch';
+    d.style.alignItems = horizontalAlignToFlexValue(d.dataset.align);
 
     switch (d.dataset.valign) {
       case 'middle':
