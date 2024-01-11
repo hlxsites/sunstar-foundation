@@ -198,7 +198,7 @@ image-collage.medium {
     justify-content: normal;
   }
 
-  main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
+  main .image-collage[class*='boxy-col-'].crop-image:not(.autoblocked) > div > div:first-of-type {
     height: 9.125rem;
   }
 }
@@ -245,7 +245,7 @@ image-collage.medium {
 }
 
 @media (min-width: 77rem) {
-  main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
+  main .image-collage[class*='boxy-col-'].crop-image:not(.autoblocked) > div > div:first-of-type {
     height: 12.625rem;
   }
 }
