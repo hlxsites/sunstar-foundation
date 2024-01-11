@@ -241,6 +241,10 @@ div.img-col > video {
   gap: 1rem;
 }
 
+.columns  > div > div p.button-container {
+  margin-bottom: 3rem;
+}
+
 .columns.centre-buttons p.button-container {
   justify-content: center;
 } 
@@ -305,10 +309,6 @@ div.img-col > video {
 .columns.plain-links > div a {
   font-size: var(--body-font-size-s);
   color: var(--secondary);
-}
-
-.columns  > div > div p.button-container a {
-  margin-bottom: 3rem;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */

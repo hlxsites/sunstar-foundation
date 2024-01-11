@@ -41,7 +41,7 @@ main .image-collage[class*='boxy-col-']>div>div:first-of-type {
   padding-bottom: 0;
 }
 
-main .image-collage[class*='boxy-col-']:not(.autoblocked) > div > div:first-of-type {
+main .image-collage[class*='boxy-col-'].crop-image:not(.autoblocked) > div > div:first-of-type {
   height: 12.625rem;
   overflow: hidden;
 }
