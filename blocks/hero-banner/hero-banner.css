@@ -3,6 +3,10 @@
     margin-bottom: 2rem;
 }
 
+.section.full-width.no-margin-bottom.hero-banner-container {
+    margin-bottom: unset;
+}
+
 .hero-banner.careers {
     background-image: url("/assets/careers-mobile-top.jpg");
 }
@@ -24,8 +28,7 @@
 }
 
 .hero-banner video,
-.hero-banner img,
-.hero-banner.image-right img {
+.hero-banner img {
     width: 100%;
     object-fit: cover;
     height: 10rem;
@@ -162,6 +165,14 @@
     width: 2.125rem;
 }
 
+.hero-banner.image-right img {
+    object-position: 0% 15%;
+}
+
+.hero-banner.image-right .hero-banner-text-wrapper h6 {
+    color: var(--hero-strong-color);
+}
+
 @media (min-width: 48rem) {
     .hero-banner .hero-banner-text-container::before:not(.right-text) {
         content: "";
@@ -193,7 +204,6 @@
 
     .hero-banner video,
     .hero-banner img,
-    .hero-banner.image-right img,
     .hero-banner.image-left img,
     .hero-banner.image-center img
     {
@@ -205,7 +215,7 @@
         position: absolute;
         top: 28rem;
     }
-
+    
     .hero-banner .hero-banner-text-container {
         width: 100%;
         background: var(--primary);
@@ -258,6 +268,63 @@
         max-width: 56.5rem;
     }
 
+    .hero-banner-wrapper:has(.hero-banner.image-right) {
+        background: var(--primary);
+        color: var(--white);
+    }
+
+    .hero-banner.image-right.block {
+        padding-right: 10.75rem;
+        height: 8.75rem;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        max-width: 56.5rem;
+        padding-left: 1rem;
+    }
+
+    .section.full-width.hero-banner-container:has(.hero-banner.image-right) {
+        position: relative;
+        height: unset;
+    }
+
+    .hero-banner.image-right .hero-banner-heading-container {
+        position: unset;
+        top: 0;
+    }
+
+    .hero-banner.image-right .hero-banner-heading-section {
+        width: auto;
+    }
+
+    .hero-banner.image-right img {
+        height: 8.75rem;
+        object-position: unset;
+        vertical-align: middle;
+    }
+
+    .hero-banner.image-right .hero-banner-text-container {
+        padding: unset;
+    }
+
+    .hero-banner.image-right .hero-banner-media-section {
+        height: unset;
+        width: unset;
+        position: unset;
+    }
+
+    .hero-banner.image-right .hero-banner-text-container::before {
+        content: unset;
+    }
+
+    .hero-banner.image-right .hero-banner-text-wrapper h1 {
+        line-height: 1;
+    }
+    
+    .hero-banner.image-right .hero-banner-text-wrapper h6 {
+        line-height: 1.5;
+    }
+    
     .hero-banner.overlap .hero-banner-heading-section {
         max-width: unset;
         position: unset;
@@ -355,6 +422,20 @@
 
     .hero-banner.overlap .hero-banner-media-section {
         height: 43.75rem;
+    }
+    
+    .hero-banner.image-right.block {
+        padding-right: 15rem;
+        padding-left: unset;
+        height: 8.75rem;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        max-width: 75rem;
+    }
+
+    .hero-banner.image-right .hero-banner-heading-section {
+        width: 100%;
     }
 }
 
