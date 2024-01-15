@@ -215,7 +215,7 @@
         position: absolute;
         top: 28rem;
     }
-    
+
     .hero-banner .hero-banner-text-container {
         width: 100%;
         background: var(--primary);
@@ -320,11 +320,11 @@
     .hero-banner.image-right .hero-banner-text-wrapper h1 {
         line-height: 1;
     }
-    
+
     .hero-banner.image-right .hero-banner-text-wrapper h6 {
         line-height: 1.5;
     }
-    
+
     .hero-banner.overlap .hero-banner-heading-section {
         max-width: unset;
         position: unset;
