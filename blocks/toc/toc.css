@@ -91,7 +91,7 @@ main .toc.block ul {
 
 main .toc.block ul li.active a::before {
     content: "";
-    background: #007CAD;
+    background: var(--link-color);
     width: 3px;
     height: 3rem;
     position: absolute;
@@ -196,7 +196,7 @@ main .section:not([id='']) {
         right: 0;
         width: calc(50% - 17.5rem);
         order: 2;
-        background: #F0F5F7;
+        background: var(--transparent-blue-light-color);
         overflow: hidden;
     }
 

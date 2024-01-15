@@ -10,8 +10,9 @@ function addEvent(menu, content) {
 function buildUl(ul, block) {
   let textContent = '';
   block.querySelectorAll('ul li').forEach((li) => {
+    const aLink = li.querySelectorAll('a')[0];
+    aLink.target = '_self';
     if (li.querySelector('strong') !== null) {
-      const aLink = li.querySelectorAll('a')[0];
       textContent = aLink.textContent;
       li.innerHTML = '';
       li.append(aLink);
