@@ -400,6 +400,16 @@ div.img-col > video {
     flex-direction: column;
   }
 
+  .columns > div > div {
+    flex: 1;
+    order: unset;
+    flex-basis: 50%;
+  }
+
+  .columns.tabular > div {
+    margin-bottom: 0;
+  }
+
   .columns p.button-container {
     display: flex;
     flex-direction: column;
@@ -415,12 +425,6 @@ div.img-col > video {
 
   .columns a.button.primary {
     min-width: 11rem;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-    flex-basis: 50%;
   }
 
   .columns.flex-start > div {
@@ -456,9 +460,14 @@ div.img-col > video {
     display: none;
   }
 
-  .columns:not(.text-and-image-in-column) .text-col-wrapper img:not(.video-modal) {
+  .columns:not(.text-and-image-in-column) .text-col-wrapper img:not(.video-modal){
     height: 3.125rem;
     width: unset;
+  }
+
+  .columns.tabular .text-col-wrapper img:not(.video-modal) {
+    height: auto;
+    width: auto;
   }
 
   .columns-container.backgroundimage {
@@ -508,6 +517,37 @@ div.img-col > video {
 }
 
 @media (min-width: 77rem) {
+  .columns.tabular {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .columns.tabular .text-col-wrapper {
+    width: 48%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  }
+
+  .columns.tabular .text-col {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+  }
+
+  .columns.tabular .text-col img {
+    max-width: 100%;
+    width: 18rem;
+    height: 15rem;
+    margin-right: 10px; /* Adjust margin as needed to add space between image and text */
+  }
+
+
+  .columns.tabular > div > div p {
+    margin-left: 1rem;
+  }
+
   div.img-col > video {
     height: 469px;
     width: 469px;
