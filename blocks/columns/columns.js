@@ -1,3 +1,5 @@
+import { wrapImgsInLinks } from '../../scripts/scripts.js';
+
 export function applySplitPercentages(block) {
   const ratios = [];
   for (let i = 0; i < block.classList.length; i += 1) {
@@ -113,6 +115,7 @@ export default function decorate(block) {
       if (!textOnlyColBlock) {
         const pics = col.querySelectorAll('picture');
         if (pics.length) {
+          wrapImgsInLinks(col);
           const picWrapper = pics[0].closest('div');
           if (picWrapper && picWrapper.children.length === pics.length) {
             // pictures (either wrapped in achors, or otherwise)
