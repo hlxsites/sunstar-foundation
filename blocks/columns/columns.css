@@ -247,7 +247,11 @@ div.img-col > video {
 
 .columns.centre-buttons p.button-container {
   justify-content: center;
-} 
+}
+
+.columns.textlist  > div > div p.button-container {
+  margin-bottom: 0;
+}
 
 .columns.collapse.top-down.columns-2-cols {
   max-width: 100%;
@@ -504,6 +508,11 @@ div.img-col > video {
     width: auto;
   }
 
+  .columns.textlist .text-col-wrapper img:not(.video-modal) {
+    height: 33rem;
+    width: auto;
+  }
+
   .columns-container.backgroundimage {
     position: relative;
   }
@@ -547,6 +556,18 @@ div.img-col > video {
 
   .columns :not(.table) h3 {
     font-size: var(--heading-font-size-m);
+  }
+
+  .columns.textlist h4 {
+    width: 100%;
+    font-size: 1rem;
+    background: #F0F5F7;
+    padding: 10px;
+    text-align: center;
+    color: #00587C;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    border: 1px solid var(--light-grey);
   }
 }
 
