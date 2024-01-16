@@ -7,6 +7,12 @@
 import { loadScript } from '../../scripts/scripts.js';
 import { loadCSS } from '../../scripts/lib-franklin.js';
 
+const getDefaultEmbed = (url) => `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
+    <iframe src="${url.href}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen=""
+      scrolling="no" allow="encrypted-media" title="Content from ${url.hostname}" loading="lazy">
+    </iframe>
+  </div>`;
+
 const embedYoutube = (url, isLite) => {
   const usp = new URLSearchParams(url.search);
   let suffix = '';
@@ -113,6 +119,9 @@ const loadEmbed = (block, grandChilds, link) => {
   if (config) {
     block.innerHTML = config.embed(url, isLite, config.type);
     block.classList = `block embed embed-${config.match[0]}`;
+  } else {
+    block.innerHTML = getDefaultEmbed(url);
+    block.classList = 'block embed';
   }
   block.classList.add('embed-is-loaded');
 
@@ -128,9 +137,19 @@ export default function decorate(block) {
   const link = block.querySelector('a').href;
   const childDiv = block.querySelector('div');
   const grandChilds = childDiv ? childDiv.querySelectorAll('div') : [];
+  const placeholder = block.querySelector('picture');
   block.textContent = '';
 
-  if (block.closest('body')) {
+  if (placeholder) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'embed-placeholder';
+    wrapper.innerHTML = '<div class="embed-placeholder-play"><button type="button" title="Play"></button></div>';
+    wrapper.prepend(placeholder);
+    wrapper.addEventListener('click', () => {
+      loadEmbed(block, grandChilds, link);
+    });
+    block.append(wrapper);
+  } else if (block.closest('body')) {
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();

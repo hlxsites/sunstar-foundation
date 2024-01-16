@@ -45,6 +45,9 @@ main .embed .embed-placeholder-play button {
   border: 0.125rem solid;
   border-radius: 1.25rem;
   padding: 0;
+  color: var(--background-color);
+  background-color: var(--link-color);
+  min-width: unset;
 }
   
 main .embed .embed-placeholder-play button::before {

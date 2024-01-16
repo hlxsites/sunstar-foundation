@@ -978,6 +978,11 @@ main .block.centered > div {
   }
 }
 
+video {
+  width: 100%;
+  height: 100%;
+}
+
 /* END Keyframes END */
 
 @media (min-width: 62rem) {
