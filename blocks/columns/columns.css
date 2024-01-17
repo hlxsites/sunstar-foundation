@@ -498,6 +498,11 @@ div.img-col > video {
     display: none;
   }
 
+  .columns.orderedtext .text-col-wrapper img:not(.video-modal) {
+    height: 33rem;
+    width: auto;
+  }
+
   .columns:not(.text-and-image-in-column) .text-col-wrapper img:not(.video-modal) {
     height: 3.125rem;
     width: unset;
@@ -505,11 +510,6 @@ div.img-col > video {
 
   .columns.tabular .text-col-wrapper img:not(.video-modal) {
     height: auto;
-    width: auto;
-  }
-
-  .columns.orderedtext .text-col-wrapper img:not(.video-modal) {
-    height: 33rem;
     width: auto;
   }
 
