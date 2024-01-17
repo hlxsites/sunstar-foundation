@@ -77,6 +77,11 @@ main .block.text.lead {
   font-size: var(--body-font-size-xl);
 }
 
+main .block.text.light-background {
+  background-color: var(--transparent-blue-light-color);
+  padding: 1rem;
+}
+
 @media (min-width: 62rem) {
   main .block.text {
     padding: 0;
