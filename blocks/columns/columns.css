@@ -503,13 +503,17 @@ div.img-col > video {
     width: auto;
   }
 
-  .columns:not(.text-and-image-in-column) .text-col-wrapper img:not(.video-modal) {
+  .columns.tabular .text-col-wrapper img:not(.video-modal) {
+    height: auto;
+    width: auto;
+  }
+
+  .columns:not(.text-and-image-in-column) .text-col-wrapper img:not(.video-modal) img:not(.image-with-link) {
     height: 3.125rem;
     width: unset;
   }
 
-  .columns.tabular .text-col-wrapper img:not(.video-modal) {
-    height: auto;
+  .columns img.image-with-link {
     width: auto;
   }
 
