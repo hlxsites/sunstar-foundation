@@ -121,6 +121,30 @@ main .block.cards {
   height: 100%;
 }
 
+
+.cards.light-background .cards-card-image span.icon svg {
+  width: 7rem;
+  height: 7rem;
+  margin-top: 1rem;
+}
+
+main .cards.info-points > ul > li {
+  display: flex;
+  box-shadow: none;
+}
+
+main .cards.features-items ul > li {
+  align-items: flex-start;
+}
+
+main .block.cards.light-background ul > li{
+  padding: 1rem;
+  background-color: var(--transparent-blue-light-color);
+  margin-block: 1.5rem;
+  border-bottom: none;
+  margin: 0;
+}
+
 .cards .cards-card-body u {
   text-decoration: none;
 }
@@ -149,10 +173,6 @@ main .block.cards {
 main .cards.features-items h6 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-
-main .cards.features-items ul > li {
-  align-items: flex-start;
 }
 
 /* Styles for info points cards */
@@ -188,11 +208,6 @@ main .cards.info-points .cards-card-body p {
 
 main .cards.info-points > ul {
   flex-direction: column;
-}
-
-main .cards.info-points > ul > li {
-  display: flex;
-  box-shadow: none;
 }
 
 main .cards.info-points > ul > li:hover {
@@ -513,13 +528,16 @@ main .cards.video-modal .cards-card-image::after {
   main .block.cards.stacked-cards > ul > li {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--text-h2-underline-color);
     padding-top: 2rem;
     padding-bottom: 2rem;
     width: auto;
     height: 12.1875rem;
     flex: 1;
     margin: 0;
+  }
+
+  main .block.cards.stacked-cards:not(.light-background) ul > li{
+    border-bottom: 1px solid var(--text-h2-underline-color);
   }
 
   main .block.cards.stacked-cards > ul > li .cards-card-body p,
