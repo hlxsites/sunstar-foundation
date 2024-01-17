@@ -51,10 +51,15 @@ function decorateFooter(block) {
  */
 export default async function decorate(block) {
   block.textContent = '';
+  let footerPath = 0;
 
   // fetch footer content
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`);
+  const customNavFooter = getMetadata('customnavfooter');
+  if (customNavFooter) {
+    const folderName = window.location.pathname.split('/')[1];
+    footerPath = footerMeta || (getLanguage() === 'jp' ? `/${folderName}/footer` : `/${getLanguage()}/{folderName}/footer`);
+  } else { footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`); }
   const resp = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
   if (resp.ok) {

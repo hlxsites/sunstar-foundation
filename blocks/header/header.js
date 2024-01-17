@@ -96,9 +96,14 @@ const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleN
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
+  let navPath = 0;
   // fetch nav content
   const navMeta = getMetadata('nav');
-  const navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`);
+  const customNavFooter = getMetadata('customnavfooter');
+  if (customNavFooter) {
+    const folderName = window.location.pathname.split('/')[1];
+    navPath = navMeta || (getLanguage() === 'jp' ? `/${folderName}/nav` : `/${getLanguage()}/${folderName}/nav`);
+  } else { navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`); }
   const resp = await fetch(`${navPath}.plain.html`);
   const navTreeResp = await fetch(`/nav-tree.json?sheet=${getLanguage()}`);
   const navTreeJson = await navTreeResp.json();
