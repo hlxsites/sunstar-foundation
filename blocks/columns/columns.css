@@ -249,7 +249,7 @@ div.img-col > video {
   justify-content: center;
 }
 
-.columns.textlist  > div > div p.button-container {
+.columns.orderedtext  > div > div p.button-container {
   margin-bottom: 0;
 }
 
@@ -508,7 +508,7 @@ div.img-col > video {
     width: auto;
   }
 
-  .columns.textlist .text-col-wrapper img:not(.video-modal) {
+  .columns.orderedtext .text-col-wrapper img:not(.video-modal) {
     height: 33rem;
     width: auto;
   }
@@ -558,10 +558,10 @@ div.img-col > video {
     font-size: var(--heading-font-size-m);
   }
 
-  .columns.textlist h4 {
+  .columns.orderedtext h4 {
     width: 100%;
     font-size: 1rem;
-    background: #F0F5F7;
+    background: var(--transparent-blue-light-color);
     padding: 10px;
     text-align: center;
     color: #00587C;
