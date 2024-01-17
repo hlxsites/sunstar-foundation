@@ -115,7 +115,6 @@ export default function decorate(block) {
       if (!textOnlyColBlock) {
         const pics = col.querySelectorAll('picture');
         if (pics.length) {
-          wrapImgsInLinks(col);
           const picWrapper = pics[0].closest('div');
           if (picWrapper && picWrapper.children.length === pics.length) {
             // pictures (either wrapped in achors, or otherwise)
@@ -143,6 +142,11 @@ export default function decorate(block) {
         const anchor = col.querySelector('a');
         const picture = col.querySelector('picture');
         const anchorIsModal = anchor && anchor.classList.contains('video-link');
+        if (!(anchorIsModal || videoAnchor.length)) {
+          // wrapping in case of anchor is not video
+          wrapImgsInLinks(col);
+        }
+
         if (picture && anchorIsModal) {
           const contentWrapper = document.createElement('div');
           contentWrapper.classList.add('img-col-wrapper');
