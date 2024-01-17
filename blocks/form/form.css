@@ -11,7 +11,7 @@
 
 main .form,
 main .section.form-container .default-content-wrapper {
-  max-width: 560px;
+  max-width: 720px;
 }
 
 main .section.form-container .default-content-wrapper {
@@ -94,6 +94,10 @@ main .form select:focus {
 main .form select:focus {
   background-color: var(--form-input-bg-color);
   box-shadow: none;
+}
+
+main .form-text-wrapper div {
+  font-size: var(--body-font-size-s);
 }
 
 main .form .invalid>input:hover,

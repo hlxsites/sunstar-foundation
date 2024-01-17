@@ -800,6 +800,8 @@ export async function fetchTagsOrCategories(ids = [], sheet = 'tags', type = '',
 export function wrapImgsInLinks(container) {
   const pictures = container.querySelectorAll('p picture');
   pictures.forEach((pic) => {
+    const img = pic.querySelector('img');
+    img.classList.add('image-with-link');
     const parent = pic.parentNode;
     const link = parent.nextElementSibling.querySelector('a');
     if (link && link.href) {
