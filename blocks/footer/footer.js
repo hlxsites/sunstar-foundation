@@ -52,12 +52,14 @@ function decorateFooter(block) {
 export default async function decorate(block) {
   block.textContent = '';
   let footerPath = 0;
+  let folder = 0;
 
   // fetch footer content
   const footerMeta = getMetadata('footer');
-  const customNavFooter = getMetadata('customnavfooter');
-  if (customNavFooter) {
-    footerPath = footerMeta || (getLanguage() === 'jp' ? `/${customNavFooter}footer` : `/${getLanguage()}/{customNavFooter}footer`);
+  const action = getMetadata('template');
+  if (action.includes('customnavfooter')) {
+    folder = action.split('-')[1];
+    footerPath = footerMeta || (getLanguage() === 'jp' ? `/${folder}footer` : `/${getLanguage()}/{folder}footer`);
   } else { footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`); }
   const resp = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
