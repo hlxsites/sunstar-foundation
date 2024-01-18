@@ -511,6 +511,11 @@ div.img-col > video {
     line-height: 1.2;
   }
 
+  .columns.orderedtext p {
+    border: 1px solid var(--light-grey);
+    border-bottom: 0;
+  }
+
   .columns.plain-links.collapse ul, .columns.plain-text.collapse p {
     display: none;
   }
@@ -586,9 +591,15 @@ div.img-col > video {
     padding: 10px;
     text-align: center;
     color: #00587C;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     margin-top: 1rem;
     border: 1px solid var(--light-grey);
+    border-bottom: 0;
+  }
+
+  .columns.orderedtext .button-container {
+    border: 1px solid var(--light-grey);
+    border-top: 0;
   }
 }
 
@@ -618,7 +629,6 @@ div.img-col > video {
     height: 15rem;
     margin-right: 10px; /* Adjust margin as needed to add space between image and text */
   }
-
 
   .columns.tabular > div > div p {
     margin-left: 1rem;
