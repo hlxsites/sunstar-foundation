@@ -57,8 +57,7 @@ export default async function decorate(block) {
   const footerMeta = getMetadata('footer');
   const customNavFooter = getMetadata('customnavfooter');
   if (customNavFooter) {
-    const folderName = window.location.pathname.split('/')[1];
-    footerPath = footerMeta || (getLanguage() === 'jp' ? `/${folderName}/footer` : `/${getLanguage()}/{folderName}/footer`);
+    footerPath = footerMeta || (getLanguage() === 'jp' ? `/${customNavFooter}footer` : `/${getLanguage()}/{customNavFooter}footer`);
   } else { footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`); }
   const resp = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 

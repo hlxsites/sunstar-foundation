@@ -101,8 +101,7 @@ export default async function decorate(block) {
   const navMeta = getMetadata('nav');
   const customNavFooter = getMetadata('customnavfooter');
   if (customNavFooter) {
-    const folderName = window.location.pathname.split('/')[1];
-    navPath = navMeta || (getLanguage() === 'jp' ? `/${folderName}/nav` : `/${getLanguage()}/${folderName}/nav`);
+    navPath = navMeta || (getLanguage() === 'jp' ? `/${customNavFooter}nav` : `/${getLanguage()}/${customNavFooter}nav`);
   } else { navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`); }
   const resp = await fetch(`${navPath}.plain.html`);
   const navTreeResp = await fetch(`/nav-tree.json?sheet=${getLanguage()}`);
