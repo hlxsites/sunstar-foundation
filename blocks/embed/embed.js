@@ -7,6 +7,12 @@
 import { loadScript } from '../../scripts/scripts.js';
 import { loadCSS } from '../../scripts/lib-franklin.js';
 
+const getDefaultEmbed = (url) => `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
+        <iframe src="${url.href}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen=""
+          scrolling="no" allow="encrypted-media" title="Content from ${url.hostname}" loading="lazy">
+        </iframe>
+      </div>`;
+
 const embedYoutube = (url, isLite) => {
   const usp = new URLSearchParams(url.search);
   let suffix = '';
@@ -44,7 +50,7 @@ const embedYoutube = (url, isLite) => {
       embed += url.search;
     }
     embedHTML = `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
-        <iframe src="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}` : embed}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
+        <iframe src="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}` : embed}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;"
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
       </div>`;
   }
@@ -113,6 +119,9 @@ const loadEmbed = (block, grandChilds, link) => {
   if (config) {
     block.innerHTML = config.embed(url, isLite, config.type);
     block.classList = `block embed embed-${config.match[0]}`;
+  } else {
+    block.innerHTML = getDefaultEmbed(url);
+    block.classList = 'block embed';
   }
   block.classList.add('embed-is-loaded');
 
