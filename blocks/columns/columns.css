@@ -107,6 +107,10 @@
   margin-top: 0;
 }
 
+.columns.orderedtext >div > div p {
+  margin-bottom: 0;
+}
+
 .columns.crop-image > div {
   align-items: stretch;
 }
@@ -368,6 +372,18 @@ div.img-col > video {
   padding: 2rem 0;
 }
 
+.columns.orderedtext .text-col > a {
+  margin-top: 2rem;
+  margin-left: 5rem;
+}
+
+.columns.orderedtext .text-col > p > a {
+  color: var(--link-color);
+  text-decoration: none;
+  background: none;
+  padding: 0;
+}
+
 /* Text-image overlap View */
 .columns.text-and-image-in-column.overlap em a {
   display: inline-flex;
@@ -394,6 +410,7 @@ div.img-col > video {
   margin: 0;
   width: 100%;
 }
+
 
 .columns.text-and-image-in-column.overlap .button-container a {
   background-color: unset;
