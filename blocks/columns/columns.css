@@ -597,7 +597,7 @@ div.img-col > video {
     border-bottom: 0;
   }
 
-  .columns.orderedtext .button-container {
+  .columns.orderedtext p.button-container {
     border: 1px solid var(--light-grey);
     border-top: 0;
   }
