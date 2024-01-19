@@ -169,6 +169,14 @@
     object-position: 0% 15%;
 }
 
+.hero-banner.no-image {
+  max-width: 75rem;
+}
+
+.hero-banner.no-image h6 {
+  color: var(--hero-strong-color);
+}
+
 .hero-banner.image-right .hero-banner-text-wrapper h6 {
     color: var(--hero-strong-color);
 }
@@ -238,6 +246,14 @@
     .hero-banner-text-wrapper h1 {
         font-size: 2.25rem;
         line-height: 1.3em;
+    }
+
+    .hero-banner.no-image h1 {
+      line-height: 1;
+    }
+
+    .hero-banner.no-image h6 {
+      line-height: 1.5;
     }
 
     .hero-banner .hero-banner-button-container {
@@ -323,6 +339,29 @@
 
     .hero-banner.image-right .hero-banner-text-wrapper h6 {
         line-height: 1.5;
+    }
+
+    .hero-banner-wrapper:has(.hero-banner.no-image) {
+      background: var(--primary);
+    }
+
+    .hero-banner.no-image {
+      height: 8.75rem;
+      display: flex;
+      align-items: center;
+      padding-left: 1rem;
+    }
+
+    .section.full-width.hero-banner-container:has(.hero-banner.no-image) {
+      height: unset;
+    }
+
+    .hero-banner.no-image .hero-banner-heading-container {
+      position: unset;
+    }
+
+    .hero-banner.no-image .hero-banner-text-container {
+      padding: unset;
     }
 
     .hero-banner.overlap .hero-banner-heading-section {
@@ -436,6 +475,10 @@
 
     .hero-banner.image-right .hero-banner-heading-section {
         width: 100%;
+    }
+
+    .hero-banner.no-image {
+      padding-left: 0;
     }
 }
 
