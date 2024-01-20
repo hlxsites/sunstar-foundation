@@ -53,12 +53,13 @@ export default async function decorate(block) {
   block.textContent = '';
   let footerPath = 0;
   let folder = 0;
+  const indexofdirectory = 1;
 
   // fetch footer content
   const footerMeta = getMetadata('footer');
   const action = getMetadata('template');
   if (action.includes('customnavfooter')) {
-    folder = action.split('-')[1];
+    folder = action.split('-')[indexofdirectory];
     footerPath = footerMeta || (getLanguage() === 'jp' ? `/${folder}footer` : `/${getLanguage()}/{folder}footer`);
   } else { footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`); }
   const resp = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});

@@ -1,6 +1,6 @@
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
 import buildNavTree from './nav-tree-utils.js';
-import { getLanguage, decorateAnchors, htmlToElement, addTopSpacingStyleToFirstMatchingSection } from '../../scripts/scripts.js';
+import { getLanguage, decorateAnchors, htmlToElement } from '../../scripts/scripts.js';
 
 /* Decorate the other items - which is the items pulled from top nav */
 function decorateOtherItems(otherItemsEl) {
@@ -98,11 +98,12 @@ const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleN
 export default async function decorate(block) {
   let navPath = 0;
   let folder = 0;
+  const indexofdirectory = 1;
   // fetch nav content
   const navMeta = getMetadata('nav');
   const action = getMetadata('template');
   if (action.includes('customnavfooter')) {
-    folder = action.split('-')[1];
+    folder = action.split('-')[indexofdirectory];
     navPath = navMeta || (getLanguage() === 'jp' ? `/${folder}nav` : `/${getLanguage()}/${folder}nav`);
   } else { navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`); }
   const resp = await fetch(`${navPath}.plain.html`);
