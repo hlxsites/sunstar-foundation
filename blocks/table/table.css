@@ -183,7 +183,7 @@ main .table.text-table table tr td:first-child {
     line-height: 1.5rem;
 }
 
-main .table:not(.text-table) table tbody tr:first-of-type {
+main .table:not(.text-table, .first-column-color) table tbody tr:first-of-type {
     background: var(--transparent-blue-light-color);
 }
 
@@ -196,6 +196,11 @@ main .table.small-first-col table tr td:first-child {
     flex-grow: 0;
     text-align: center;
 }
+
+main .table.first-column-color:not(.text-table) tbody tr td:first-of-type {
+    background: var(--transparent-blue-light-color);
+}
+
 
 main .table.block .table-title h4 {
     color: var(--gray-dark);
