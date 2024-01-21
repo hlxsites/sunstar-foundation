@@ -120,6 +120,10 @@ main .table.text-table .table-item .table-head {
     padding: 0;
 }
 
+main .block.left.table.text-table .table-item .table-head {
+    text-align: left;
+}
+
 main .table.text-table table {
     text-align: left;
     border-spacing: unset;
