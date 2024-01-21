@@ -45,8 +45,6 @@ function buildTOCSide(block) {
   mainContent.classList.add('main-content');
   const main = document.querySelector('main');
   [...main.querySelectorAll('.section')].forEach((section) => {
-    section.dataset.sectionStatus = 'loaded';
-    section.style.display = null;
     if (!section.classList.contains('breadcrumb-container')) {
       mainContent.append(section);
     }
@@ -63,6 +61,14 @@ function buildTOCSide(block) {
   contentWrap.append(contentInnercon);
   mainContent.append(contentWrap);
   main.append(mainContent);
+  [...main.querySelectorAll('.section')].forEach((section) => {
+    const hidden = section.querySelector('.hidden.block');
+    if (hidden) {
+      hidden.style.display = 'none';
+    }
+    section.dataset.sectionStatus = 'loaded';
+    section.style.display = null;
+  });
 }
 
 function buildTOCTop(ul, block) {
