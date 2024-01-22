@@ -75,6 +75,10 @@ main .toc .toc-content {
     display: none;
 }
 
+main .toc .toc-content h4 {
+  margin-top: 0;
+}
+
 main .toc .toc-content.visible {
     padding: 0 1.5rem;
     display: block;

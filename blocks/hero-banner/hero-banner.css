@@ -175,10 +175,17 @@
 
 .hero-banner.no-image h6 {
   color: var(--hero-strong-color);
+  margin-top: 0.75rem;
 }
 
 .hero-banner.image-right .hero-banner-text-wrapper h6 {
     color: var(--hero-strong-color);
+}
+
+.hero-banner.no-image p {
+  font-size: var(--body-font-size-m);
+  margin-top: 1rem;
+  line-height: 1.3rem;
 }
 
 @media (min-width: 48rem) {
@@ -346,10 +353,14 @@
     }
 
     .hero-banner.no-image {
-      height: 8.75rem;
+      min-height: 8.75rem;
       display: flex;
       align-items: center;
-      padding-left: 1rem;
+      padding-left: 2rem;
+    }
+
+    .hero-banner.no-image .hero-banner-text-container::before {
+      content: unset;
     }
 
     .section.full-width.hero-banner-container:has(.hero-banner.no-image) {
@@ -422,6 +433,10 @@
     .hero-banner.careers .hero-banner-text-wrapper h1 {
         font-size: 3rem;
     }
+
+    .hero-banner.no-image p {
+      max-width: 42rem;
+    }
 }
 
 @media (min-width: 77rem) {
@@ -479,6 +494,10 @@
 
     .hero-banner.no-image {
       padding-left: 0;
+    }
+
+    .hero-banner.no-image p {
+      max-width: 57rem;
     }
 }
 
