@@ -102,8 +102,12 @@ export default async function decorate(block) {
   const placeholders = await fetchPlaceholders(getLanguage());
 
   const rows = [...block.children];
-  const mediaRow = rows.at(0);
-  const contentRow = rows.at(1);
+  const mediaRow = rows.length === 2 ? rows.at(0) : null;
+  const contentRow = rows.length === 2 ? rows.at(1) : rows.at(0);
+  if (rows.length === 1) {
+    // Adding No Image class in case of hero banner without image
+    block.classList.add('no-image');
+  }
 
   const overlap = block.classList.contains('overlap');
 

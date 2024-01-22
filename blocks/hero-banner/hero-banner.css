@@ -169,8 +169,23 @@
     object-position: 0% 15%;
 }
 
+.hero-banner.no-image {
+  max-width: 75rem;
+}
+
+.hero-banner.no-image h6 {
+  color: var(--hero-strong-color);
+  margin-top: 0.75rem;
+}
+
 .hero-banner.image-right .hero-banner-text-wrapper h6 {
     color: var(--hero-strong-color);
+}
+
+.hero-banner.no-image p {
+  font-size: var(--body-font-size-m);
+  margin-top: 1rem;
+  line-height: 1.3rem;
 }
 
 @media (min-width: 48rem) {
@@ -238,6 +253,14 @@
     .hero-banner-text-wrapper h1 {
         font-size: 2.25rem;
         line-height: 1.3em;
+    }
+
+    .hero-banner.no-image h1 {
+      line-height: 1;
+    }
+
+    .hero-banner.no-image h6 {
+      line-height: 1.5;
     }
 
     .hero-banner .hero-banner-button-container {
@@ -325,6 +348,33 @@
         line-height: 1.5;
     }
 
+    .hero-banner-wrapper:has(.hero-banner.no-image) {
+      background: var(--primary);
+    }
+
+    .hero-banner.no-image {
+      min-height: 8.75rem;
+      display: flex;
+      align-items: center;
+      padding-left: 2rem;
+    }
+
+    .hero-banner.no-image .hero-banner-text-container::before {
+      content: unset;
+    }
+
+    .section.full-width.hero-banner-container:has(.hero-banner.no-image) {
+      height: unset;
+    }
+
+    .hero-banner.no-image .hero-banner-heading-container {
+      position: unset;
+    }
+
+    .hero-banner.no-image .hero-banner-text-container {
+      padding: unset;
+    }
+
     .hero-banner.overlap .hero-banner-heading-section {
         max-width: unset;
         position: unset;
@@ -383,6 +433,10 @@
     .hero-banner.careers .hero-banner-text-wrapper h1 {
         font-size: 3rem;
     }
+
+    .hero-banner.no-image p {
+      max-width: 42rem;
+    }
 }
 
 @media (min-width: 77rem) {
@@ -436,6 +490,14 @@
 
     .hero-banner.image-right .hero-banner-heading-section {
         width: 100%;
+    }
+
+    .hero-banner.no-image {
+      padding-left: 0;
+    }
+
+    .hero-banner.no-image p {
+      max-width: 57rem;
     }
 }
 

@@ -956,6 +956,10 @@ main .block.centered > div {
   transform: translate(-50%, -50%);
 }
 
+.block.bottom-border {
+  border-bottom: 1px solid var(--overlay-background-color);
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
