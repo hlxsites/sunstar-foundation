@@ -50,6 +50,7 @@ main .table:not(.text-table) table td {
     padding: 0.5em 1em;
     border: 1px solid var(--transparent-grey-light-color);
     vertical-align: middle;
+    width: 50%;
 }
 
 main .table table td p {
