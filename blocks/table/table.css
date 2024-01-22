@@ -1,6 +1,8 @@
 main .table span.icon {
-    width: 70px;
-    height: auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-bottom: 0.3125rem;
+    margin-left: 0.3125rem;
 }
 
 main .table img {
