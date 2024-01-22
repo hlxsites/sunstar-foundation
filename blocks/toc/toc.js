@@ -62,10 +62,9 @@ function buildTOCSide(block) {
   mainContent.append(contentWrap);
   main.append(mainContent);
   [...main.querySelectorAll('.section')].forEach((section) => {
-    const hidden = section.querySelector('.hidden.block');
-    if (hidden) {
+    [...section.querySelectorAll('.hidden.block')].forEach((hidden) => {
       hidden.style.display = 'none';
-    }
+    });
     section.dataset.sectionStatus = 'loaded';
     section.style.display = null;
   });
