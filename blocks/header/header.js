@@ -98,12 +98,11 @@ const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleN
 export default async function decorate(block) {
   let navPath = 0;
   let folder = 0;
-  const indexofdirectory = 1;
+
   // fetch nav content
   const navMeta = getMetadata('nav');
-  const action = getMetadata('template');
-  if (action.includes('customnavfooter')) {
-    folder = action.split('-')[indexofdirectory];
+  folder = getMetadata('template');
+  if (folder) {
     navPath = navMeta || (getLanguage() === 'jp' ? `/${folder}nav` : `/${getLanguage()}/${folder}nav`);
   } else { navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`); }
   const resp = await fetch(`${navPath}.plain.html`);
