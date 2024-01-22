@@ -44,7 +44,7 @@ main .table .table-item div {
 main .table:not(.text-table) table td {
     font-size: 0.88rem;
     line-height: 1.7em;
-    text-align: center;
+    text-align: left;
     padding: 0.5em 1em;
     border: 1px solid var(--transparent-grey-light-color);
     vertical-align: middle;
