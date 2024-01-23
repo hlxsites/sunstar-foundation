@@ -107,7 +107,6 @@ export default async function decorate(block) {
   } else { navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`); }
   const resp = await fetch(`${navPath}.plain.html`);
   const navTreeResp = await fetch(`/${folder}nav-tree.json?sheet=${getLanguage()}`);
-  console.log(navTreeResp);
   const navTreeJson = await navTreeResp.json();
   if (resp.ok) {
     const placeholders = await fetchPlaceholders(getLanguage());
