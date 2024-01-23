@@ -68,10 +68,8 @@ padding: 2.5rem 1rem;
 }
 
 main .image-collage.zoom-in img {
-  max-width: 10rem;
-  padding: unset;
-  margin-bottom: 0.5rem;
-  transform: scale(1);
+  width: 12.5rem;
+  height: auto;
 }
 
 main .image-collage.boxy-col-1.zoom-in::after {
@@ -141,6 +139,10 @@ image-collage.medium {
     justify-content: center;
   }
 
+  main .image-collage.align-left.boxy-col-1 {
+    justify-content: unset;
+  }
+
   main .image-collage[class*='boxy-col-'].aublocked {
     flex-direction: column;
   }
@@ -172,10 +174,6 @@ image-collage.medium {
 
   main .image-collage[class*='boxy-col-']>div {
     margin-bottom: 2rem;
-  }
-
-  main .image-collage.zoom-in img {
-    transform: scale(1.5);
   }
 
   main .image-collage.wide img {
