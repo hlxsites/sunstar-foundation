@@ -417,6 +417,12 @@ main pre {
   background-image: url("/icons/youtube.svg");
 }
 
+.icon.icon-download {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.3rem;
+}
+
 .icon.icon-link-black {
   background-image: url("/icons/link-black.svg");
   display: inline-flex;
