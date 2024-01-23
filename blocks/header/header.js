@@ -106,7 +106,8 @@ export default async function decorate(block) {
     navPath = navMeta || (getLanguage() === 'jp' ? `/${folder}nav` : `/${getLanguage()}/${folder}nav`);
   } else { navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`); }
   const resp = await fetch(`${navPath}.plain.html`);
-  const navTreeResp = await fetch(`/nav-tree.json?sheet=${getLanguage()}`);
+  const navTreeResp = await fetch(`/${folder}nav-tree.json?sheet=${getLanguage()}`);
+  console.log(navTreeResp);
   const navTreeJson = await navTreeResp.json();
   if (resp.ok) {
     const placeholders = await fetchPlaceholders(getLanguage());
