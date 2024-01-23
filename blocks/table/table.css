@@ -1,47 +1,58 @@
-main .table span.icon {
-    width: 70px;
-    height: auto;
-}
-
-main .table img {
-    height: 80px;
-    width: auto;
-}
-
-main .table.native-image-sizes img {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-}
-
 main .table.block h3.table-title {
     font-size: 1rem;
     margin-bottom: 0.5rem;
+}
+
+main .table .table-item {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto repeat(calc(var(--row) - 1), minmax(50px, max-content));
+    grid-template-rows: repeat(var(--col), auto);
+    grid-gap: 1px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--transparent-grey-light-color);
+    background-color: var(--transparent-grey-light-color);
+}
+
+main .table .table-item div {
+    font-size: var(--body-font-size-s);
+    line-height: 1.7em;
+    font-weight: var(--font-weight-medium);
+    padding: 0.5em 1em;
+    text-align: center;
+    vertical-align: middle;
+    background-color: var(--white);
 }
 
 main .section .table.block p.table-annotation {
     margin-bottom: 1.5rem;
 }
 
-main .table table {
+main .section .table.inner-table img {
+    vertical-align: middle;
+    border-style: none;
+    width: 9.375rem;
+    max-width: unset;
+}
+
+main .table.inner-table table {
     background-color: var(--white);
     border-collapse: collapse;
     overflow-x: auto;
-    display: block;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
-main .table .table-item {
+main .table.inner-table .table-item {
     display: unset;
     margin-bottom: unset;
     border: unset;
 }
 
-main .table .table-item div {
+main .table.inner-table .table-item div {
     padding: unset;
 }
 
-main .table:not(.text-table) table td {
+main .table.inner-table table td {
     font-size: 0.88rem;
     line-height: 1.7em;
     text-align: center;
@@ -50,7 +61,7 @@ main .table:not(.text-table) table td {
     vertical-align: middle;
 }
 
-main .table table td p {
+main .table.inner-table table td p {
     font-size: 0.88rem;
     line-height: 1.7em;
     margin-bottom: 0;
@@ -100,6 +111,28 @@ main .multiple-table .flat-table {
     overflow-wrap: break-word;
 }
 
+@media (min-width: 62rem) {
+    main .multiple-table {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    main .table .table-item {
+        display: inline-grid;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(var(--col), auto);
+        grid-template-rows: repeat(var(--row), auto);
+    }
+
+    main .table .table-item .table-head {
+        text-align: center;
+    }
+
+    main .section .table.block p.table-annotation {
+        margin-bottom: 2rem;
+    }
+}
+
 /* Text Table varient */
 main .table.text-table h3.table-title {
     text-transform: uppercase;
@@ -137,9 +170,42 @@ main .table.text-table table tr {
     border-bottom: 1px solid var(--transparent-grey-light-color);
 }
 
+main .table.inner-table table tr {
+    display: table-row;
+}
+
+main .table.inner-table table tr a {
+    display: unset;
+}
+
+main .table.padding-1 table td {
+    padding: 1rem;
+}
+
+main .table.padding-2 table td {
+    padding: 2rem;
+}
+
+main .table.text-align-left tr td {
+    text-align: left;
+}
+
+main .table.text-align-right tr td {
+    text-align: right;
+}
+
+main .table.text-align-center tr td {
+    text-align: center;
+}
+
 main .table.text-table table tr td {
     color: var(--text-color);
     flex-basis: calc(100% - 7.5em);
+}
+
+/* Blue theme */
+main .table.theme-blue table tbody tr td {
+    color: var(--secondary);
 }
 
 main .table.text-table table tr td h4 {
@@ -166,35 +232,51 @@ main .table.text-table table tr td a .icon {
     width: 1.5em;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-main .table.no-vertical-borders table td {
-    border-left: unset;
-    border-right: unset;
-    border-top: unset;
-}
-
-main .table.text-align-left table tr td {
-    text-align: left;
-}
-
 main .table.text-table table tr td:first-child {
     color: var(--transparent-grey-color);
     font-size: var(--body-font-size-m);
     line-height: 1.5rem;
 }
 
-main .table:not(.text-table) table tbody tr:first-of-type {
+main .table.theme-blue table tbody tr:first-of-type td {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+main .table.highlight-first-column:not(.no-head) tr:not(:first-of-type) td{
+    text-align: center;
+}
+
+main .table.highlight-first-column:not(.no-head) tr:first-of-type td{
+    background-color: var(--secondary);
+    color: var(--white);
+    font-weight: var(--font-weight-bold);
+}
+
+main .table.highlight-first-column tr.highlight-item td:first-of-type{
+    background-color: var(--transparent-grey-light-color);
+    color: var(--secondary);
+    text-align: center;
+}
+
+main .table.first-column-per30 tr.highlight-item td:first-of-type{
+    width: 30%;
+}
+
+main .section .table.native-image-size img {
+    width: 100%;
+}
+
+main .table.inner-table table tbody tr:first-of-type {
     background: var(--transparent-blue-light-color);
 }
 
-main .table.no-head table tbody tr:first-of-type {
-    background: unset;
+main .table.inner-table.no-head table tbody tr:first-of-type {
+    background: var(--white);
 }
 
-main .table.small-first-col table tr td:first-child {
-    flex-basis: 10rem;
-    flex-grow: 0;
-    text-align: center;
+main .table.inner-table.lastline-leftalign table tr:last-of-type td {
+    text-align: left;
 }
 
 main .table.block .table-title h4 {
@@ -202,26 +284,6 @@ main .table.block .table-title h4 {
 }
 
 @media (min-width: 62rem) {
-    main .multiple-table {
-        display: flex;
-        flex-flow: row nowrap;
-    }
-
-    main .table .table-item {
-        display: inline-grid;
-        grid-auto-flow: row;
-        grid-template-columns: repeat(var(--col), auto);
-        grid-template-rows: repeat(var(--row), auto);
-    }
-
-    main .table .table-item .table-head {
-        text-align: center;
-    }
-
-    main .section .table.block p.table-annotation {
-        margin-bottom: 2rem;
-    }
-
     main .table.text-table table tr {
         flex-direction: row;
     }
