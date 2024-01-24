@@ -294,7 +294,7 @@ export function decorateAnchors(element = document) {
   ));
   decorateExternalAnchors(Array.from(anchors).filter(
     (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
-    || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
+      || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
   ));
 }
 
@@ -605,6 +605,9 @@ export function getEnvType(hostname = window.location.hostname) {
     'www.sunstar-foundation.org': 'live',
     'main--sunstar-foundation--hlxsites.hlx.page': 'preview',
     'main--sunstar-foundation--hlxsites.hlx.live': 'live',
+    // TODO: Temporary fix for preview. Remove before merging to main
+    'gtm--sunstar--foundation--hlxsites.hlx.page': 'preview',
+    'gtm--sunstar--foundation--hlxsites.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }
