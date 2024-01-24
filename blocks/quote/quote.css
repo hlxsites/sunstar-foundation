@@ -47,3 +47,28 @@
   position: relative;
   font-style: normal;
 }
+
+.block.quote.highlight {
+  margin-top: 1.5rem;
+  margin-bottom: 5rem;
+  padding: 1.875rem 2.5rem;
+  background: var(--transparent-blue-light-color);
+  border-left: 5px solid var(--health-beauty-orange);
+}
+
+.block.quote.highlight::before {
+  content: unset;
+}
+
+.block.quote.highlight::after {
+  content: unset;
+}
+
+.block.quote.highlight .quote-content {
+  color: var(--health-beauty-orange);
+  margin-bottom: unset;
+}
+
+.block.quote.highlight .quote-caption {
+  color: var(--light-black);
+}
