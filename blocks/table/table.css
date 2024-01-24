@@ -127,6 +127,28 @@ main .block.left.table.text-table .table-item .table-head {
     text-align: left;
 }
 
+main .block.left.table.text-table .table-item .table-head > h3::before {
+    content: counter(num);
+    background: var(--primary);
+    width: 30px;
+    border-radius: 30px;
+    display: inline-block;
+    text-align: center;
+    color: var(--white);
+    font-size: var(--body-font-size-s);
+    font-weight: bold;
+    left: 0;
+    top: 0;
+    line-height: 1.8em;
+    padding: 1.5px 0;
+    margin-right: 0.25rem;
+}
+
+main .block.left.table.text-table .table-item .table-head > h3{
+    counter-increment: num 1;
+    margin-left: 0.25rem;
+}
+
 main .table.text-table table {
     text-align: left;
     border-spacing: unset;
