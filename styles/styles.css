@@ -18,6 +18,8 @@
   }
 
 :root {
+  counter-reset: num;
+
   /* colors */
   --black: #000;
   --blue: #007bff;
