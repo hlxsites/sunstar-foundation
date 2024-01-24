@@ -124,6 +124,10 @@ main .block.cards {
   margin-top: 1rem;
 }
 
+.cards.no-shadow > ul > li {
+  box-shadow: none;
+}
+
 main .cards.info-points > ul > li {
   display: flex;
   box-shadow: none;
@@ -219,6 +223,10 @@ main .cards.stacked-cards .cards-card-image {
   width: 16rem;
   height: 9rem;
   flex-shrink: 0;
+}
+
+.cards.no-padding .cards-card-body {
+  padding: 0;
 }
 
 main .cards.stacked-cards .cards-card-body {
@@ -331,6 +339,7 @@ main .cards.video-modal .cards-card-image::after {
   min-width: auto;
 }
 
+
 @media screen and (min-width: 48rem) {
   .cards > ul > li {
     margin: 0 7px;
@@ -441,6 +450,7 @@ main .cards.video-modal .cards-card-image::after {
   main .section .nolink h2 {
     font-size: var(--heading-font-size-l);
   }
+
 }
 
 
@@ -549,4 +559,7 @@ main .cards.video-modal .cards-card-image::after {
     margin-bottom: 0.5rem;
     align-self: flex-start;
   }
+
 }
+
+
