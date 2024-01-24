@@ -98,15 +98,19 @@ const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleN
 export default async function decorate(block) {
   let navPath = 0;
   let folder = 0;
+  let navTreeResp = 0;
 
   // fetch nav content
   const navMeta = getMetadata('nav');
   folder = getMetadata('template');
   if (folder) {
     navPath = navMeta || (getLanguage() === 'jp' ? `/${folder}nav` : `/${getLanguage()}/${folder}nav`);
-  } else { navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`); }
+    navTreeResp = await fetch(`/${folder}nav-tree.json?sheet=${getLanguage()}`);
+  } else {
+    navPath = navMeta || (getLanguage() === 'jp' ? '/nav' : `/${getLanguage()}/nav`);
+    navTreeResp = await fetch(`/nav-tree.json?sheet=${getLanguage()}`);
+  }
   const resp = await fetch(`${navPath}.plain.html`);
-  const navTreeResp = await fetch(`/${folder}nav-tree.json?sheet=${getLanguage()}`);
   const navTreeJson = await navTreeResp.json();
   if (resp.ok) {
     const placeholders = await fetchPlaceholders(getLanguage());
