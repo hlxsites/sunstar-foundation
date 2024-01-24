@@ -25,7 +25,73 @@ footer .footer-top ul>li {
   display: none;
 }
 
-footer .footer-top-item:last-of-type {
+footer td {
+  color: var(--white);
+  font-weight: var(--font-style-normal);
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+  border: solid 1px var(--white);
+}
+
+footer thead td {
+  color: var(--primary);
+  background: var(--white);
+  font-size: 0.9625rem;
+}
+
+footer tbody td {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+footer thead td:not(:first-child) {
+  width: 10%;
+  border-left: solid 1.5px var(--primary);
+}
+
+footer span {
+  font-size: 0.825rem;
+}
+
+footer table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  border: solid 1px var(--white);
+  height: 100%;
+}
+
+footer .footer-social>div>div {
+  display: block;
+}
+
+footer .footer-social p {
+  margin-bottom: 0;
+}
+
+footer .footer-social h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+
+footer .footer-social a {
+  color: var(--white);
+}
+
+footer .footer-social h5 {
+  margin-top: 1rem;
+}
+
+footer .dentistry .footer-top {
+  display: none;
+}
+
+footer .footer-social {
+  margin-top: 1rem;
+}
+
+footer>:not(.dentistry) .footer-top-item:last-of-type {
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
@@ -96,6 +162,14 @@ footer .footer-bottom p:last-of-type {
   margin-top: 1rem;
 }
 
+footer .dentistry .footer-middle {
+  margin-top: 3rem;
+}
+
+footer .dentistry .footer-bottom p {
+  margin: 0;
+}
+
 footer .icon-link-white {
   height: 1.125rem;
   width: 1.125rem;
@@ -114,6 +188,18 @@ footer .icon-link-white {
 @media (min-width: 62rem) {
   footer {
     padding-top: 3rem;
+  }
+
+  footer .dentistry .footer-top {
+    display: block;
+  }
+
+  footer .footer.dentistry {
+    max-width: calc(54.5rem);
+  }
+
+  .footer-social>div>div>div {
+    width: calc(100% - 36.375rem);
   }
 
   footer .footer {
@@ -137,7 +223,7 @@ footer .icon-link-white {
       justify-content: space-between;
   }
 
-  footer .footer-top-item:last-of-type {
+  footer>:not(.dentistry) .footer-top-item:last-of-type {
     margin-top: 0;
   }
 
@@ -162,25 +248,55 @@ footer .icon-link-white {
     gap: 2rem;
   }
 
-  footer .footer-top .footer-top-item {
+  footer>:not(.dentistry) .footer-top .footer-top-item {
     width: 10rem;
     min-width: 10rem;
   }
 
-
-
   footer .footer-bottom p:last-of-type {
     margin-top: 0;
+  }
+
+  footer table {
+    width: 33.75rem;
+  }
+
+  footer tbody th {
+    font-size: 1.2375rem;
+  }
+
+  footer .footer-social>div>div {
+    display: flex;
+  }
+
+  footer .footer-social>div>div>div {
+    margin-left: 42px;
   }
 }
 
 @media (min-width: 77rem) {
-  footer .footer-top>div>div {
+  footer>:not(.dentistry) .footer-top .footer-top-item {
+    width: 12.5rem;
+    min-width: 12.5rem;
+  }
+
+  footer table {
+    width: 41.25rem;
+  }
+
+  footer .footer.dentistry {
+    max-width: 75rem;
+  }
+
+  footer .footer-social>div>div>div {
+    width: calc(100% - 702px);
+  }
+
+  footer>:not(.dentistry) .footer-top>div>div {
     gap: 3rem;
   }
 
-  footer .footer-top .footer-top-item {
-    width: 12.5rem;
-    min-width: 12.5rem;
+  footer td {
+    font-size: 1rem;
   }
 }
