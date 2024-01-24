@@ -139,7 +139,7 @@ image-collage.medium {
     justify-content: center;
   }
 
-  main .image-collage.align-left.boxy-col-1 {
+  main .image-collage.justify-unset.boxy-col-1 {
     justify-content: unset;
   }
 
