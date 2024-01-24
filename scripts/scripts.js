@@ -606,8 +606,8 @@ export function getEnvType(hostname = window.location.hostname) {
     'main--sunstar-foundation--hlxsites.hlx.page': 'preview',
     'main--sunstar-foundation--hlxsites.hlx.live': 'live',
     // TODO: Temporary fix for preview. Remove before merging to main
-    'gtm--sunstar--foundation--hlxsites.hlx.page': 'preview',
-    'gtm--sunstar--foundation--hlxsites.hlx.live': 'live',
+    'gtm--sunstar-foundation--hlxsites.hlx.page': 'preview',
+    'gtm--sunstar-foundation--hlxsites.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }
