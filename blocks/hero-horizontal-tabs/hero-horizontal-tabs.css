@@ -151,6 +151,10 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     width: 50%;
   }
 
+  .hero-horizontal-tabs>div:first-of-type {
+    width: 50%;
+  }
+
   main .hero-horizontal-tabs.block {
     flex-direction: row;
     max-width: 54.5rem;
@@ -160,6 +164,7 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     padding-top: 6rem;
     margin-left: 0;
     min-width: 27.25rem;
+    padding-right: 2rem;
   }
 
   main div.no-image .hero-horiz-tabs-text {
@@ -220,6 +225,10 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
 }
 
 @media (min-width:77rem) {
+  .hero-horizontal-tabs>div:first-of-type {
+    width: unset;
+  }
+
   main .hero-horizontal-tabs.block {
     max-width: 75rem;
   }
@@ -228,6 +237,7 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     padding-top: 7.5rem;
     margin-right: 2rem;
     min-width: 29.5rem;
+    padding-right: 0;
   }
 
   main .hero-horiz-tabs-text > h2 {
