@@ -47,10 +47,6 @@ main .block.text.highlight .text-title {
   margin-bottom: unset;
 }
 
-main .block.quote.highlight .text-content {
-  color: var(--light-black);
-}
-
 main .block.text.muted {
   color: var(--steel-blue);
   font-size: var(--body-font-size-s);
