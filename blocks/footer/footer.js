@@ -85,7 +85,6 @@ export default async function decorate(block) {
   // fetch footer content
   const footerMeta = getMetadata('footer');
   folder = getMetadata('template');
-  folder = 'dentistry';
 
   if (folder) {
     block.classList.add(folder);
@@ -103,9 +102,7 @@ export default async function decorate(block) {
     footer.innerHTML = html;
     decorateSections(footer);
     updateSectionsStatus(footer);
-
     block.append(footer);
-
     decorateButtons(block);
     decorateFooter(block, folder);
     decorateAnchors(block);
