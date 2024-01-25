@@ -1,52 +1,72 @@
-function outerHeight(element) {
-  if (!element) return 0;
-  const height = element.offsetHeight;
-  const style = window.getComputedStyle(element);
-  return ['top', 'bottom']
-    .map((side) => parseInt(style[`margin-${side}`], 10))
-    .reduce((total, side) => total + side, height);
+import { getNamedValueFromTable } from '../../scripts/scripts.js';
+
+function addEvent(menu, content) {
+  menu.addEventListener('click', () => {
+    content.classList.toggle('visible');
+    menu.classList.toggle('visible');
+  });
 }
 
-function buildTOCSide(ul, block) {
-  const sectionContainer = block.closest('.section').querySelector(':scope > .section-container');
+function buildUl(ul, block) {
+  let textContent = '';
+  block.querySelectorAll('ul li').forEach((li) => {
+    const aLink = li.querySelectorAll('a')[0];
+    aLink.target = '_self';
+    if (li.querySelector('strong') !== null) {
+      textContent = aLink.textContent;
+      li.innerHTML = '';
+      li.append(aLink);
+      li.classList.add('active');
+      ul.append(li);
+    }
+    ul.append(li);
+  });
+  return textContent;
+}
+
+function decorateTOC(block) {
+  const menuTitle = getNamedValueFromTable(block, 'MobileMenuTitle');
+  const content = getNamedValueFromTable(block, 'Content');
+  const menuTitleTag = document.createElement('p');
+  menuTitleTag.classList.add('toc-menu-title');
+  menuTitleTag.textContent = menuTitle.textContent;
+  addEvent(menuTitleTag, content);
+  const ul = content.querySelector('ul');
+  buildUl(ul, block);
+  content.classList.add('toc-content');
+  block.replaceChildren(menuTitleTag);
+  block.append(content);
+}
+
+function buildTOCSide(block) {
+  decorateTOC(block);
+  block.closest('.section').classList.add('right-toc');
   const mainContent = document.createElement('div');
   mainContent.classList.add('main-content');
-  const tocWrapper = document.querySelector('main > .toc-container > .section-container > .toc-wrapper');
-  [...sectionContainer.children].forEach((div) => {
-    if (div.querySelector('.toc') === null) {
-      mainContent.append(div);
+  const main = document.querySelector('main');
+  [...main.querySelectorAll('.section')].forEach((section) => {
+    if (!section.classList.contains('breadcrumb-container')) {
+      mainContent.append(section);
     }
   });
-
-  const h2 = mainContent.querySelectorAll('h2');
-  if (ul) {
-    [...ul.children].forEach((liItem, i) => {
-      const h2Id = h2[i] !== null ? h2[i].id : '';
-      const aLink = document.createElement('a');
-      aLink.href = `#${h2Id}`;
-      aLink.innerText = liItem.innerText;
-      liItem.innerText = '';
-      liItem.append(aLink);
+  const contentWrap = document.createElement('div');
+  contentWrap.classList.add('content-wrap');
+  const toc = mainContent.querySelector('.section.toc-container');
+  contentWrap.append(toc);
+  const contentInnercon = document.createElement('div');
+  contentInnercon.classList.add('content-innercon');
+  [...mainContent.querySelectorAll('.section.data-toc-section')].forEach((contentSection) => {
+    contentInnercon.append(contentSection);
+  });
+  contentWrap.append(contentInnercon);
+  mainContent.append(contentWrap);
+  main.append(mainContent);
+  [...main.querySelectorAll('.section')].forEach((section) => {
+    [...section.querySelectorAll('.hidden.block')].forEach((hidden) => {
+      hidden.style.display = 'none';
     });
-  }
-
-  sectionContainer.replaceChildren(tocWrapper);
-  sectionContainer.append(mainContent);
-
-  window.addEventListener('scroll', () => {
-    if (ul) {
-      if (document.documentElement.scrollTop > outerHeight(document.querySelector('main > .hero-vertical-tabs-container .hero-vertical-tabs.block')) - 45
-        && document.documentElement.scrollTop < document.querySelector('body').offsetHeight
-        - outerHeight(document.querySelector('main .toc-container ul'))
-        - outerHeight(document.querySelector('main > .contact-us'))
-        - outerHeight(document.querySelector('main > .about-us'))
-        - outerHeight(document.querySelector('footer'))
-        - 80) {
-        ul.classList.add('fixed');
-      } else {
-        ul.classList.remove('fixed');
-      }
-    }
+    section.dataset.sectionStatus = 'loaded';
+    section.style.display = null;
   });
 }
 
@@ -68,14 +88,13 @@ function buildTOCTop(ul, block) {
 }
 
 export default async function decorate(block) {
-  const ul = block.querySelector('ul');
-
-  if (ul) {
-    block.replaceChildren(ul);
-  }
   if (block.classList.contains('flat')) {
+    const ul = block.querySelector('ul');
+    if (ul) {
+      block.replaceChildren(ul);
+    }
     buildTOCTop(ul, block);
   } else {
-    buildTOCSide(ul, block);
+    buildTOCSide(block);
   }
 }

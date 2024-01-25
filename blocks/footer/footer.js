@@ -10,7 +10,7 @@ import {
   decorateAnchors,
 } from '../../scripts/scripts.js';
 
-function decorateFooterTop(block) {
+function decorateFooterTop(block, folder) {
   const footerTop = block.querySelector('.footer-top');
   const tempDiv = footerTop.querySelector('.section-container>div');
   const children = [...footerTop.querySelector('.section-container>div').children];
@@ -23,25 +23,53 @@ function decorateFooterTop(block) {
     topItem.appendChild(children[index]);
     index += 1;
 
-    while (index < children.length) {
-      if (children[index].tagName === 'H5') {
-        if (!children[index + 1] || (children[index - 1].tagName === 'H5' && children[index + 1].tagName !== 'UL')) {
-          topItem.appendChild(children[index]);
+    if (!folder) {
+      while (index < children.length) {
+        if (children[index].tagName === 'H5') {
+          if (!children[index + 1] || (children[index - 1].tagName === 'H5' && children[index + 1].tagName !== 'UL')) {
+            topItem.appendChild(children[index]);
+          } else {
+            break;
+          }
         } else {
-          break;
+          topItem.appendChild(children[index]);
         }
-      } else {
-        topItem.appendChild(children[index]);
+        index += 1;
       }
-      index += 1;
     }
 
     tempDiv.appendChild(topItem);
   }
 }
 
-function decorateFooter(block) {
-  decorateFooterTop(block);
+function decorateFooterSocialAddress(block) {
+  const footerSocial = block.querySelector('.footer-social');
+  if (footerSocial) {
+    const table = footerSocial.querySelector('table');
+    const footerSocialDefaultWrapper = footerSocial.querySelector('.footer-social>div>div');
+    const childs = footerSocialDefaultWrapper.children;
+    const ele = document.createElement('div');
+
+    [...childs].forEach((x) => {
+      if (x.tagName !== 'TABLE') {
+        ele.appendChild(x);
+      } else {
+        const firstTr = x.querySelector('tr');
+        const thead = document.createElement('thead');
+        thead.appendChild(firstTr);
+        table.prepend(thead);
+      }
+    });
+
+    footerSocialDefaultWrapper.innerHTML = '';
+    footerSocialDefaultWrapper.appendChild(table);
+    footerSocialDefaultWrapper.appendChild(ele);
+  }
+}
+
+function decorateFooter(block, folder) {
+  decorateFooterTop(block, folder);
+  decorateFooterSocialAddress(block);
   block.parentElement.classList.add('appear');
 }
 
@@ -57,9 +85,14 @@ export default async function decorate(block) {
   // fetch footer content
   const footerMeta = getMetadata('footer');
   folder = getMetadata('template');
+
   if (folder) {
+    block.classList.add(folder);
     footerPath = footerMeta || (getLanguage() === 'jp' ? `/${folder}footer` : `/${getLanguage()}/{folder}footer`);
-  } else { footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`); }
+  } else {
+    footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`);
+  }
+
   const resp = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
   if (resp.ok) {
@@ -70,11 +103,9 @@ export default async function decorate(block) {
     footer.innerHTML = html;
     decorateSections(footer);
     updateSectionsStatus(footer);
-
     block.append(footer);
-
     decorateButtons(block);
-    decorateFooter(block);
+    decorateFooter(block, folder);
     decorateAnchors(block);
   }
 }

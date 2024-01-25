@@ -294,7 +294,7 @@ export function decorateAnchors(element = document) {
   ));
   decorateExternalAnchors(Array.from(anchors).filter(
     (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
-    || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
+      || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
   ));
 }
 
@@ -320,7 +320,7 @@ export function getWindowSize() {
  * we break out of the loop to not add spacing to other sections as well.
  */
 export function addTopSpacingStyleToFirstMatchingSection(main) {
-  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container', 'no-margin-top'];
+  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container', 'no-margin-top', 'toc-container'];
   const sections = [...main.querySelectorAll(':scope > div')];
   let added = false;
 

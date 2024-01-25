@@ -16,6 +16,18 @@
       window.location.replace(newLoc);
     }
 
+    // Turn a slash before an anchor into just the anchor, e.g. a/b/c/foo/#anchor
+    // becomes a/b/c/foo#anchor
+    const lastSlashIdx = window.location.href.lastIndexOf('/');
+    if (window.location.href.slice(lastSlashIdx, lastSlashIdx + 2) === '/#') {
+      window.stop();
+
+      var temp = window.location.href.split('');
+      temp.splice(lastSlashIdx, 1);
+      const newLoc = temp.join('');
+      window.location.replace(newLoc);
+    }
+
 		/**
 		* * Redirecting all newsroom pages and healthy thinking pages
 		*/

@@ -1,6 +1,8 @@
 main .table span.icon {
-    width: 70px;
-    height: auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-bottom: 0.3125rem;
+    margin-left: 0.3125rem;
 }
 
 main .table img {
@@ -44,10 +46,11 @@ main .table .table-item div {
 main .table:not(.text-table) table td {
     font-size: 0.88rem;
     line-height: 1.7em;
-    text-align: center;
+    text-align: left;
     padding: 0.5em 1em;
     border: 1px solid var(--transparent-grey-light-color);
     vertical-align: middle;
+    width: 50%;
 }
 
 main .table table td p {
@@ -120,6 +123,32 @@ main .table.text-table .table-item .table-head {
     padding: 0;
 }
 
+main .block.left.table.text-table .table-item .table-head {
+    text-align: left;
+}
+
+main .block.left.table.text-table .table-item .table-head > h3::before {
+    content: counter(num);
+    background: var(--primary);
+    width: 30px;
+    border-radius: 30px;
+    display: inline-block;
+    text-align: center;
+    color: var(--white);
+    font-size: var(--body-font-size-s);
+    font-weight: bold;
+    left: 0;
+    top: 0;
+    line-height: 1.8em;
+    padding: 1.5px 0;
+    margin-right: 0.25rem;
+}
+
+main .block.left.table.text-table .table-item .table-head > h3{
+    counter-increment: num 1;
+    margin-left: 0.25rem;
+}
+
 main .table.text-table table {
     text-align: left;
     border-spacing: unset;
@@ -183,7 +212,7 @@ main .table.text-table table tr td:first-child {
     line-height: 1.5rem;
 }
 
-main .table:not(.text-table) table tbody tr:first-of-type {
+main .table:not(.text-table, .first-column-color) table tbody tr:first-of-type {
     background: var(--transparent-blue-light-color);
 }
 
@@ -196,6 +225,11 @@ main .table.small-first-col table tr td:first-child {
     flex-grow: 0;
     text-align: center;
 }
+
+main .table.first-column-color:not(.text-table) tbody tr td:first-of-type {
+    background: var(--transparent-blue-light-color);
+}
+
 
 main .table.block .table-title h4 {
     color: var(--gray-dark);

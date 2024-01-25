@@ -3,6 +3,10 @@
     margin-bottom: 2rem;
 }
 
+.section.full-width.no-margin-bottom.hero-banner-container {
+    margin-bottom: unset;
+}
+
 .hero-banner.careers {
     background-image: url("/assets/careers-mobile-top.jpg");
 }
@@ -24,8 +28,7 @@
 }
 
 .hero-banner video,
-.hero-banner img,
-.hero-banner.image-right img {
+.hero-banner img {
     width: 100%;
     object-fit: cover;
     height: 10rem;
@@ -162,6 +165,29 @@
     width: 2.125rem;
 }
 
+.hero-banner.image-right img {
+    object-position: 0% 15%;
+}
+
+.hero-banner.no-image {
+  max-width: 75rem;
+}
+
+.hero-banner.no-image h6 {
+  color: var(--hero-strong-color);
+  margin-top: 0.75rem;
+}
+
+.hero-banner.image-right .hero-banner-text-wrapper h6 {
+    color: var(--hero-strong-color);
+}
+
+.hero-banner.no-image p {
+  font-size: var(--body-font-size-m);
+  margin-top: 1rem;
+  line-height: 1.3rem;
+}
+
 @media (min-width: 48rem) {
     .hero-banner .hero-banner-text-container::before:not(.right-text) {
         content: "";
@@ -193,7 +219,6 @@
 
     .hero-banner video,
     .hero-banner img,
-    .hero-banner.image-right img,
     .hero-banner.image-left img,
     .hero-banner.image-center img
     {
@@ -230,6 +255,14 @@
         line-height: 1.3em;
     }
 
+    .hero-banner.no-image h1 {
+      line-height: 1;
+    }
+
+    .hero-banner.no-image h6 {
+      line-height: 1.5;
+    }
+
     .hero-banner .hero-banner-button-container {
         flex-basis: 11.625rem;
         justify-content: center;
@@ -256,6 +289,90 @@
 
     .hero-banner .hero-banner-heading-section {
         max-width: 56.5rem;
+    }
+
+    .hero-banner-wrapper:has(.hero-banner.image-right) {
+        background: var(--primary);
+        color: var(--white);
+    }
+
+    .hero-banner.image-right.block {
+        padding-right: 10.75rem;
+        height: 8.75rem;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        max-width: 56.5rem;
+        padding-left: 1rem;
+    }
+
+    .section.full-width.hero-banner-container:has(.hero-banner.image-right) {
+        position: relative;
+        height: unset;
+    }
+
+    .hero-banner.image-right .hero-banner-heading-container {
+        position: unset;
+        top: 0;
+    }
+
+    .hero-banner.image-right .hero-banner-heading-section {
+        width: auto;
+    }
+
+    .hero-banner.image-right img {
+        height: 8.75rem;
+        object-position: unset;
+        vertical-align: middle;
+    }
+
+    .hero-banner.image-right .hero-banner-text-container {
+        padding: unset;
+    }
+
+    .hero-banner.image-right .hero-banner-media-section {
+        height: unset;
+        width: unset;
+        position: unset;
+    }
+
+    .hero-banner.image-right .hero-banner-text-container::before {
+        content: unset;
+    }
+
+    .hero-banner.image-right .hero-banner-text-wrapper h1 {
+        line-height: 1;
+    }
+
+    .hero-banner.image-right .hero-banner-text-wrapper h6 {
+        line-height: 1.5;
+    }
+
+    .hero-banner-wrapper:has(.hero-banner.no-image) {
+      background: var(--primary);
+    }
+
+    .hero-banner.no-image {
+      min-height: 8.75rem;
+      display: flex;
+      align-items: center;
+      padding-left: 2rem;
+    }
+
+    .hero-banner.no-image .hero-banner-text-container::before {
+      content: unset;
+    }
+
+    .section.full-width.hero-banner-container:has(.hero-banner.no-image) {
+      height: unset;
+    }
+
+    .hero-banner.no-image .hero-banner-heading-container {
+      position: unset;
+    }
+
+    .hero-banner.no-image .hero-banner-text-container {
+      padding: unset;
     }
 
     .hero-banner.overlap .hero-banner-heading-section {
@@ -316,6 +433,10 @@
     .hero-banner.careers .hero-banner-text-wrapper h1 {
         font-size: 3rem;
     }
+
+    .hero-banner.no-image p {
+      max-width: 42rem;
+    }
 }
 
 @media (min-width: 77rem) {
@@ -355,6 +476,28 @@
 
     .hero-banner.overlap .hero-banner-media-section {
         height: 43.75rem;
+    }
+    
+    .hero-banner.image-right.block {
+        padding-right: 15rem;
+        padding-left: unset;
+        height: 8.75rem;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        max-width: 75rem;
+    }
+
+    .hero-banner.image-right .hero-banner-heading-section {
+        width: 100%;
+    }
+
+    .hero-banner.no-image {
+      padding-left: 0;
+    }
+
+    .hero-banner.no-image p {
+      max-width: 57rem;
     }
 }
 
