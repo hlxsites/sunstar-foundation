@@ -77,6 +77,7 @@
   --link-blue-color: #003d56;
   --dark-cyan-color: #003449;
   --primary-08-transparency: #00587ccc;
+  --blue-magenta: #7474C1;
 
 
   /* fonts */
@@ -800,6 +801,12 @@ main .section.static .section-container h1 {
   margin: 3rem 0 2rem;
   color: var(--primary);
   font-weight: var(--font-weight-medium);
+}
+
+/* section - bottom-light-border */
+main .section.bottom-light-border h2 {
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 1rem;
 }
 
 main .section.static .section-container h2 {

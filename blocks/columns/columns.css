@@ -410,6 +410,10 @@ div.img-col > video {
   text-decoration: underline;
 }
 
+.columns.light-blue {
+  background-color: var(--transparent-blue-light-color);
+}
+
 @media (min-width: 62rem) {
   .columns h2,
   .columns:not(.no-buttons) h3,
