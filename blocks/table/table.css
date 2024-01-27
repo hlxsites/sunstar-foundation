@@ -240,6 +240,10 @@ main .table.text-table.with-image table img {
     height: auto;
 }
 
+main .table.text-table.with-image table tr td:first-child {
+    text-align: center;
+}
+
 @media (min-width: 62rem) {
     main .multiple-table {
         display: flex;
