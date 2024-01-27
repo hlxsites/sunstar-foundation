@@ -231,6 +231,7 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
   main .hero-horizontal-tabs.full-width.block.no-image.align-right h5 {
     right: 0;
     position: absolute;
+    color: var(--white);
   }
 
 }
