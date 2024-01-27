@@ -864,6 +864,11 @@ export function cropString(inputString, maxLength) {
     return false;
   });
 
+  // If currentLength + word.length + 1 > maxLength means croppedString will be null hence
+  if (croppedString === '') {
+    croppedString = words[0].substring(0, maxLength);
+  }
+
   // Remove trailing space and add an ellipsis if needed
   croppedString = croppedString.trim();
   if (croppedString.length < inputString.length) {
