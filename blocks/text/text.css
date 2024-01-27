@@ -73,6 +73,11 @@ main .block.text.light-background {
   padding: 1rem;
 }
 
+main .block.text.list-style-none ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 @media (min-width: 62rem) {
   main .block.text {
     padding: 0;
@@ -84,4 +89,3 @@ main .block.text.light-background {
     font-size: var(--body-font-size-xxl);
   }
 }
-
