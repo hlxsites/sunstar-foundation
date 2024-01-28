@@ -258,6 +258,45 @@ export async function fetchPlaceholders(locale = 'en') {
 }
 
 /**
+ * Fetch Redirects
+ * @returns
+ */
+export async function fetchRedirects() {
+  window.redirects = window.redirects || {};
+  const REDIRECTION_KEY = 'redirect';
+  const loaded = window.redirects[`${REDIRECTION_KEY}-loaded`];
+
+  if (!loaded) {
+    window.redirects[`${REDIRECTION_KEY}-loaded`] = new Promise((resolve, reject) => {
+      fetch('/redirects.json')
+        .then((resp) => {
+          if (resp.ok) {
+            return resp.json();
+          }
+          throw new Error(`${resp.status}: ${resp.statusText}`);
+        })
+        .then((json) => {
+          const redirects = {};
+
+          json.data.forEach((entry) => {
+            redirects[entry.Source] = entry.Destination;
+          });
+
+          window.redirects[REDIRECTION_KEY] = redirects;
+          resolve();
+        }).catch((error) => {
+          // Error While Loading redirects
+          window.redirects[REDIRECTION_KEY] = {};
+          reject(error);
+        });
+    });
+  }
+
+  await window.redirects[`${REDIRECTION_KEY}-loaded`];
+  return window.redirects[REDIRECTION_KEY];
+}
+
+/**
  * Decorates a block.
  * @param {Element} block The block element
  */

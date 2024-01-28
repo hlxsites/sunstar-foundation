@@ -5,7 +5,12 @@ import {
   getLanguangeSpecificPath,
   getViewPort,
 } from '../../scripts/scripts.js';
-import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
+
+import {
+  fetchPlaceholders,
+  getMetadata,
+  fetchRedirects,
+} from '../../scripts/lib-franklin.js';
 
 function prependSlash(path) {
   return path.startsWith('/') ? path : `/${path}`;
@@ -28,6 +33,7 @@ async function createAutoBreadcrumb(block) {
     return;
   }
   const placeholders = await fetchPlaceholders(getLanguage());
+  const redirects = await fetchRedirects();
   const pageIndex = (await fetchIndex('query-index')).data;
   fixExcelFilterZeroes(pageIndex);
   const { pathname } = window.location;
@@ -42,14 +48,18 @@ async function createAutoBreadcrumb(block) {
       name: placeholders.hometext,
       url_path: `${getLanguangeSpecificPath(pathSeparator)}`,
     },
-    ...pathSplit.slice(1, -1).map((part, index) => ({
-      // get the breadcrumb title from the index; if the index does not contain it,
-      // use the placeholders by appending '-title' to the part
-      // if no breadcrumb title is found, skip the part (empty string)
-      // eslint-disable-next-line max-len
-      name: pageIndex.find((page) => page.path === urlForIndex(index))?.breadcrumbtitle ?? (placeholders[`${part}-title`] ?? ''),
-      url_path: urlForIndex(index),
-    })),
+    ...pathSplit.slice(1, -1).map((part, index) => {
+      const url = urlForIndex(index);
+
+      return {
+        // get the breadcrumb title from the index; if the index does not contain it,
+        // use the placeholders by appending '-title' to the part
+        // if no breadcrumb title is found, skip the part (empty string)
+        // eslint-disable-next-line max-len
+        name: pageIndex.find((page) => (page.path === url) || (page.path === redirects[url]))?.breadcrumbtitle ?? (placeholders[`${part}-title`] ?? ''),
+        url_path: urlForIndex(index),
+      };
+    }),
     {
       // get the breadcrumb title from the metadata; if the metadata does not contain it,
       // the last part of the path is used as the breadcrumb title
