@@ -1,14 +1,14 @@
 import {
-  fetchIndex, fixExcelFilterZeroes, getLanguage, addPagingWidget,
+  fetchIndex, fixExcelFilterZeroes, getLanguage, addPagingWidget, cropString,
 } from '../../scripts/scripts.js';
 import { getFormattedDate, fetchPlaceholders } from '../../scripts/lib-franklin.js';
 
 const blockJson = {
   news: {
-    filerResults: (data, currPath) => data.filter((entry) => entry.newsdate
+    filerResults: (data, currPath) => data.filter((entry) => entry.publisheddate
       && entry.path !== currPath
-      && (entry.path.includes('/news/')))
-      .sort((x, y) => y.newsdate - x.newsdate),
+      && (entry.path.includes('/archives/dentistry/news/')))
+      .sort((x, y) => y.publisheddate - x.publisheddate),
     resultsPerPage: 12,
     titlePlaceHolderKey: 'news-page-title-text',
   },
@@ -20,7 +20,7 @@ export function getParams(params) {
 }
 
 function setResultValue(el, value) {
-  el.innerText = value;
+  el.innerText = cropString(value, 65);
 }
 
 async function getResults(page, block, blockType, placeholders) {
@@ -38,21 +38,21 @@ async function getResults(page, block, blockType, placeholders) {
   curPage.forEach((line) => {
     const res = document.createElement('div');
     res.classList.add('result');
+    const topLevelAnchor = document.createElement('a');
     const header = document.createElement('h3');
-    const link = document.createElement('a');
     const title = line.pagename || line.breadcrumbtitle || line.title;
-    setResultValue(link, title);
-    link.href = line.path;
+    setResultValue(header, title);
+    topLevelAnchor.href = line.path;
     const path = line.path || '';
     let childSpan;
 
     if (path) {
       const selfFiltered = json.data.filter((x) => x.path === path);
 
-      if (selfFiltered && selfFiltered.length && selfFiltered[0].newsdate) {
+      if (selfFiltered && selfFiltered.length && selfFiltered[0].publisheddate) {
         childSpan = document.createElement('span');
         // eslint-disable-next-line max-len
-        childSpan.textContent = getFormattedDate(new Date(Number(selfFiltered[0].newsdate)), getLanguage());
+        childSpan.textContent = getFormattedDate(new Date(Number(selfFiltered[0].publisheddate)), getLanguage());
       }
     }
 
@@ -60,11 +60,15 @@ async function getResults(page, block, blockType, placeholders) {
       const p = document.createElement('p');
       p.classList.add('parent-detail');
       p.appendChild(childSpan);
-      res.appendChild(p);
+      topLevelAnchor.appendChild(p);
     }
 
-    header.appendChild(link);
-    res.appendChild(header);
+    topLevelAnchor.appendChild(header);
+    const description = document.createElement('p');
+    description.textContent = cropString(line.description, 65);
+    topLevelAnchor.appendChild(description);
+
+    res.appendChild(topLevelAnchor);
     div.appendChild(res);
   });
 

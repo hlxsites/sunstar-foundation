@@ -77,12 +77,16 @@
   background-color: inherit;
 }
 
-.result p.parent-detail {
-  color: var(--light-grey);
-  font-size: var(--font-size-small);
-  margin-bottom: 0.875rem;
+.result p {
+  color: var(--light-black);
+  font-size: var(--body-font-size-m);
+  margin-bottom: 0;
   display: inline-block;
   line-height: 1;
+}
+
+.result a:hover * {
+  text-decoration: underline;
 }
 
 .result p.parent-detail span.news-date {
