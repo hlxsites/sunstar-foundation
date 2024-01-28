@@ -76,8 +76,15 @@ header nav.nav-middle p {
   margin: 0;
 }
 
-header nav.nav-middle a {
-  display: flex;
+header nav.nav-middle h5 > a {
+  line-height: 1;
+  text-decoration: none;
+  color: var(--secondary);
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  transition: ease .5s;
+
 }
 
 header .social > ul > li > a {
@@ -168,6 +175,17 @@ header nav.nav-bottom .menu-level-1-item > a {
   line-height: 1.5;
   display: flex;
   justify-content: space-between;
+}
+
+header nav.nav-middle h5 > a:hover {
+  line-height: 1;
+  text-decoration: none;
+  background-color: var(--secondary);
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  transition: ease .5s;
 }
 
 header nav.nav-top > ul > li > a:first-of-type {
@@ -711,6 +729,10 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
 
   header nav.nav-middle {
     padding: 0;
+  }
+
+  header nav.nav-middle h5 {
+    margin-left: 40rem;
   }
 
   header nav.nav-middle > h4 {
