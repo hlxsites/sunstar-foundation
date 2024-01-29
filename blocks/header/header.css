@@ -178,13 +178,8 @@ header nav.nav-bottom .menu-level-1-item > a {
 }
 
 header nav.nav-middle h5 > a:hover {
-  line-height: 1;
-  text-decoration: none;
   background-color: var(--secondary);
-  color: white;
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 10px;
+  color: var(--white);
   transition: ease .5s;
 }
 
