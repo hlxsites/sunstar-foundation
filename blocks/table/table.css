@@ -103,6 +103,12 @@ main .multiple-table .flat-table {
     overflow-wrap: break-word;
 }
 
+main .table.text-table.medium {
+    max-width: 45rem;
+    margin-left: 0;
+}
+
+
 /* Text Table varient */
 main .table.text-table h3.table-title {
     text-transform: uppercase;
@@ -142,6 +148,7 @@ main .block.left.table.text-table .table-item .table-head > h3::before {
     line-height: 1.8em;
     padding: 1.5px 0;
     margin-right: 0.25rem;
+    vertical-align: middle;
 }
 
 main .block.left.table.text-table .table-item .table-head > h3{
