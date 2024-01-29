@@ -180,7 +180,6 @@ header nav.nav-bottom .menu-level-1-item > a {
 header nav.nav-middle h5 > a:hover {
   background-color: var(--secondary);
   color: var(--white);
-  transition: ease .5s;
 }
 
 header nav.nav-top > ul > li > a:first-of-type {
