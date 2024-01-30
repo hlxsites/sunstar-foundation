@@ -89,8 +89,25 @@ main .embed .social-plugin-iframe {
   visibility: visible;
 }
 
+main .embed .google-map {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (min-width: 48rem) {
   main .embed {
     min-height: 25.3rem;
+  }
+}
+
+@media (min-width: 62rem) {
+  main .embed .google-map {
+    width: 54.5rem;
+  }
+}
+
+@media (min-width: 77rem) {
+  main .embed .google-map {
+    width: 75rem;
   }
 }

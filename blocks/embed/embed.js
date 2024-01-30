@@ -85,7 +85,23 @@ const embedSocialPlugins = (urlParam, isLite, type) => {
   return embedHTML;
 };
 
-const loadEmbed = (block, grandChilds, link) => {
+/**
+* Google Map embedding
+* @param {*} urlParam
+* @param {*} type
+* @returns
+*/
+const embedGoogleMap = (urlParam, isLite, type) => {
+  const url = decodeURI(urlParam);
+  const embedHTML = `<div class="google-map">
+    <iframe src=${url} loading="lazy" style="width: 100%; height: 600px; border: 0;"
+      title="${type}:post ${type} Google Map Plugin" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+  </div>`;
+
+  return embedHTML;
+};
+
+const loadEmbed = (block, grandChilds, link, existingClassList) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
   }
@@ -94,6 +110,11 @@ const loadEmbed = (block, grandChilds, link) => {
     {
       match: ['youtube', 'youtu.be'],
       embed: embedYoutube,
+    },
+    {
+      match: ['google'],
+      embed: embedGoogleMap,
+      type: 'google',
     },
     {
       match: ['facebook', 'fb'],
@@ -124,6 +145,11 @@ const loadEmbed = (block, grandChilds, link) => {
     block.classList = 'block embed';
   }
   block.classList.add('embed-is-loaded');
+  if (existingClassList) {
+    existingClassList.forEach((element) => {
+      block.classList.add(element);
+    });
+  }
 
   if (grandChilds.length === 2) {
     // This handles video with caption
@@ -138,6 +164,7 @@ export default function decorate(block) {
   const childDiv = block.querySelector('div');
   const grandChilds = childDiv ? childDiv.querySelectorAll('div') : [];
   const placeholder = block.querySelector('picture');
+  const existingClassList = block.classList;
   block.textContent = '';
 
   if (placeholder) {
@@ -153,11 +180,11 @@ export default function decorate(block) {
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();
-        loadEmbed(block, grandChilds, link);
+        loadEmbed(block, grandChilds, link, [...existingClassList]);
       }
     });
     observer.observe(block);
   } else {
-    loadEmbed(block, grandChilds, link);
+    loadEmbed(block, grandChilds, link, [...existingClassList]);
   }
 }
