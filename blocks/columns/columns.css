@@ -512,7 +512,7 @@ div.img-col > video {
   }
 
   .columns.orderedtext p {
-    border: 1px solid var(--light-grey);
+    border: 1px solid var(--transparent-grey-light-color);
     border-bottom: 0;
   }
 
@@ -592,14 +592,19 @@ div.img-col > video {
     text-align: center;
     color: #00587C;
     margin-bottom: 0;
-    margin-top: 1rem;
-    border: 1px solid var(--light-grey);
+    border: 1px solid var(--transparent-grey-light-color);
     border-bottom: 0;
   }
 
   .columns.orderedtext p.button-container {
-    border: 1px solid var(--light-grey);
     border-top: 0;
+    border-bottom: 1px solid var(--transparent-grey-light-color);
+  }
+
+  .columns.orderedtext p.button-container:not(:last-child) {
+    border: 1px solid var(--transparent-grey-light-color);
+    border-top: 0;
+    border-bottom: 0;
   }
 }
 
