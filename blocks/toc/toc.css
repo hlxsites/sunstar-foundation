@@ -240,14 +240,6 @@ main .section:not([id='']) {
         padding-bottom: 5rem;
     }
 
-    .main-content .content-wrap .content-innercon .columns {
-        margin-bottom: unset;
-    }
-
-    .main-content .content-wrap .content-innercon .columns > div {
-        margin-bottom: unset;
-    }
-
     main .toc-wrapper.flat {
         width: 100%;
         flex-basis: unset;
