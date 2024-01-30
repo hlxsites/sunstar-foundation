@@ -176,6 +176,7 @@
 .hero-banner.no-image h6 {
   color: var(--hero-strong-color);
   margin-top: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .hero-banner.image-right .hero-banner-text-wrapper h6 {
@@ -183,9 +184,11 @@
 }
 
 .hero-banner.no-image p {
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-s);
   margin-top: 1rem;
   line-height: 1.3rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-text);
 }
 
 @media (min-width: 48rem) {
@@ -372,7 +375,11 @@
     }
 
     .hero-banner.no-image .hero-banner-text-container {
-      padding: unset;
+      padding: 1.5rem 0;
+    }
+
+    .hero-banner.no-image .hero-banner-text-wrapper {
+        width: 45rem;
     }
 
     .hero-banner.overlap .hero-banner-heading-section {
@@ -435,7 +442,8 @@
     }
 
     .hero-banner.no-image p {
-      max-width: 42rem;
+      max-width: 44rem;
+      font-size: var(--body-font-size-m);
     }
 }
 
