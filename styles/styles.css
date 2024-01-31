@@ -503,7 +503,7 @@ button {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-a.button.primary {
+a.button.primary:not(.video-with-poster) {
   background: var(--secondary);
   color: var(--white);
 }

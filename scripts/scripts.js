@@ -282,6 +282,56 @@ function getUrlExtension(url) {
 }
 
 /**
+ * Checks if an anchor element is a video with poster.
+ * The anchor element must have a predecessor "p" tag with a single "picture" tag.
+ * The "p" tag must have the video link marker as text content.
+ * @param {Element} anchorTag The anchorTag
+ * @param {string} videoLinkMarker The marker to identify video with poster
+ * @returns {boolean} Whether the anchor tag is a video with poster
+ * @private
+ */
+function isVideoWithPoster(anchorTag, videoLinkMarker = '//Video Link//') {
+  // if the element is not an anchor, it can't be a video with poster
+  if (anchorTag.tagName !== 'A') return false;
+
+  // if the element is an anchor, but doesn't have the video link marker as text content,
+  // it can't be a video with poster
+  if (anchorTag.textContent.trim() !== videoLinkMarker) {
+    return false;
+  }
+
+  // if the element is an anchor with the video link marker as text content,
+  // it's can be a video with poster
+  if (anchorTag.parentNode && anchorTag.parentNode.tagName.toLowerCase() === 'p') {
+    // Get the predecessor "p" tag
+    const predecessorPTag = anchorTag.parentNode.previousElementSibling;
+
+    // Check if the predecessor "p" tag exists and has a single "picture" tag
+    return predecessorPTag && predecessorPTag.tagName.toLowerCase() === 'p'
+      && predecessorPTag.getElementsByTagName('picture').length === 1;
+  }
+
+  return false;
+}
+
+/**
+ * Decorates video with poster anchors
+ * @param {*} videoWithPosterAnchors The anchors to decorate
+ */
+function decorateVideoWithPoster(videoWithPosterAnchors) {
+  if (videoWithPosterAnchors.length) {
+    videoWithPosterAnchors.forEach((a) => {
+      const parentP = a.parentNode;
+      const enclosingDiv = parentP.parentNode;
+      const picture = a.parentNode.previousElementSibling.querySelector('picture');
+      a.classList.add('video-with-poster');
+      const embedBlock = buildBlock('embed', { elems: [picture, a] });
+      enclosingDiv.replaceChild(embedBlock, parentP);
+    });
+  }
+}
+
+/**
  * decorates anchors
  * for styling updates via CSS
  * @param {Element} element The element to decorate
@@ -291,6 +341,9 @@ export function decorateAnchors(element = document) {
   const anchors = element.getElementsByTagName('a');
   decorateVideoLinks(Array.from(anchors).filter(
     (a) => a.href.includes('youtu'),
+  ));
+  decorateVideoWithPoster(Array.from(anchors).filter(
+    (a) => isVideoWithPoster(a),
   ));
   decorateExternalAnchors(Array.from(anchors).filter(
     (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
