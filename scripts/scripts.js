@@ -325,6 +325,8 @@ function decorateVideoWithPoster(videoWithPosterAnchors) {
       const enclosingDiv = parentP.parentNode;
       const picture = a.parentNode.previousElementSibling.querySelector('picture');
       a.classList.add('video-with-poster');
+      a.classList.remove('button');
+      a.classList.remove('primary');
       const embedBlock = buildBlock('embed', { elems: [picture, a] });
       enclosingDiv.replaceChild(embedBlock, parentP);
     });
