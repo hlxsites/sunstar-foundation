@@ -577,6 +577,15 @@ main .block.border {
   border: 1px solid;
 }
 
+main .block.border-bottom  {
+  border-bottom: 1px solid var(--primary);
+  margin-bottom: 2rem;
+}
+
+main .block.border-bottom h2 {
+  margin: 3rem 0 1rem;
+}
+
 main .block.centered {
   text-align: center;
 }
@@ -802,22 +811,10 @@ main .section.static .section-container h1 {
   font-weight: var(--font-weight-medium);
 }
 
-/* section - bottom-light-border */
-main .section.bottom-light-border h2 {
-  border-bottom: 1px solid var(--primary);
-  padding-bottom: 1rem;
-}
-
 main .section.static .section-container h2 {
   font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-medium);
   margin: 4rem 0 1.5rem;
-}
-
-/* section - bottom-dark-border */
-main .section.bottom-dark-border .section-container div {
-  border-bottom: 2px solid var(--primary);
-  padding-bottom: 1rem;
 }
 
 /* section - margin-bottom */
@@ -976,6 +973,7 @@ main .block.centered > div {
 
 .block.bottom-border {
   border-bottom: 1px solid var(--overlay-background-color);
+  margin-bottom: 2rem;
 }
 
 /* END Section Styles END */
@@ -1254,4 +1252,5 @@ main .block.centered > div {
     margin-left: auto;
     max-width: 1200px;
   }
+  
 }
