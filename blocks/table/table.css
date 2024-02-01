@@ -285,6 +285,15 @@ main .table.block .table-title h4 {
     color: var(--gray-dark);
 }
 
+main .table.text-table.with-image table img {
+    aspect-ratio: auto 221 / 247;
+    height: auto;
+}
+
+main .table.text-table.with-image table tr td:first-child {
+    text-align: center;
+}
+
 @media (min-width: 62rem) {
     main .multiple-table {
         display: flex;
@@ -313,4 +322,21 @@ main .table.block .table-title h4 {
     main .table.text-table table tr td:first-child {
         flex-basis: 7.5em;
     }
+
+    main .table.text-table.with-image table tr {
+        gap: 5em;
+    }
+
+    main .table.text-table.with-image table tr td {
+        flex-basis: calc(100% - 15em);
+    }
+
+    main .table.text-table.with-image table tr td:first-child {
+        flex-basis: 15em;
+    }
+
+    main .table.text-table.with-image table td p {
+        line-height: 4em;
+    }
+
 }

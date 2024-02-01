@@ -222,6 +222,18 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     justify-content: center;
     width: 70%;
   }
+
+  main .hero-horizontal-tabs.full-width.block.no-image .hero-horiz-tabs-panel {
+    justify-content: center;
+    width: 100%;
+  }
+
+  main .hero-horizontal-tabs.full-width.block.no-image.align-right h5 {
+    right: 0;
+    position: absolute;
+    color: var(--white);
+  }
+
 }
 
 @media (min-width:77rem) {

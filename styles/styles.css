@@ -948,7 +948,7 @@ main .block.centered > div {
 .section.with-background-image > .section-container,
 .section.with-background-image > .tab-item.active > .section-container {
   display: block;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -966,6 +966,10 @@ main .block.centered > div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.section.with-background-image.bit-opacity > picture > img {
+  opacity: 0.2;
 }
 
 .block.bottom-border {
@@ -1152,6 +1156,16 @@ main .block.centered > div {
   main .section.padded-inline > .section-container,
   main .section.padded-inline > .tab-item.active > .section-container {
     padding-inline: 0;
+  }
+
+   /* stylelint-disable-next-line no-descending-specificity */
+   .section.with-background-image > .section-container,
+   .section.with-background-image > .tab-item.active > .section-container {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 
   /* END Section Styles END */
