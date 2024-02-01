@@ -233,10 +233,54 @@ main .table.small-first-col table tr td:first-child {
     text-align: center;
 }
 
+/* Style list varient */
+main .table.style-list span.icon {
+    height: 1rem;
+    margin-bottom: unset;
+    margin-left: unset;
+}
+
+main .table.style-list a.button.primary {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: unset;
+    margin-right: 1rem;
+    color: var(--secondary);
+    background-color: transparent;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.7em;
+    min-width: unset;
+    height: unset;
+}
+
+main .table.style-list table tbody tr:first-of-type td {
+    text-align: center;
+}
+
+main .table.style-list table tbody tr td:nth-of-type(1) {
+    flex: 1 0 2.875rem;
+}
+
+main .table.style-list table tbody tr td:nth-of-type(2) {
+    flex: 1 1 auto;
+}
+
+main .table.style-list table tbody tr td:nth-of-type(3) {
+    flex: 1 0 30%;
+}
+
+main .table.style-list table tbody tr td:nth-of-type(4) {
+    flex: 1 0 30%;
+}
+
 main .table.first-column-color:not(.text-table) tbody tr td:first-of-type {
     background: var(--transparent-blue-light-color);
 }
 
+main .table.style-list table tbody tr:first-of-type td:first-of-type,
+main .table.style-list table tbody tr:first-of-type td:last-of-type {
+    padding: 5px;
+}
 
 main .table.block .table-title h4 {
     color: var(--gray-dark);
