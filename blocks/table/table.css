@@ -276,11 +276,6 @@ main .table.first-column-color:not(.text-table) tbody tr td:first-of-type {
     background: var(--transparent-blue-light-color);
 }
 
-main .table.style-list table tbody tr:first-of-type td:first-of-type,
-main .table.style-list table tbody tr:first-of-type td:last-of-type {
-    padding: 5px;
-}
-
 main .table.block .table-title h4 {
     color: var(--gray-dark);
 }
@@ -292,6 +287,11 @@ main .table.text-table.with-image table img {
 
 main .table.text-table.with-image table tr td:first-child {
     text-align: center;
+}
+
+main .table.style-list table tbody tr:first-of-type td:first-of-type,
+main .table.style-list table tbody tr:first-of-type td:last-of-type {
+    padding: 5px;
 }
 
 @media (min-width: 62rem) {
