@@ -7,7 +7,7 @@ const blockJson = {
   news: {
     filerResults: (data, currPath) => data.filter((entry) => entry.publisheddate
       && entry.path !== currPath
-      && (entry.path.includes('/archives/dentistry/news/')))
+      && (entry.path.includes('/dentistry/news/')))
       .sort((x, y) => y.publisheddate - x.publisheddate),
     resultsPerPage: 12,
     titlePlaceHolderKey: 'news-page-title-text',
