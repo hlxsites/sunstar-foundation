@@ -142,6 +142,19 @@ const loadEmbed = (block, grandChilds, link, existingClassList) => {
     block.classList = `block embed embed-${config.match[0]}`;
   } else {
     block.innerHTML = getDefaultEmbed(url);
+    // Pass the video config to the iframe
+    const videoConfig = {
+      autoplay: 'muted',
+    };
+    window.addEventListener('message', (event) => {
+      switch (event.data) {
+        case 'config':
+          event.source.window.postMessage(JSON.stringify(videoConfig), '*');
+          break;
+        default:
+          break;
+      }
+    });
     block.classList = 'block embed';
   }
   block.classList.add('embed-is-loaded');
