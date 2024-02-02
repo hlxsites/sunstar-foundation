@@ -144,7 +144,7 @@ const loadEmbed = (block, grandChilds, link, existingClassList) => {
     block.innerHTML = getDefaultEmbed(url);
     // Pass the video config to the iframe
     const videoConfig = {
-      autoplay: 'muted',
+      autoplay: 'any',
     };
     window.addEventListener('message', (event) => {
       switch (event.data) {
