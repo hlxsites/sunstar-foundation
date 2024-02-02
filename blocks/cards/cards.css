@@ -175,6 +175,21 @@ main .cards.features-items h6 {
   margin-bottom: 0.5rem;
 }
 
+/* Styles for toc-content cards */
+.cards.toc-content .cards-card-body {
+  padding: 0.75rem 1rem 1rem;
+}
+
+.cards.toc-content .cards-card-body h1,
+.cards.toc-content .cards-card-body h2,
+.cards.toc-content .cards-card-body h3,
+.cards.toc-content .cards-card-body h4,
+.cards.toc-content .cards-card-body h5,
+.cards.toc-content .cards-card-body h6,
+.cards.toc-content .cards-card-body p {
+  margin: unset;
+}
+
 /* Styles for info points cards */
 main .cards.info-points .cards-card-body * {
   text-align: left;
@@ -420,6 +435,10 @@ main .cards.video-modal .cards-card-image::after {
     color: var(--transparent-grey-color-2);
   }
 
+  /* Styles for toc-content cards */
+  .cards.toc-content .cards-card-image {
+    height: unset;
+  }
 }
 
 @media screen and (max-width: 77rem) {

@@ -107,6 +107,10 @@
   margin-top: 0;
 }
 
+.columns.orderedtext >div > div p {
+  margin-bottom: 0;
+}
+
 .columns.crop-image > div {
   align-items: stretch;
 }
@@ -247,7 +251,11 @@ div.img-col > video {
 
 .columns.centre-buttons p.button-container {
   justify-content: center;
-} 
+}
+
+.columns.orderedtext  > div > div p.button-container {
+  margin-bottom: 0;
+}
 
 .columns.collapse.top-down.columns-2-cols {
   max-width: 100%;
@@ -364,6 +372,18 @@ div.img-col > video {
   padding: 2rem 0;
 }
 
+.columns.orderedtext .text-col > a {
+  margin-top: 2rem;
+  margin-left: 5rem;
+}
+
+.columns.orderedtext .text-col > p > a {
+  color: var(--link-color);
+  text-decoration: none;
+  background: none;
+  padding: 0;
+}
+
 /* Text-image overlap View */
 .columns.text-and-image-in-column.overlap em a {
   display: inline-flex;
@@ -390,6 +410,7 @@ div.img-col > video {
   margin: 0;
   width: 100%;
 }
+
 
 .columns.text-and-image-in-column.overlap .button-container a {
   background-color: unset;
@@ -490,8 +511,18 @@ div.img-col > video {
     line-height: 1.2;
   }
 
+  .columns.orderedtext p {
+    border: 1px solid var(--transparent-grey-light-color);
+    border-bottom: 0;
+  }
+
   .columns.plain-links.collapse ul, .columns.plain-text.collapse p {
     display: none;
+  }
+
+  .columns.orderedtext .text-col-wrapper img:not(.video-modal) {
+    height: 33rem;
+    width: auto;
   }
 
   .columns.tabular .text-col-wrapper img:not(.video-modal) {
@@ -552,6 +583,29 @@ div.img-col > video {
   .columns :not(.table) h3 {
     font-size: var(--heading-font-size-m);
   }
+
+  .columns.orderedtext h4 {
+    width: 100%;
+    font-size: 1rem;
+    background: var(--transparent-blue-light-color);
+    padding: 10px;
+    text-align: center;
+    color: #00587C;
+    margin-bottom: 0;
+    border: 1px solid var(--transparent-grey-light-color);
+    border-bottom: 0;
+  }
+
+  .columns.orderedtext p.button-container {
+    border-top: 0;
+    border-bottom: 1px solid var(--transparent-grey-light-color);
+  }
+
+  .columns.orderedtext p.button-container:not(:last-child) {
+    border: 1px solid var(--transparent-grey-light-color);
+    border-top: 0;
+    border-bottom: 0;
+  }
 }
 
 @media (min-width: 77rem) {
@@ -580,7 +634,6 @@ div.img-col > video {
     height: 15rem;
     margin-right: 10px; /* Adjust margin as needed to add space between image and text */
   }
-
 
   .columns.tabular > div > div p {
     margin-left: 1rem;

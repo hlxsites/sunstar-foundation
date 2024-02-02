@@ -108,6 +108,9 @@ main .table.text-table.medium {
     margin-left: 0;
 }
 
+main .table.style-list tr {
+    display: table-row;
+}
 
 /* Text Table varient */
 main .table.text-table h3.table-title {
@@ -213,6 +216,10 @@ main .table.text-align-left table tr td {
     text-align: left;
 }
 
+main .table.style-list table tbody td {
+    width: unset;
+}
+
 main .table.text-table table tr td:first-child {
     color: var(--transparent-grey-color);
     font-size: var(--body-font-size-m);
@@ -233,13 +240,58 @@ main .table.small-first-col table tr td:first-child {
     text-align: center;
 }
 
+/* Style list varient */
+main .table.style-list span.icon {
+    height: 1rem;
+    margin-bottom: unset;
+    margin-left: unset;
+}
+
+main .table.style-list a.button.primary {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: unset;
+    margin-right: 1rem;
+    color: var(--secondary);
+    background-color: transparent;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.7em;
+    min-width: unset;
+    height: unset;
+}
+
+main .table.style-list table tbody tr:first-of-type td {
+    text-align: center;
+}
+
+main .table.style-list table tbody tr td:nth-of-type(3) {
+    width: 30%;
+}
+
+main .table.style-list table tbody tr td:nth-of-type(4) {
+    width: 30%;
+}
+
 main .table.first-column-color:not(.text-table) tbody tr td:first-of-type {
     background: var(--transparent-blue-light-color);
 }
 
-
 main .table.block .table-title h4 {
     color: var(--gray-dark);
+}
+
+main .table.text-table.with-image table img {
+    aspect-ratio: auto 221 / 247;
+    height: auto;
+}
+
+main .table.text-table.with-image table tr td:first-child {
+    text-align: center;
+}
+
+main .table.style-list table tbody tr:first-of-type td:first-of-type,
+main .table.style-list table tbody tr:first-of-type td:last-of-type {
+    padding: 5px;
 }
 
 @media (min-width: 62rem) {
@@ -270,4 +322,21 @@ main .table.block .table-title h4 {
     main .table.text-table table tr td:first-child {
         flex-basis: 7.5em;
     }
+
+    main .table.text-table.with-image table tr {
+        gap: 5em;
+    }
+
+    main .table.text-table.with-image table tr td {
+        flex-basis: calc(100% - 15em);
+    }
+
+    main .table.text-table.with-image table tr td:first-child {
+        flex-basis: 15em;
+    }
+
+    main .table.text-table.with-image table td p {
+        line-height: 4em;
+    }
+
 }
