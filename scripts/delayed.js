@@ -74,4 +74,5 @@ if (!isInternalPage()) {
     await loadGTM();
     await loadGA();
   }
+  window.dispatchEvent(new Event('delayed-loaded'));
 }

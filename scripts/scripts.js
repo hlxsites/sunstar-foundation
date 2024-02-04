@@ -652,6 +652,7 @@ function loadDelayed() {
 }
 
 async function loadPage() {
+  window.dispatchesDelayLoaded = window.dispatchesDelayLoaded || true;
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
