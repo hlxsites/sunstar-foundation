@@ -251,6 +251,16 @@ main .section.carousel-container {
     height: unset;
   }
 
+  .carousel.new .text {
+    z-index: 999;
+    background: var(--primary-08-transparency);
+    width: 32rem;
+    left: 4rem;
+    flex-basis: 46%;
+    top: 4rem;
+    height: 22rem;
+  }
+
   .carousel.small {
     position: relative;
     left: 25%;
@@ -264,6 +274,11 @@ main .section.carousel-container {
     left: calc(50% - 3.875rem);
     height: 28.125rem;
     position: absolute;
+  }
+
+  .carousel.new .image{
+    left: 0;
+    height: 30.125rem;
   }
 
 
@@ -305,6 +320,10 @@ main .section.carousel-container {
     width: 30rem;
   }
 
+  .carousel.new .text-item {
+    margin-left: 2rem;
+  }
+
   .carousel.small .text-item {
     width: 35rem;
   }
@@ -312,5 +331,9 @@ main .section.carousel-container {
 
   .carousel .control-container {
     width: 100%;
+  }
+
+  .carousel.new .control-container {
+    display:none;
   }
 }
