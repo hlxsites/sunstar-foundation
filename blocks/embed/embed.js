@@ -149,6 +149,7 @@ const loadEmbed = (block, grandChilds, link, existingClassList) => {
     window.addEventListener('message', (event) => {
       switch (event.data) {
         case 'config':
+        case 'video-config':
           event.source.window.postMessage(JSON.stringify(videoConfig), '*');
           break;
         default:
