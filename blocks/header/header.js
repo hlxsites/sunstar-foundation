@@ -45,12 +45,16 @@ function getNavbarToggler() {
       navBottom.classList.remove('open');
       header.classList.remove('menu-open');
       body.classList.remove('fixed');
-      navBottomRight.classList.remove('fixed');
+      if (navBottomRight) {
+        navBottomRight.classList.remove('fixed');
+      }
     } else {
       navBottom.classList.add('open');
       header.classList.add('menu-open');
       body.classList.add('fixed');
-      navBottomRight.classList.add('fixed');
+      if (navBottomRight) {
+        navBottomRight.classList.add('fixed');
+      }
     }
   });
   return navbarToggl;
@@ -87,8 +91,7 @@ function attachWindowResizeListeners(nav) {
 
 function decorateBottomNav(nav, placeholders, navTreeJson) {
   const navTree = buildNavTree(navTreeJson);
-  let folder = 0;
-  folder = getMetadata('template');
+  const folder = getMetadata('template');
   nav.append(getNavbarToggler());
   nav.append(navTree);
   if (!folder) {
@@ -142,6 +145,7 @@ export default async function decorate(block) {
       idxcounter = idx;
       block.appendChild(nav);
     });
+    // This change is specifically for dentistry header
     if (folder) {
       const bottomnav = document.createElement('nav');
       bottomnav.classList.add('nav-bottom-parent');

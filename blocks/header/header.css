@@ -90,6 +90,9 @@ header nav.nav-middle p {
   margin: 0;
 }
 
+header nav.nav-middle a {
+  display: flex;
+}
 
 header nav.nav-middle h6 {
   margin: 0;
