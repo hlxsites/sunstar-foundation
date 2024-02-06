@@ -190,6 +190,10 @@ main .cards.features-items h6 {
   margin: unset;
 }
 
+.cards.toc-content .cards-card-image {
+  height: unset;
+}
+
 /* Styles for info points cards */
 main .cards.info-points .cards-card-body * {
   text-align: left;
@@ -433,11 +437,6 @@ main .cards.video-modal .cards-card-image::after {
     margin: 0 auto;
     font-size: 14px;
     color: var(--transparent-grey-color-2);
-  }
-
-  /* Styles for toc-content cards */
-  .cards.toc-content .cards-card-image {
-    height: unset;
   }
 }
 
