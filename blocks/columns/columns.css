@@ -232,7 +232,7 @@
 .columns div.image-collage.autoblocked picture ~ *.image-caption {
   color: var(--steel-blue);
   font-size: var(--body-font-size-s);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 div.img-col > video {
