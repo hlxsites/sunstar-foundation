@@ -31,6 +31,10 @@
   height: 100%;
 }
 
+.carousel.bgpic .text-item {
+  padding: 1.5rem 1rem;
+}
+
 .carousel .text {
   color: var(--white);
   display: flex;
@@ -256,6 +260,13 @@ main .section.carousel-container {
 
   .carousel.bgpic .text-item {
     width: auto;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    padding: 1.5rem 1rem 5.5rem;
+  }
+
+  .carousel.bgpic .text-item > p {
+  font-size: var(--body-font-size-s);
   }
 
   .carousel.bgpic .text {
@@ -265,7 +276,6 @@ main .section.carousel-container {
     width: 32rem;
     left: 4rem;
     top: 4rem;
-    height: 22rem;
   }
 
   .carousel.small {
@@ -329,6 +339,7 @@ main .section.carousel-container {
 
   .carousel.bgpic .text-item {
     margin-left: 2rem;
+    margin-right: 1rem;
   }
 
   .carousel.small .text-item {
