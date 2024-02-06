@@ -4,12 +4,12 @@ import { cropString, handleModalClick, MODAL_FRAGMENTS_PATH_SEGMENT } from '../.
 function applyHorizontalCellAlignment(block) {
   block.querySelectorAll(':scope div[data-align]').forEach((d) => {
     if (d.classList.contains('text-col')) {
-      // This is a text column
+      // This is a text card
       if (d.dataset.align) {
         d.style.textAlign = d.dataset.align;
       }
     } else {
-      // This is an image column
+      // This is an image card
       d.style.display = 'flex';
       d.style.flexDirection = 'column';
       d.style.alignItems = horizontalAlignToFlexValue(d.dataset.align);
@@ -18,10 +18,10 @@ function applyHorizontalCellAlignment(block) {
   });
 }
 
-// Vertical Cell Alignment is only applied to non-text columns
+// Vertical Cell Alignment is only applied to non-text cards
 function applyVerticalCellAlignment(block) {
   block.querySelectorAll(':scope > div > div:not(.text-col-wrapper').forEach((d) => {
-    // this is an image column
+    // this is an image card
     d.style.display = 'flex';
     d.style.flexDirection = 'column';
     d.style.alignItems = horizontalAlignToFlexValue(d.dataset.align);
