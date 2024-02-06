@@ -1,11 +1,21 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 import { cropString, handleModalClick, MODAL_FRAGMENTS_PATH_SEGMENT } from '../../scripts/scripts.js';
 
+function horizontalAlignToFlexValue(align) {
+  switch (align) {
+    case 'center':
+      return 'center';
+    case 'right':
+      return 'flex-end';
+    default:
+      return 'flex-start';
+  }
+}
+
 function applyHorizontalCellAlignment(block) {
   block.querySelectorAll(':scope div[data-align]').forEach((d) => {
     if (d.classList.contains('cards-card-body')) {
       // This is a text card
-      console.log(d);
       if (d.dataset.align) {
         d.style.textAlign = d.dataset.align;
       }
