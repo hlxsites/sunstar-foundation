@@ -259,7 +259,7 @@ main .section.carousel-container {
   }
 
   .carousel.bgpic .text {
-    z-index: 999;
+    z-index: 10;
     flex-basis: 50%;
     background: var(--primary-08-transparency);
     width: 32rem;
@@ -336,7 +336,7 @@ main .section.carousel-container {
   }
 
   .carousel.bgpic .text {
-    z-index: 999;
+    z-index: 10;
     background: var(--primary-08-transparency);
     width: 32rem;
     left: 4rem;
