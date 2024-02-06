@@ -371,7 +371,7 @@ main .cards.video-modal .cards-card-image::after {
 }
 
 main .cards.no-padding > ul {
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 

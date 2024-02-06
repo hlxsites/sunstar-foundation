@@ -28,8 +28,8 @@
   margin-bottom: 4rem;
 }
 
-.columns.no-margin-bottom > div {
-  margin-bottom: 0;
+.columns.less-margin-bottom > div {
+  margin-bottom: 3rem;
 }
 
 .columns > div > div {
