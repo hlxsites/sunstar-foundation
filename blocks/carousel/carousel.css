@@ -50,6 +50,10 @@
   object-fit: cover;
 }
 
+.carousel.bgpic img {
+  height: auto;
+}
+
 .carousel.small img {
   height: 6rem;
   width: 6rem;
