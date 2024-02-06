@@ -53,6 +53,10 @@ main .block.cards {
   padding: 0;
 }
 
+.cards.no-padding > ul > li > a.button {
+  padding: 0;
+}
+
 .cards.video-modal > ul > li > a.button {
   flex-direction: column;
 }
@@ -245,7 +249,9 @@ main .cards.stacked-cards .cards-card-image {
 }
 
 .cards.no-padding .cards-card-body {
-  padding: 0;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 main .cards.stacked-cards .cards-card-body {
@@ -318,6 +324,12 @@ main .nolink .cards > ul > li .cards-card-image {
   border: 1px solid #3C46501A;
 }
 
+main .nolink .cards.no-padding > ul > li .cards-card-image {
+  height: 250px;
+  width: 100%;
+  margin: 0;
+}
+
 main .nolink .cards.info-points > ul > li .cards-card-image {
   width: auto;
   border: none;
@@ -356,6 +368,10 @@ main .cards.video-modal .cards-card-image::after {
   background-size: cover;
   background-position: center;
   min-width: auto;
+}
+
+main .cards.no-padding > ul {
+  justify-content: space-around;
 }
 
 
@@ -483,6 +499,18 @@ main .cards.video-modal .cards-card-image::after {
     margin: 0 1rem;
     flex: 0 0 calc(25% - 2rem); /* 4 cards per row (-2rem for margins) */
     width: 100%;
+  }
+
+  .cards.no-padding > ul > li {
+    flex: 0 0 calc(30%); /* cards per row */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .cards.no-padding > ul > li picture {
+    flex-basis: 100%;
   }
 
   .cards > ul > li:first-of-type,
