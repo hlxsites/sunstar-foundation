@@ -28,6 +28,10 @@
   margin-bottom: 4rem;
 }
 
+.columns.no-margin-bottom > div {
+  margin-bottom: 0;
+}
+
 .columns > div > div {
   order: 1;
 }
