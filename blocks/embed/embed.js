@@ -133,7 +133,7 @@ const loadEmbed = (block, grandChilds, link, existingClassList) => {
     },
   ];
   const url = new URL(link);
-  const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => url.hostname.includes(match)));
+  const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => url?.hostname?.includes(match)));
 
   const isLite = block.classList.contains('lite');
 
