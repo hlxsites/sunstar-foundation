@@ -139,7 +139,6 @@ footer .footer-middle {
 }
 
 footer .footer-middle p {
-  color: var(--off-white);
   font-size: var(--body-font-size-s);
 }
 
@@ -147,13 +146,13 @@ footer .footer-middle a {
   color: var(--white);
 }
 
+footer .footer-bottom h5>a,
 footer .footer-bottom p>a {
-  color: var(--muted-text);
   margin-right: 1rem;
+  color: var(--white);
 }
 
 footer .footer-bottom p {
-  color: var(--muted-text);
   font-size: var(--body-font-size-xs);
   line-height: 1;
 }

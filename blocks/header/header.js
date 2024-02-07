@@ -21,7 +21,7 @@ function decorateMiddleNav(nav) {
 }
 
 function getNavbarToggler() {
-  const navbarToggl = htmlToElement(`<button class="navbar-toggler">
+  const navbarToggl = htmlToElement(`<button class="navbar-toggler aria-label="Menu"">
   <span class="mobile-icon">
     <i></i>
     <i></i>
