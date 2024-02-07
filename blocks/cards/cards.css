@@ -346,6 +346,10 @@ main .cards-wrapper .stacked-cards .cards-card-body h3{
   padding-bottom: 1rem;
 }
 
+main .cards.no-padding > ul {
+  justify-content: space-between;
+}
+
 .cards.nolink.no-buttons.stacked-cards.block > ul {
   flex-flow: column;
 }
@@ -369,11 +373,6 @@ main .cards.video-modal .cards-card-image::after {
   background-position: center;
   min-width: auto;
 }
-
-main .cards.no-padding > ul {
-  justify-content: space-between;
-}
-
 
 @media screen and (min-width: 48rem) {
   .cards > ul > li {

@@ -28,16 +28,16 @@
   margin-bottom: 4rem;
 }
 
-.columns.less-margin-bottom > div {
-  margin-bottom: 3rem;
-}
-
 .columns > div > div {
   order: 1;
 }
 
 .columns > div > div > div {
   width: auto;
+}
+
+.columns.less-margin-bottom > div {
+  margin-bottom: 3rem;
 }
 
 .columns.small-margin > div {
