@@ -94,7 +94,6 @@
 
 .result p.parent-detail span {
   font-size: var(--body-font-size-s);
-  color: var(--light-grey);
 }
 
 @media (min-width: 62rem) {
