@@ -40,31 +40,9 @@ async function loadGTM() {
         j.src =
             'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
-        }(window, document, 'script', 'dataLayer', 'GTM-TZS45SW'));
+        }(window, document, 'script', 'dataLayer', 'GTM-NP34DN7'));
     `;
   document.head.prepend(scriptTag);
-}
-
-function loadGAScript(url, callback) {
-  const head = document.querySelector('head');
-  let script = head.querySelector(`script[src="${url}"]`);
-  if (!script) {
-    script = document.createElement('script');
-    script.src = url;
-    script.async = true;
-    head.append(script);
-    script.onload = callback;
-    return script;
-  }
-  return script;
-}
-
-async function loadGA() {
-  const gaId = 'UA-150288508-1';
-  loadGAScript(`https://www.googletagmanager.com/gtag/js?id=${gaId}`, () => {
-  // eslint-disable-next-line
-    window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', gaId); ga('send', 'pageview'); ga('create', gaId, 'auto');
-  });
 }
 
 if (!isInternalPage()) {
@@ -72,6 +50,5 @@ if (!isInternalPage()) {
   await loadAdobeLaunch();
   if (getEnvType() === 'live') {
     await loadGTM();
-    await loadGA();
   }
 }
