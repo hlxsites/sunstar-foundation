@@ -103,6 +103,27 @@
   display: block;
 }
 
+.columns.modal-fragment > div > .img-col picture.video-modal {
+  position: relative;
+}
+
+.columns.modal-fragment > div > .img-col picture.video-modal::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 5.25rem;
+  width: 5.25rem;
+  background-image: url("../../icons/play.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-width: auto;
+  box-shadow: 0 2px 12px 0 #3C465033;
+  border-radius: 50%;
+}
+
 .columns > div > div p {
   margin-top: 0;
 }
@@ -470,7 +491,7 @@ div.img-col > video {
   .columns.centre-buttons p.button-container {
     align-items: center;
     flex-direction: row;
-  } 
+  }
 
   .columns a.button.primary {
     min-width: 11rem;

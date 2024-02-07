@@ -356,6 +356,8 @@ main .cards.video-modal .cards-card-image::after {
   background-size: cover;
   background-position: center;
   min-width: auto;
+  box-shadow: 0 2px 12px 0 #3C465033;
+  border-radius: 50%;
 }
 
 
@@ -402,6 +404,11 @@ main .cards.video-modal .cards-card-image::after {
     grid-template-columns: repeat(auto-fill, 16.875rem);
     justify-content: space-between;
     grid-gap: 2rem;
+  }
+
+  .cards.grid.two-columns > ul {
+    grid-template-columns: repeat(2, 16.875rem);
+    justify-content: center;
   }
 
   .cards > ul > li {
@@ -537,6 +544,10 @@ main .cards.video-modal .cards-card-image::after {
 
   main .cards.info-points > ul > li {
     display: block;
+  }
+
+  .cards.grid.two-columns > ul {
+    grid-template-columns: repeat(2, 21.875rem);
   }
 
   .cards.image-fit-contain .cards-card-image img {

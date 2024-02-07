@@ -1,4 +1,4 @@
-import { wrapImgsInLinks } from '../../scripts/scripts.js';
+import { handleModalClick, MODAL_FRAGMENTS_PATH_SEGMENT, wrapImgsInLinks } from '../../scripts/scripts.js';
 
 export function applySplitPercentages(block) {
   const ratios = [];
@@ -211,6 +211,33 @@ export default function decorate(block) {
           });
         }
       });
+    });
+  }
+
+  const isModalFragmentAvailable = document.querySelector('.modal-fragment') !== null;
+  // process the Poster Image for the video modal fragment
+  if (isModalFragmentAvailable && block.classList.contains('modal-fragment')) {
+    [...block.children].forEach((row) => {
+      const anchors = row.querySelectorAll('a');
+      if (anchors.length) {
+        [...anchors].forEach((a) => {
+          if (
+            a?.dataset?.path?.startsWith(MODAL_FRAGMENTS_PATH_SEGMENT)
+            && isModalFragmentAvailable
+          ) {
+            const pictureElement = row.querySelector('picture');
+            // make poster image clickable to open modal
+            if (pictureElement) {
+              pictureElement.classList.add('video-modal');
+              handleModalClick(
+                pictureElement,
+                a,
+                document.querySelector('.modal-fragment'),
+              );
+            }
+          }
+        });
+      }
     });
   }
 

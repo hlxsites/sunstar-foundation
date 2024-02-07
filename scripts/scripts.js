@@ -728,11 +728,9 @@ export async function loadScript(url, attrs = {}) {
   document.head.append(script);
   return loadingPromise;
 }
-
-export const handleModalClick = async (a, modalFragmentBlock) => {
-  a.addEventListener('click', async (e) => {
+export const handleModalClick = async (element, target, modalFragmentBlock) => {
+  element.addEventListener('click', async (e) => {
     e.preventDefault();
-    const target = e.currentTarget.parentElement.querySelector('a');
     if (!target) return;
     const { path } = target.dataset;
     const modalId = target.dataset.modal;

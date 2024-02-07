@@ -22,6 +22,6 @@ export default async function decorate(block) {
     }
     const hasSearchParam = new URL(url).search.length > 0;
     a.dataset.hasSearchParam = hasSearchParam.toString();
-    handleModalClick(a, block);
+    handleModalClick(a, a, block);
   });
 }
