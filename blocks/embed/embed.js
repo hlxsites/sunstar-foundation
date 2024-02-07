@@ -132,9 +132,9 @@ const loadEmbed = (block, grandChilds, link, existingClassList) => {
       type: 'instagram',
     },
   ];
-
-  const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
+  const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => url?.hostname?.includes(match)));
+
   const isLite = block.classList.contains('lite');
 
   if (config) {

@@ -24,12 +24,15 @@
   transition: none;
 }
 
-
 .carousel .text-item {
   padding: 1.5rem 1rem 5.5rem;
   opacity: 0;
   display: none;
   height: 100%;
+}
+
+.carousel.bgpic .text-item {
+  padding: 1.5rem 1rem;
 }
 
 .carousel .text {
@@ -45,6 +48,10 @@
   height: 15.3rem;
   width: 100%;
   object-fit: cover;
+}
+
+.carousel.bgpic img {
+  height: 100%;
 }
 
 .carousel.small img {
@@ -183,6 +190,10 @@
   justify-content: center;
 }
 
+.carousel.bgpic .control-container {
+  display:none;
+}
+
 .carousel .swip-pagination {
   display: inline-flex;
   padding: 0 1.5rem;
@@ -251,6 +262,26 @@ main .section.carousel-container {
     height: unset;
   }
 
+  .carousel.bgpic .text-item {
+    width: auto;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    padding: 1.5rem 1rem 5.5rem;
+  }
+
+  .carousel.bgpic .text-item > p {
+  font-size: var(--body-font-size-s);
+  }
+
+  .carousel.bgpic .text {
+    z-index: 10;
+    flex-basis: 50%;
+    background: var(--primary-08-transparency);
+    width: 32rem;
+    left: 4rem;
+    top: 4rem;
+  }
+
   .carousel.small {
     position: relative;
     left: 25%;
@@ -264,6 +295,11 @@ main .section.carousel-container {
     left: calc(50% - 3.875rem);
     height: 28.125rem;
     position: absolute;
+  }
+
+  .carousel.bgpic .image{
+    left: 0;
+    height: 30.125rem;
   }
 
 
@@ -305,12 +341,32 @@ main .section.carousel-container {
     width: 30rem;
   }
 
+  .carousel.bgpic .text-item {
+    margin-left: 2rem;
+    margin-right: 1rem;
+  }
+
   .carousel.small .text-item {
     width: 35rem;
   }
 
+  .carousel.bgpic .text {
+    z-index: 10;
+    background: var(--primary-08-transparency);
+    width: 32rem;
+    left: 4rem;
+    flex-basis: 46%;
+    top: 4rem;
+    height: 22rem;
+  }
+
+  .carousel.bgpic .image {
+    left: 0;
+    height: 30.125rem;
+  }
 
   .carousel .control-container {
     width: 100%;
   }
+
 }

@@ -15,13 +15,16 @@ function decorateOtherItems(otherItemsEl) {
 function decorateTopNav(/* nav */) {
 }
 
+function decorateBottomRightNav() {
+}
+
 function decorateMiddleNav(nav) {
   const a = nav.querySelector('a');
   a.setAttribute('aria-label', 'Sunstar Home');
 }
 
 function getNavbarToggler() {
-  const navbarToggl = htmlToElement(`<button class="navbar-toggler">
+  const navbarToggl = htmlToElement(`<button class="navbar-toggler" aria-label="Menu">
   <span class="mobile-icon">
     <i></i>
     <i></i>
@@ -35,16 +38,23 @@ function getNavbarToggler() {
   }
   navbarToggl.addEventListener('click', () => {
     const navBottom = document.querySelector('.nav-bottom');
+    const navBottomRight = document.querySelector('.nav-bottom-right');
     const header = document.querySelector('header');
     const { body } = document;
     if (navBottom.classList.contains('open')) {
       navBottom.classList.remove('open');
       header.classList.remove('menu-open');
       body.classList.remove('fixed');
+      if (navBottomRight) {
+        navBottomRight.classList.remove('fixed');
+      }
     } else {
       navBottom.classList.add('open');
       header.classList.add('menu-open');
       body.classList.add('fixed');
+      if (navBottomRight) {
+        navBottomRight.classList.add('fixed');
+      }
     }
   });
   return navbarToggl;
@@ -81,16 +91,20 @@ function attachWindowResizeListeners(nav) {
 
 function decorateBottomNav(nav, placeholders, navTreeJson) {
   const navTree = buildNavTree(navTreeJson);
+  const folder = getMetadata('template');
   nav.append(getNavbarToggler());
   nav.append(navTree);
-
-  const otherItemsEl = document.createElement('li');
-  decorateOtherItems(otherItemsEl);
-  nav.querySelector(':scope .menu-level-1').append(otherItemsEl);
+  if (!folder) {
+    const otherItemsEl = document.createElement('li');
+    decorateOtherItems(otherItemsEl);
+    nav.querySelector(':scope .menu-level-1').append(otherItemsEl);
+  }
   attachWindowResizeListeners(nav);
 }
 
-const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleNav, 'nav-bottom': decorateBottomNav };
+const navDecorators = {
+  'nav-top': decorateTopNav, 'nav-middle': decorateMiddleNav, 'nav-bottom-right': decorateBottomRightNav, 'nav-bottom': decorateBottomNav,
+};
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -119,18 +133,37 @@ export default async function decorate(block) {
     const html = await resp.text();
     const fetchedNav = document.createElement('div');
     fetchedNav.innerHTML = html;
+
     const navClasses = ['nav-top', 'nav-middle'];
+
+    let idxcounter = 0;
     navClasses.forEach((navClass, idx) => {
       const nav = document.createElement('nav');
       nav.classList.add(navClass);
       nav.innerHTML = fetchedNav.querySelectorAll(':scope>div')[idx].innerHTML;
       navDecorators[navClass](nav, placeholders);
+      idxcounter = idx;
       block.appendChild(nav);
     });
-    const nav = document.createElement('nav');
-    nav.classList.add('nav-bottom');
-    navDecorators['nav-bottom'](nav, placeholders, navTreeJson);
-    block.appendChild(nav);
+    // This change is specifically for dentistry header
+    if (folder) {
+      const bottomnav = document.createElement('nav');
+      bottomnav.classList.add('nav-bottom-parent');
+      const nav = document.createElement('nav');
+      nav.classList.add('nav-bottom');
+      navDecorators['nav-bottom'](nav, placeholders, navTreeJson);
+      bottomnav.appendChild(nav);
+      const nav1 = document.createElement('nav');
+      nav1.classList.add('nav-bottom-right');
+      nav1.innerHTML += fetchedNav.querySelectorAll(':scope>div')[idxcounter + 1].innerHTML;
+      bottomnav.appendChild(nav1);
+      block.appendChild(bottomnav);
+    } else {
+      const nav = document.createElement('nav');
+      nav.classList.add('nav-bottom');
+      navDecorators['nav-bottom'](nav, placeholders, navTreeJson);
+      block.appendChild(nav);
+    }
 
     window.addEventListener('scroll', () => {
       if (document.documentElement.scrollTop > document.querySelector('nav.nav-top').offsetHeight + document.querySelector('nav.nav-middle').offsetHeight) {

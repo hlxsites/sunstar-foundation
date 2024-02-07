@@ -40,6 +40,59 @@
   margin-bottom: 1.25rem;
 }
 
+.columns > div > div p {
+  margin-top: 0;
+}
+
+.columns.orderedtext > div > div p {
+  margin-bottom: 0;
+}
+
+.columns.highlight > div {
+  margin-bottom: 0;
+}
+
+.columns.crop-image > div {
+  align-items: stretch;
+}
+
+.columns.top-down > div {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.columns.native-image-sizes > div {
+  align-items: unset;
+}
+
+.columns.plain-links > div > div,
+.columns.plain-links > div > div p {
+  font-size: var(--body-font-size-s);
+  margin-left: 0;
+}
+
+.columns.highlight {
+  background-color: var(--transparent-blue-light-color);
+  padding: 1rem 2rem;
+  margin: 0;
+}
+
+.columns.highlight .text-col > p {
+  font-size: 14px;
+  line-height: 1.6;
+  padding-bottom: 10px;
+}
+
+.columns.native-image-sizes .text-col {
+  width: 100%;
+}
+
+.columns.native-image-sizes picture {
+  display: block;
+  text-align: center;
+  width: auto;
+}
+
 .columns:not(.native-image-sizes) img,
 .columns:not(.native-image-sizes) div.image-collage.autoblocked {
   width: 100%;
@@ -88,12 +141,6 @@
   order: 2;
 }
 
-.columns .text-col-wrapper img {
-  width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
 .columns.crop-image img {
   object-fit: cover;
   height: 100%;
@@ -124,16 +171,16 @@
   border-radius: 50%;
 }
 
-.columns > div > div p {
-  margin-top: 0;
+.columns.text-and-image-in-column > div div.text-col img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
-.columns.orderedtext >div > div p {
-  margin-bottom: 0;
-}
-
-.columns.crop-image > div {
-  align-items: stretch;
+.columns.columns:not(.native-image-sizes) .text-col-wrapper img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 .columns.constrain-width > div > div.img-col {
@@ -144,23 +191,12 @@
   margin: 40px 0 0;
 }
 
-.columns.top-down > div {
-  align-items: flex-start;
-  gap: 1rem;
-}
-
 .columns.top-down.columns-2-cols {
   max-width: 790px;
 }
 
 .columns.top-down.columns-3-cols {
   max-width: 1200px;
-}
-
-.columns.plain-links > div > div,
-.columns.plain-links > div > div p {
-  font-size: var(--body-font-size-s);
-  margin-left: 0;
 }
 
 .columns.text-layout > div > div h2 {
@@ -183,7 +219,7 @@
 .columns div.img-col.video-modal a::after {
   display: block;
   position: absolute;
-  content: '';
+  content: "";
   background: url("../../icons/play.svg") no-repeat center;
   background-size: cover;
   height: 5.25rem;
@@ -240,11 +276,6 @@
   margin: unset;
 }
 
-.columns.text-and-image-in-column > div div.text-col img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
 
 .columns:not(.no-padding) > div div.non-singleton-img {
   margin: 0 1rem;
@@ -253,7 +284,7 @@
 .columns div.image-collage.autoblocked picture ~ *.image-caption {
   color: var(--steel-blue);
   font-size: var(--body-font-size-s);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 div.img-col > video {
@@ -266,7 +297,7 @@ div.img-col > video {
   gap: 1rem;
 }
 
-.columns  > div > div p.button-container {
+.columns > div > div p.button-container {
   margin-bottom: 3rem;
 }
 
@@ -274,7 +305,7 @@ div.img-col > video {
   justify-content: center;
 }
 
-.columns.orderedtext  > div > div p.button-container {
+.columns.orderedtext > div > div p.button-container {
   margin-bottom: 0;
 }
 
@@ -292,7 +323,8 @@ div.img-col > video {
   flex: 1;
 }
 
-.columns.plain-links.collapse > div > div, .columns.plain-text.collapse > div > div {
+.columns.plain-links.collapse > div > div,
+.columns.plain-text.collapse > div > div {
   width: 100%;
 }
 
@@ -306,11 +338,14 @@ div.img-col > video {
   margin-top: 3rem;
 }
 
-.columns.plain-links.collapse.collapse-without-top-margin:not(.continuation) > div > div:first-child {
+.columns.plain-links.collapse.collapse-without-top-margin:not(.continuation)
+  > div
+  > div:first-child {
   margin-top: 0;
 }
 
-.columns.plain-links.collapse > div h6::after, .columns.plain-text.collapse > div h6::after {
+.columns.plain-links.collapse > div h6::after,
+.columns.plain-text.collapse > div h6::after {
   content: "";
   position: absolute;
   height: 12px;
@@ -325,7 +360,8 @@ div.img-col > video {
   transition: ease 0.2s;
 }
 
-.columns.plain-links.collapse > div h6.active::after, .columns.plain-text.collapse > div h6.active::after  {
+.columns.plain-links.collapse > div h6.active::after,
+.columns.plain-text.collapse > div h6.active::after {
   transform: translateY(-50%) rotate(-180deg);
 }
 
@@ -377,11 +413,13 @@ div.img-col > video {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.columns.plain-links.collapse ul, .columns.plain-text.collapse p {
-  display:none;
+.columns.plain-links.collapse ul,
+.columns.plain-text.collapse p {
+  display: none;
 }
 
-.columns.plain-links.collapse ul.active, .columns.plain-text.collapse p.active {
+.columns.plain-links.collapse ul.active,
+.columns.plain-text.collapse p.active {
   display: block;
 }
 
@@ -431,7 +469,6 @@ div.img-col > video {
   margin: 0;
   width: 100%;
 }
-
 
 .columns.text-and-image-in-column.overlap .button-container a {
   background-color: unset;
@@ -541,7 +578,8 @@ div.img-col > video {
     border-bottom: 0;
   }
 
-  .columns.plain-links.collapse ul, .columns.plain-text.collapse p {
+  .columns.plain-links.collapse ul,
+  .columns.plain-text.collapse p {
     display: none;
   }
 
@@ -555,7 +593,10 @@ div.img-col > video {
     width: auto;
   }
 
-  .columns:not(.text-and-image-in-column) .text-col-wrapper img:not(.video-modal) img:not(.image-with-link) {
+  .columns:not(.text-and-image-in-column)
+    .text-col-wrapper
+    img:not(.video-modal)
+    img:not(.image-with-link) {
     height: 3.125rem;
     width: unset;
   }
@@ -592,7 +633,10 @@ div.img-col > video {
     width: 337px;
   }
 
-  .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
+  .columns:not(.no-padding)
+    > div
+    > div:not(.columns-img-col)
+    div:not(.img-col) {
     padding: 1rem 0;
   }
 
@@ -615,7 +659,7 @@ div.img-col > video {
     background: var(--transparent-blue-light-color);
     padding: 10px;
     text-align: center;
-    color: #00587C;
+    color: #00587c;
     margin-bottom: 0;
     border: 1px solid var(--transparent-grey-light-color);
     border-bottom: 0;
@@ -677,7 +721,7 @@ div.img-col > video {
     width: 100%;
   }
 
-  .columns.centered p.button-container{
+  .columns.centered p.button-container {
     justify-content: center;
   }
 }
