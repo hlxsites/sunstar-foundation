@@ -894,7 +894,7 @@ export function wrapImgsInLinks(container) {
     const img = pic.querySelector('img');
     img.classList.add('image-with-link');
     const parent = pic.parentNode;
-    const link = parent.nextElementSibling.querySelector('a');
+    const link = parent?.nextElementSibling?.querySelector('a');
     if (link && link.href) {
       link.parentElement.remove();
       link.innerHTML = pic.outerHTML;

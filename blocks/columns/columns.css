@@ -103,11 +103,11 @@
   display: block;
 }
 
-.columns.modal-fragment > div > .img-col picture.video-modal {
+.columns.modal-fragment picture.video-modal {
   position: relative;
 }
 
-.columns.modal-fragment > div > .img-col picture.video-modal::after {
+.columns.modal-fragment picture.video-modal::after {
   content: '';
   position: absolute;
   top: 50%;
