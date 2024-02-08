@@ -305,6 +305,7 @@ div.img-col > video {
 .columns.plain-links.collapse > div > div,
 .columns.plain-text.collapse > div > div {
   width: 100%;
+  padding-right: 2rem;
 }
 
 .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col),
@@ -329,8 +330,7 @@ div.img-col > video {
   position: absolute;
   height: 12px;
   width: 12px;
-  top: 50%;
-  right: 0;
+  right: 1rem;
   transform: translateY(-50%) rotate(0deg);
   background-image: url("/icons/arrow-down-blue.svg");
   background-repeat: no-repeat;
@@ -369,14 +369,17 @@ div.img-col > video {
 
 /* stylelint-disable-next-line no-descending-specificity */
 .columns.plain-text.collapse > div h6 {
-  position: relative;
   line-height: 1rem;
-  padding: 0 0.5rem;
+  padding: 1.25rem 0 1.25rem 1rem;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
+.columns.plain-text.collapse > div > div {
+  position: relative;
+}
+/* stylelint-disable-next-line no-descending-specificity */
 .columns.plain-text:not(.no-padding) > div > div {
-  padding: 0.5rem;
+  padding: 0.3rem;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -400,6 +403,7 @@ div.img-col > video {
 .columns.plain-links.collapse ul.active,
 .columns.plain-text.collapse p.active {
   display: block;
+  padding: 0 1rem 1rem;
 }
 
 .columns-container.backgroundimage .backgroundimage {
@@ -408,6 +412,10 @@ div.img-col > video {
 
 .columns.block.padding.columns-2-cols > div > div.text-col-wrapper {
   padding: 2rem 0;
+}
+
+.columns.block.plain-text.collapse > div > div.text-col-wrapper * {
+  margin: 0;
 }
 
 .columns.orderedtext .text-col > a {
