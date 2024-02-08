@@ -278,7 +278,7 @@
         content: "";
         background: var(--primary);
         height: 100%;
-        width: 100%;
+        width: 75rem;
         position: absolute;
         top: 0;
         right: 100%;
