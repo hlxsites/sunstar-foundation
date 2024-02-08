@@ -5,6 +5,11 @@ main .table span.icon {
     margin-left: 0.3125rem;
 }
 
+main .table.large-icons span.icon {
+    width: 4.5rem;
+    height: auto;
+}
+
 main .table img {
     height: 80px;
     width: auto;
@@ -51,6 +56,10 @@ main .table:not(.text-table) table td {
     border: 1px solid var(--transparent-grey-light-color);
     vertical-align: middle;
     width: 50%;
+}
+
+main .table.padded-cell table td {
+    padding: 2rem;
 }
 
 main .table table td p {
