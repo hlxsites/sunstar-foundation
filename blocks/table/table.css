@@ -6,7 +6,7 @@ main .table span.icon {
 }
 
 main .table.large-icons span.icon {
-    width: 4.5rem;
+    width: 4rem;
     height: auto;
 }
 
@@ -59,7 +59,7 @@ main .table:not(.text-table) table td {
 }
 
 main .table.padded-cell table td {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 main .table table td p {
@@ -320,12 +320,21 @@ main .table.style-list table tbody tr:first-of-type td:last-of-type {
         text-align: center;
     }
 
+    main .table.large-icons span.icon {
+        width: 4.5rem;
+        height: auto;
+    }
+
     main .section .table.block p.table-annotation {
         margin-bottom: 2rem;
     }
 
     main .table.text-table table tr {
         flex-direction: row;
+    }
+
+    main .table.padded-cell table td {
+        padding: 2rem;
     }
 
     main .table.text-table table tr td:first-child {
