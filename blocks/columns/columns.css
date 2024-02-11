@@ -360,6 +360,21 @@ div.img-col > video {
   transition: ease 0.2s;
 }
 
+.columns.plain-links.collapse.dentistry-faq>div h6::before,
+.columns.plain-text.collapse.dentistry-faq>div h6::before {
+  content: "Q";
+  background: #007CAD;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  border-radius: 100%;
+  padding: 3px;
+  position: absolute;
+  left: 5px;
+  text-align: center;
+}
+
 .columns.plain-links.collapse > div h6.active::after,
 .columns.plain-text.collapse > div h6.active::after {
   transform: translateY(-50%) rotate(-180deg);
@@ -392,6 +407,11 @@ div.img-col > video {
 .columns.plain-text.collapse > div h6 {
   line-height: 1rem;
   padding: 1.25rem 0 1.25rem 1rem;
+}
+
+.columns.plain-text.collapse.dentistry-faq > div h6 {
+  line-height: 1rem;
+  padding: 1.25rem 0 1.25rem 3rem;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
