@@ -249,11 +249,9 @@ export default function decorate(block) {
       if (headings.length) {
         [...headings].forEach((h) => {
           h.parentElement.addEventListener('click', () => {
-            h.classList.toggle('active');
-            const list = h.nextElementSibling;
-            if (list) {
-              list.classList.toggle('active');
-            }
+            Array.from(h.parentElement.children).forEach((ele) => {
+              ele.classList.toggle('active');
+            });
           });
         });
       }
