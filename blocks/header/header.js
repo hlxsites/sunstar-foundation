@@ -165,6 +165,16 @@ export default async function decorate(block) {
       block.appendChild(nav);
     }
 
+    // implement ScrollToBottom in case of dentistry header
+    if (folder) {
+      document.querySelector('a[href="/dentistry#footer"]').addEventListener('click', (event) => {
+        event.preventDefault();
+        const targetElement = document.querySelector('.footer.block.dentistry');
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+        }
+      });
+    }
     window.addEventListener('scroll', () => {
       if (document.documentElement.scrollTop > document.querySelector('nav.nav-top').offsetHeight + document.querySelector('nav.nav-middle').offsetHeight) {
         document.querySelector('header').classList.add('fixed');
