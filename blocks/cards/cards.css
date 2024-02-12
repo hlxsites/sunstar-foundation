@@ -160,6 +160,14 @@ main .block.cards.light-background ul > li{
   padding: 0;
 }
 
+.cards.no-padding .cards-card-image {
+  width: 100%;
+}
+
+.cards.no-padding picture {
+  width: 100%;
+}
+
 .cards.video-modal .cards-card-image {
   height: auto;
   width: 100%;
