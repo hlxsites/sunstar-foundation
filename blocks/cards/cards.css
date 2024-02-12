@@ -55,6 +55,7 @@ main .block.cards {
 
 .cards.no-padding > ul > li > a.button {
   padding: 0;
+  flex-direction: column;
 }
 
 .cards.video-modal > ul > li > a.button {
