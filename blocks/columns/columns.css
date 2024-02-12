@@ -716,6 +716,14 @@ div.img-col > video {
     margin-left: 1rem;
   }
 
+  .columns.tabular > div:nth-child(2) > div:nth-child(2) > div > p > picture > img {
+    margin-left: 0.8rem;
+  }
+
+  .columns.tabular > div:nth-child(3) > div:nth-child(2) > div > p > picture > img {
+    margin-left: 1.8rem;
+  }
+
   div.img-col > video {
     height: 469px;
     width: 469px;
