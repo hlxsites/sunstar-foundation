@@ -87,6 +87,10 @@
   width: 100%;
 }
 
+.columns.native-image-sizes img {
+  width: auto;
+}
+
 .columns.native-image-sizes picture {
   display: block;
   text-align: center;
@@ -171,16 +175,16 @@
   border-radius: 50%;
 }
 
-.columns.text-and-image-in-column > div div.text-col img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.columns.columns:not(.native-image-sizes) .text-col-wrapper img {
+.columns:not(.native-image-sizes) .text-col-wrapper img {
   width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+.columns:not(.native-image-sizes).text-and-image-in-column > div div.text-col img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .columns.constrain-width > div > div.img-col {
