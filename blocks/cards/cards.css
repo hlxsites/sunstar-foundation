@@ -394,7 +394,7 @@ main .cards.video-modal .cards-card-image::after {
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     flex: 0 0 calc(30%); /* 3 cards per row */
     width: 100%;
   }
