@@ -360,8 +360,13 @@ div.img-col > video {
   transition: ease 0.2s;
 }
 
-.columns.plain-links.collapse.dentistry-faq>div h6::before,
-.columns.plain-text.collapse.dentistry-faq>div h6::before {
+.columns.plain-text.collapse.dentistry-faq {
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.columns.plain-links.collapse.dentistry-faq > div h6::before,
+.columns.plain-text.collapse.dentistry-faq > div h6::before {
   content: "Q";
   background: #007CAD;
   color: #fff;
@@ -529,6 +534,11 @@ div.img-col > video {
     font-weight: var(--font-weight-small);
     margin: 0 auto 1.5rem;
   }
+
+  .columns.plain-text.collapse.dentistry-faq {
+    padding: 0;
+  }
+  
 
   .columns h6 {
     margin-top: unset;
