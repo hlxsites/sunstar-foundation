@@ -152,6 +152,14 @@ footer .footer-bottom p>a {
   color: var(--white);
 }
 
+footer>:not(.dentistry) .footer-bottom h5 {
+  font-size: 0.813rem;
+}
+
+footer>:not(.dentistry) .footer-middle h5 {
+  font-size: 0.813rem;
+}
+
 footer .footer-bottom p {
   font-size: var(--body-font-size-xs);
   line-height: 1;
