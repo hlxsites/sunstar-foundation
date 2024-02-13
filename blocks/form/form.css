@@ -17,7 +17,12 @@ main .section.form-container .default-content-wrapper {
 main .section.form-container .default-content-wrapper {
   margin: auto;
 }
- 
+
+main .form.narrower,
+main .section.narrower.form-container .default-content-wrapper {
+  max-width: 560px;
+}
+
 main .form {
   margin: 0 auto 120px;
 }
