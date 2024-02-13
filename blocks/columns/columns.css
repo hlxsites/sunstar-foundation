@@ -343,12 +343,6 @@ div.img-col > video {
   margin-top: 3rem;
 }
 
-.columns:not(.no-padding).dentistry-faq > div > div:not(.columns-img-col) div:not(.img-col),
-.columns:not(.no-padding).dentistry-faq > div.img-col-wrapper > div.image-collage.autoblocked,
-.columns:not(.no-padding).dentistry-faq > div > div.img-col-wrapper {
-  padding: 0;
-}
-
 .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation)
   > div
   > div:first-child {
@@ -605,12 +599,6 @@ div.img-col > video {
 
     .columns:not(.no-padding) > div > div:not(.columns-img-col) div:not(.img-col) {
       padding: 1rem 0;
-    }
-
-    .columns:not(.no-padding).dentistry-faq > div > div:not(.columns-img-col) div:not(.img-col),
-    .columns:not(.no-padding).dentistry-faq > div.img-col-wrapper > div.image-collage.autoblocked,
-    .columns:not(.no-padding).dentistry-faq > div > div.img-col-wrapper {
-      padding: 0 1rem;
     }
   
     .columns.plain-text.collapse.dentistry-faq {
