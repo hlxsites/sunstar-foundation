@@ -739,17 +739,19 @@ export const handleModalClick = async (element, target, modalFragmentBlock) => {
 
     if (!elem || e.target.dataset.hasSearchParam) {
       if (hasSearchParam) modalFragmentBlock.innerHTML = '';
-      const wrapper = document.createElement('div');
-      wrapper.className = 'modal-wrapper';
-      wrapper.id = modalId;
-      wrapper.dataset.url = target.dataset.url;
+      const dialogWrapper = document.createElement('div');
+      dialogWrapper.classList.add('modal-wrapper');
 
-      const modal = document.createElement('div');
-      modal.className = 'modal';
-      modal.innerHTML = '<div class="modal-close"></div>';
+      const dialog = document.createElement('dialog');
+      dialog.classList.add('modal');
+      const closeBtn = document.createElement('button');
+      closeBtn.classList.add('modal-close');
+      closeBtn.addEventListener('click', () => {
+        dialog.close();
+      });
+
       const modalContent = document.createElement('div');
       modalContent.classList.add('modal-content');
-      modal.append(modalContent);
 
       if (path) {
         const fragment = await loadFragment(path);
@@ -760,13 +762,11 @@ export const handleModalClick = async (element, target, modalFragmentBlock) => {
         modalContent.append(fragment);
       }
 
-      wrapper.append(modal);
-      modalFragmentBlock.append(wrapper);
-      wrapper.classList.add('visible');
-      const close = modal.querySelector('.modal-close');
-      close.addEventListener('click', () => {
-        wrapper.remove();
-      });
+      dialog.appendChild(closeBtn);
+      dialog.appendChild(modalContent);
+      dialogWrapper.appendChild(dialog);
+      modalFragmentBlock.appendChild(dialogWrapper);
+      dialog.showModal();
     } else {
       elem.classList.add('visible');
     }
