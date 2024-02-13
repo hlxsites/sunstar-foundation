@@ -97,6 +97,10 @@
   width: auto;
 }
 
+.columns.native-image-sizes.align-left-native-image picture {
+  text-align: left;
+}
+
 .columns:not(.native-image-sizes) img,
 .columns:not(.native-image-sizes) div.image-collage.autoblocked {
   width: 100%;
