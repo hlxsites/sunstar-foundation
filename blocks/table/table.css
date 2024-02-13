@@ -38,10 +38,18 @@ main .table table {
     padding-bottom: 1.5rem;
 }
 
+main .table.full-width table {
+    display: table;
+}
+
 main .table .table-item {
     display: unset;
     margin-bottom: unset;
     border: unset;
+}
+
+main .table.full-width .table-item {
+    display: inherit;
 }
 
 main .table .table-item div {
