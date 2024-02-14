@@ -32,9 +32,18 @@ const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
 const LANGUAGES = new Set(['en', 'jp']);
 
+/**
+ * An array of arrays that maps 'fromURL' to 'toURL'.
+ * When a user navigates from a 'fromURL' to a 'toURL', the 'toURL' is opened in a new tab.
+ * @type {Array<Array<string>>}
+ */
 const externalNavigationMappings = [
-  ['/', '/dentistry/'],
-  ['/dentistry/', '/'],
+  ['/', '/dentistry'],
+  ['/grants', '/dentistry'],
+  ['/about-us', '/dentistry'],
+  ['/award', '/dentistry'],
+  ['/oral-care', '/dentistry'],
+  ['/dentistry', '/'],
 ];
 
 export const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
