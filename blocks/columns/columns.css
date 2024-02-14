@@ -75,6 +75,24 @@
   margin-left: 0;
 }
 
+.columns.text-and-image-in-column > div > div p:has(picture) {
+  color: rgba(51 61 70 / 50%);
+  margin-bottom: 1rem;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.columns.text-layout > div > div > div {
+  font-size: var(--body-font-size-l);
+}
+
+.columns.text-and-image-in-column > div > div:not(:has(p)):has(picture) {
+  color: rgba(51 61 70 / 50%);
+  margin-bottom: 1rem;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .columns.highlight {
   background-color: var(--transparent-blue-light-color);
   padding: 1rem 2rem;
@@ -214,10 +232,6 @@
 .columns.text-layout > div > div h2 {
   font-size: var(--heading-font-size-mxl);
   margin: 0;
-}
-
-.columns.text-layout > div > div > div {
-  font-size: var(--body-font-size-l);
 }
 
 .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
