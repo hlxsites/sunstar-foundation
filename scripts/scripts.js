@@ -32,6 +32,11 @@ const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
 const LANGUAGES = new Set(['en', 'jp']);
 
+const externalNavigationMappings = [
+  ['/', '/dentistry/'],
+  ['/dentistry/', '/'],
+];
+
 export const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
 export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_SEGMENT}"]`;
 
@@ -352,6 +357,30 @@ export function decorateAnchors(element = document) {
     (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
       || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
   ));
+
+  const currentPath = window.location.pathname;
+  const matchingMapping = externalNavigationMappings.find((mapping) => {
+    const [fromPath] = mapping;
+    if (fromPath === '/' && currentPath !== '/') {
+      return false; // Ignore the root path "/" unless it's an exact match
+    }
+    return currentPath.startsWith(fromPath);
+  });
+
+  if (matchingMapping) {
+    const matchingToUrl = matchingMapping[1];
+    let matchingAnchors;
+    if (matchingToUrl === '/') {
+      matchingAnchors = Array.from(anchors).filter(
+        (a) => new URL(a.href).pathname === matchingToUrl,
+      );
+    } else {
+      matchingAnchors = Array.from(anchors).filter(
+        (a) => new URL(a.href).pathname.startsWith(matchingToUrl),
+      );
+    }
+    decorateExternalAnchors(matchingAnchors);
+  }
 }
 
 // Function to get the current window size
