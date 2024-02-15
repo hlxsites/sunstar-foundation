@@ -38,6 +38,7 @@
 .carousel .text {
   color: var(--white);
   display: flex;
+  height: 26rem;
 }
 
 .carousel.small .text{
@@ -217,6 +218,12 @@ main .section.carousel-container {
 .carousel.small .swiper-wrapper {
   transition-property: none;
   transition-duration: 0ms;
+}
+
+@media (min-width: 36rem) {
+  .carousel .text {
+    height: 20rem;
+  }
 }
 
 @media (min-width: 62rem) {
