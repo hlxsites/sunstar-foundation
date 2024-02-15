@@ -344,3 +344,95 @@ describe('Scripts', () => {
     expect(arr3).to.deep.contain({ test: true });
   });
 });
+
+describe('Decorate Anchors', () => {
+  before(async () => {
+    const mod = await import('../../scripts/scripts.js');
+    Object.keys(mod).forEach((func) => {
+      scripts[func] = mod[func];
+    });
+  });
+  it('Decorates YouTube video links', () => {
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    a.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    div.appendChild(a);
+
+    scripts.decorateAnchors(div);
+
+    expect(a.classList.contains('video-link')).to.be.true;
+    expect(a.classList.contains('youtube')).to.be.true;
+  });
+
+  it('Decorates external links to open in new window', () => {
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    a.href = 'https://www.external-link.com';
+    div.appendChild(a);
+
+    scripts.decorateAnchors(div);
+
+    expect(a.target).to.equal('_blank');
+  });
+
+  it('Does not decorate internal links to open in new window', () => {
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    a.href = '/internal-link';
+    div.appendChild(a);
+
+    scripts.decorateAnchors(div);
+
+    expect(a.target).to.not.equal('_blank');
+  });
+
+  it('Decorates video with poster anchors', () => {
+    const div = document.createElement('div');
+    const p = document.createElement('p');
+    const picture = document.createElement('picture');
+    const anotherPElement = document.createElement('p');
+    const a = document.createElement('a');
+    a.textContent = '//Video Link//';
+    a.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    anotherPElement.appendChild(a);
+    p.appendChild(picture);
+    div.appendChild(p);
+    div.appendChild(anotherPElement);
+    scripts.decorateAnchors(div);
+
+    expect(a.classList.contains('video-with-poster')).to.be.true;
+  });
+
+  it('Does not decorate non-video anchors as video with poster', () => {
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    a.textContent = 'Non-video link';
+    a.href = '/non-video-link';
+    div.appendChild(a);
+
+    scripts.decorateAnchors(div);
+
+    expect(a.classList.contains('video-with-poster')).to.be.false;
+  });
+  it('Decorates anchors when externalNavigationMappings matches', () => {
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    a.href = '/dentistry';
+    div.appendChild(a);
+
+    scripts.decorateAnchors(div);
+
+    expect(a.target).to.equal('_blank');
+  });
+
+  it('Does not decorate anchors when externalNavigationMappings does not match', () => {
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    a.href = '/non-matching-url';
+    div.appendChild(a);
+
+    scripts.decorateAnchors(div);
+
+    expect(a.target).to.not.equal('_blank');
+  });
+});
