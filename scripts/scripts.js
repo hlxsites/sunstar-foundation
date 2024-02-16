@@ -380,13 +380,21 @@ export function decorateAnchors(element = document) {
     const matchingToUrl = matchingMapping[1];
     let matchingAnchors;
     if (matchingToUrl === '/') {
-      matchingAnchors = Array.from(anchors).filter(
-        (a) => new URL(a.href).pathname === matchingToUrl,
-      );
+      matchingAnchors = Array.from(anchors).filter((a) => {
+        try {
+          return new URL(a.href).pathname === matchingToUrl;
+        } catch (e) {
+          return false;
+        }
+      });
     } else {
-      matchingAnchors = Array.from(anchors).filter(
-        (a) => new URL(a.href).pathname.startsWith(matchingToUrl),
-      );
+      matchingAnchors = Array.from(anchors).filter((a) => {
+        try {
+          return new URL(a.href).pathname.startsWith(matchingToUrl);
+        } catch (e) {
+          return false;
+        }
+      });
     }
     decorateExternalAnchors(matchingAnchors);
   }
