@@ -90,7 +90,7 @@ export default async function decorate(block) {
     block.classList.add(folder);
     footerPath = footerMeta || (getLanguage() === 'jp' ? `/${folder}footer` : `/${getLanguage()}/{folder}footer`);
   } else {
-    footerPath = footerMeta || (getLanguage() === 'jp' ? '/_drafts/piyush/footer' : '/_drafts/piyush/footer'); // todo change here before merge
+    footerPath = footerMeta || (getLanguage() === 'jp' ? '/footer' : `/${getLanguage()}/footer`);
   }
 
   const resp = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
