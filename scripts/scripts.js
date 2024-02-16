@@ -44,6 +44,8 @@ const externalNavigationMappings = [
   ['/award', '/dentistry'],
   ['/oral-care', '/dentistry'],
   ['/dentistry', '/'],
+  ['/', '/en'],
+  ['/en', '/'],
 ];
 
 export const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
@@ -368,7 +370,7 @@ export function decorateAnchors(element = document) {
   ));
 
   const currentPath = window.location.pathname;
-  const matchingMapping = externalNavigationMappings.find((mapping) => {
+  const matchingMappingEntries = externalNavigationMappings.filter((mapping) => {
     const [fromPath] = mapping;
     if (fromPath === '/' && currentPath !== '/') {
       return false; // Ignore the root path "/" unless it's an exact match
@@ -376,7 +378,7 @@ export function decorateAnchors(element = document) {
     return currentPath.startsWith(fromPath);
   });
 
-  if (matchingMapping) {
+  matchingMappingEntries.forEach((matchingMapping) => {
     const matchingToUrl = matchingMapping[1];
     let matchingAnchors;
     if (matchingToUrl === '/') {
@@ -389,7 +391,7 @@ export function decorateAnchors(element = document) {
       );
     }
     decorateExternalAnchors(matchingAnchors);
-  }
+  });
 }
 
 // Function to get the current window size
