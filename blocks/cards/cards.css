@@ -552,7 +552,7 @@ main .cards.video-modal .cards-card-image::after {
   }
 
   .cards > ul > li > a.button {
-    padding: 20px 0 0;
+    padding: 0;
   }
 
   .cards.large-text .cards-card-body .date {
