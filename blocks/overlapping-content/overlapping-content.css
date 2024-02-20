@@ -6,12 +6,16 @@
   color: var(--white);
 }
 
+.overlapping-content.white-link .icon-download-white,
 .overlapping-content.white-link .icon-link-white {
   height: 1.125rem;
   width: 1.125rem;
-  background-image: url("../../icons/link-white.svg");
   margin-left: 0.125rem;
   vertical-align: middle;
+}
+
+.overlapping-content.white-link .icon-link-white {
+  background-image: url("../../icons/link-white.svg");
   margin-bottom: 0.313rem;
 }
 
