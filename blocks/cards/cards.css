@@ -413,6 +413,10 @@ main .cards.video-modal .cards-card-image::after {
     flex-flow: row wrap;
   }
 
+  .cards.stacked-cards > ul {
+    flex-flow: column;
+  }
+
   .cards.grid > ul {
     flex-flow: column nowrap;
   }
